@@ -1,15 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
 import Button from '@/components/ui/Button';
 import styles from './Hero.module.css';
-
-// Dynamic import for particle effect (client-side only)
-const ParticleBackground = dynamic(
-  () => import('@/components/effects/ParticleBackground'),
-  { ssr: false }
-);
 
 const headlines = [
   'Enterprise Software',
@@ -40,7 +33,7 @@ export default function Hero() {
           charIndex++;
         } else {
           clearInterval(typeInterval);
-          setTimeout(() => setIsTyping(false), 2000);
+          setTimeout(() => setIsTyping(false), 2500);
         }
       }, 80);
       return () => clearInterval(typeInterval);
@@ -54,7 +47,7 @@ export default function Hero() {
           setCurrentHeadline((prev) => (prev + 1) % headlines.length);
           setIsTyping(true);
         }
-      }, 40);
+      }, 50);
       charIndex = headline.length;
       return () => clearInterval(deleteInterval);
     }
@@ -62,12 +55,10 @@ export default function Hero() {
 
   return (
     <section className={styles.hero}>
-      {/* Background Effects */}
+      {/* Subtle Background */}
       <div className={styles.background}>
-        <ParticleBackground particleCount={60} />
         <div className={styles.gradientOrb1}></div>
         <div className={styles.gradientOrb2}></div>
-        <div className={styles.gridPattern}></div>
       </div>
 
       <div className="container">

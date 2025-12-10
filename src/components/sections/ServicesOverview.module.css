@@ -1,6 +1,14 @@
 .section {
   padding: var(--space-24) 0;
   background: var(--color-bg-secondary);
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 .header {
@@ -48,13 +56,23 @@
 .serviceCard {
   display: block;
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.5s var(--ease-out);
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.serviceCard.visible {
-  opacity: 1;
-  transform: translateY(0);
+.serviceCard:nth-child(1) { animation-delay: 0.1s; }
+.serviceCard:nth-child(2) { animation-delay: 0.2s; }
+.serviceCard:nth-child(3) { animation-delay: 0.3s; }
+.serviceCard:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .cardLink {

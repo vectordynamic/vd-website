@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Card, { CardIcon, CardTitle, CardBody } from '@/components/ui/Card';
 import styles from './ServicesOverview.module.css';
@@ -55,34 +54,8 @@ const ArrowIcon = () => (
 );
 
 export default function ServicesOverview() {
-  const [visibleItems, setVisibleItems] = useState([]);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // Stagger animation
-          services.forEach((_, index) => {
-            setTimeout(() => {
-              setVisibleItems(prev => [...prev, index]);
-            }, index * 150);
-          });
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} className={styles.section}>
+    <section className={styles.section}>
       <div className="container">
         <div className={styles.header}>
           <span className={styles.badge}>What We Do</span>
@@ -97,7 +70,7 @@ export default function ServicesOverview() {
             <Link 
               key={index} 
               href={service.href}
-              className={`${styles.serviceCard} ${visibleItems.includes(index) ? styles.visible : ''}`}
+              className={styles.serviceCard}
             >
               <Card variant="glow" className="feature-card card-interactive">
                 <CardIcon>{service.icon}</CardIcon>
