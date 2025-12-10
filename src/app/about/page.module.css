@@ -1,0 +1,272 @@
+.page {
+  padding-top: 80px;
+}
+
+/* Hero */
+.hero {
+  padding: var(--space-16) 0;
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+}
+
+.breadcrumb a {
+  color: var(--color-text-tertiary);
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-cyan);
+}
+
+.title {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-4);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: var(--text-xl);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+}
+
+/* Mission */
+.mission {
+  padding: var(--space-24) 0;
+}
+
+.missionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.missionContent h2 {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-6);
+  color: var(--color-text-primary);
+}
+
+.missionText {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.missionVisual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visualBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-glow-primary);
+}
+
+.visualText {
+  font-size: 80px;
+  font-weight: var(--font-extrabold);
+  color: white;
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Section Header */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.sectionHeader h2 {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-3);
+  color: var(--color-text-primary);
+}
+
+.sectionHeader p {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+}
+
+/* Values */
+.values {
+  padding: var(--space-24) 0;
+  background: var(--color-bg-secondary);
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+.valueCard {
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.valueCard:hover {
+  border-color: var(--color-border-hover);
+  transform: translateY(-4px);
+}
+
+.valueIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--space-4);
+  background: var(--gradient-subtle);
+  border-radius: var(--radius-lg);
+  color: var(--color-cyan);
+}
+
+.valueCard h3 {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
+}
+
+.valueCard p {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+  line-height: var(--leading-relaxed);
+}
+
+/* What We Do */
+.whatWeDo {
+  padding: var(--space-24) 0;
+}
+
+.whatWeDoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+.whatWeDoCard {
+  padding: var(--space-6);
+  border-left: 2px solid var(--color-border);
+  transition: border-color var(--transition-base);
+}
+
+.whatWeDoCard:hover {
+  border-color: var(--color-cyan);
+}
+
+.whatWeDoNumber {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--color-cyan);
+  margin-bottom: var(--space-3);
+}
+
+.whatWeDoCard h3 {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
+}
+
+.whatWeDoCard p {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+}
+
+/* Careers */
+.careers {
+  padding: var(--space-24) 0;
+  background: var(--color-bg-secondary);
+}
+
+.careersContent {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.careersContent h2 {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-4);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.careersContent p {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+  line-height: var(--leading-relaxed);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .missionGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+  
+  .missionContent {
+    text-align: center;
+  }
+  
+  .valuesGrid,
+  .whatWeDoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--text-4xl);
+  }
+  
+  .visualBox {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .visualText {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .valuesGrid,
+  .whatWeDoGrid {
+    grid-template-columns: 1fr;
+  }
+}

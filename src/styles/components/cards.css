@@ -1,0 +1,196 @@
+/* ==========================================
+   Card Component Styles
+   ========================================== */
+
+.card {
+  position: relative;
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-base);
+}
+
+/* Glass Card */
+.card-glass {
+  background: var(--color-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-glass-border);
+}
+
+/* Solid Card */
+.card-solid {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+}
+
+/* Elevated Card */
+.card-elevated {
+  background: var(--color-bg-tertiary);
+  box-shadow: var(--shadow-lg);
+  border: none;
+}
+
+/* Interactive Card (Hover Effects) */
+.card-interactive {
+  cursor: pointer;
+}
+
+.card-interactive:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-xl), var(--shadow-glow-primary);
+  border-color: var(--color-border-hover);
+}
+
+/* Glow Card */
+.card-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.card-glow:hover::before {
+  opacity: 1;
+}
+
+.card-glow:hover {
+  box-shadow: var(--shadow-glow-primary);
+}
+
+/* Gradient Border Card */
+.card-gradient-border {
+  position: relative;
+  background: var(--color-bg-secondary);
+  border: none;
+}
+
+.card-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: var(--gradient-primary);
+  border-radius: inherit;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+  transition: opacity var(--transition-base);
+}
+
+.card-gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* Card Sizes */
+.card-sm {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+}
+
+.card-lg {
+  padding: var(--space-8);
+  border-radius: var(--radius-2xl);
+}
+
+/* Card Header */
+.card-header {
+  margin-bottom: var(--space-4);
+}
+
+.card-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.card-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+}
+
+/* Card Body */
+.card-body {
+  color: var(--color-text-secondary);
+}
+
+/* Card Footer */
+.card-footer {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Card with Icon */
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-4);
+  background: var(--gradient-subtle);
+  border-radius: var(--radius-lg);
+  color: var(--color-cyan);
+}
+
+.card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Feature Card */
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.feature-card .card-icon {
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--space-5);
+}
+
+.feature-card .card-title {
+  margin-bottom: var(--space-3);
+}
+
+.feature-card .card-body {
+  flex: 1;
+}
+
+.feature-card .card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  color: var(--color-cyan);
+  font-weight: var(--font-medium);
+  font-size: var(--text-sm);
+  transition: gap var(--transition-base);
+}
+
+.feature-card .card-link:hover {
+  gap: var(--space-3);
+}
+
+.feature-card .card-link svg {
+  width: 16px;
+  height: 16px;
+}
