@@ -158,7 +158,7 @@ export default function AboutPage() {
               and creating impactful solutions, we'd love to hear from you.
             </p>
             <Button 
-              href="mailto:vectordynamic@gmail.com?subject=Career Inquiry"
+              href="mailto:info@vectordynamic.com?subject=Career Inquiry"
               size="lg"
             >
               Get in Touch

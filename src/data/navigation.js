@@ -48,6 +48,6 @@ export const socialLinks = {
 };
 
 export const contactInfo = {
-  email: 'vectordynamic@gmail.com',
+  email: 'info@vectordynamic.com',
   website: 'vectordynamic.com',
 };

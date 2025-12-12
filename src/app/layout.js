@@ -3,6 +3,7 @@ import { ThemeProvider } from '@/lib/ThemeContext';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import BackToTop from '@/components/ui/BackToTop';
+import FloatingCTA from '@/components/ui/FloatingCTA';
 import '@/styles/globals.css';
 import '@/styles/components/buttons.css';
 import '@/styles/components/cards.css';
@@ -73,6 +74,7 @@ export default function RootLayout({ children }) {
           <Header />
           <main id="main-content">{children}</main>
           <Footer />
+          <FloatingCTA />
           <BackToTop />
         </ThemeProvider>
       </body>

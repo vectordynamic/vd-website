@@ -190,8 +190,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className={styles.infoLabel}>Email</span>
-                    <a href="mailto:vectordynamic@gmail.com" className={styles.infoValue}>
-                      vectordynamic@gmail.com
+                    <a href="mailto:info@vectordynamic.com" className={styles.infoValue}>
+                      info@vectordynamic.com
                     </a>
                   </div>
                 </div>

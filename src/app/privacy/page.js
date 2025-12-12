@@ -127,7 +127,7 @@ export default function PrivacyPage() {
               If you have questions about this Privacy Policy, please contact us at:
             </p>
             <p>
-              <strong>Email:</strong> <a href="mailto:vectordynamic@gmail.com">vectordynamic@gmail.com</a>
+              <strong>Email:</strong> <a href="mailto:info@vectordynamic.com">info@vectordynamic.com</a>
             </p>
           </section>
         </article>

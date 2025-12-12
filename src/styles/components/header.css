@@ -204,6 +204,10 @@
   .header-nav {
     display: none;
   }
+
+  .desktop-main-cta {
+    display: none !important;
+  }
   
   .mobile-menu-toggle {
     display: block;
