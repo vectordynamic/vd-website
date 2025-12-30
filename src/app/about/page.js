@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import styles from './page.module.css';
 
@@ -76,73 +77,111 @@ export default function AboutPage() {
             <span>/</span>
             <span>About</span>
           </nav>
-          <h1 className={styles.title}>The Vector Dynamic Story</h1>
+          <h1 className={styles.title}>Forging the Future of Intelligence</h1>
           <p className={styles.subtitle}>
-            Empowering businesses with innovative software solutions that drive real results.
+            Vector Dynamic is not just a software company. We are your strategic partner in navigating the AI revolution.
           </p>
         </div>
       </section>
 
-      {/* Mission */}
-      <section className={styles.mission}>
+      {/* Vision Section */}
+      <section className={styles.section}>
         <div className="container">
-          <div className={styles.missionGrid}>
-            <div className={styles.missionContent}>
-              <h2>Our Mission</h2>
-              <p className={styles.missionText}>
-                At Vector Dynamic, we believe that every business deserves access to powerful, 
-                intelligent software. Our mission is to bridge the gap between cutting-edge 
-                technology and practical business solutions.
+          <div className={styles.splitLayout}>
+            <div className={styles.textContent}>
+              <h2>Our Vision</h2>
+              <p>
+                We envision a world where <strong>Artificial Intelligence</strong> isn't just a buzzword, but the backbone of efficient, scalable business operations.
               </p>
-              <p className={styles.missionText}>
-                We combine deep technical expertise with a genuine understanding of business 
-                challenges to create software that doesn't just work—it transforms the way 
-                organizations operate, compete, and grow.
+              <p>
+                From legacy enterprises to agile startups, our goal is to democratize access to 
+                <strong>Deep Tech</strong> and <strong>Autonomous Systems</strong>, turning complex data into actionable dominance.
               </p>
             </div>
-            <div className={styles.missionVisual}>
-              <div className={styles.visualBox}>
-                <span className={styles.visualText}>VD</span>
+            <div className={styles.imageWrapper}>
+              <div className={styles.imageContainer}>
+                <Image 
+                  src="/images/about/vision-city.png" 
+                  alt="Future City Vision" 
+                  width={600} 
+                  height={400} 
+                  className={styles.roundedImage}
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className={styles.values}>
+      {/* Methodology Section (Reversed) */}
+      <section className={`${styles.section} ${styles.bgDark}`}>
         <div className="container">
-          <div className={styles.sectionHeader}>
-            <h2>Our Values</h2>
-            <p>The principles that guide everything we do.</p>
-          </div>
-          <div className={styles.valuesGrid}>
-            {values.map((value, index) => (
-              <div key={index} className={styles.valueCard}>
-                <div className={styles.valueIcon}>{value.icon}</div>
-                <h3>{value.title}</h3>
-                <p>{value.description}</p>
+          <div className={`${styles.splitLayout} ${styles.reversed}`}>
+             <div className={styles.textContent}>
+              <h2>The Hybrid Methodology</h2>
+              <p>
+                Why choose between <strong>SaaS speed</strong> and <strong>Custom control</strong>?
+                At Vector Dynamic, we offer both.
+              </p>
+              <ul className={styles.checkList}>
+                <li><strong>Rapid Deployment:</strong> Launch fast with our pre-built SaaS modules (Okebase, Opsera).</li>
+                <li><strong>Unlimited Scale:</strong> Customize every line of code with our Source Code licensing.</li>
+                <li><strong>AI-First Core:</strong> Every system we build is architected for future AI integration.</li>
+              </ul>
+            </div>
+            <div className={styles.imageWrapper}>
+              <div className={styles.imageContainer}>
+                <Image 
+                  src="/images/about/innovation-process.png" 
+                  alt="Innovation Process" 
+                  width={600} 
+                  height={400} 
+                  className={styles.roundedImage}
+                />
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* What We Do */}
-      <section className={styles.whatWeDo}>
+      {/* Team & Culture */}
+      <section className={styles.section}>
         <div className="container">
-          <div className={styles.sectionHeader}>
-            <h2>What We Do</h2>
-            <p>Comprehensive software solutions for modern businesses.</p>
-          </div>
-          <div className={styles.whatWeDoGrid}>
-            {whatWeDo.map((item, index) => (
-              <div key={index} className={styles.whatWeDoCard}>
-                <span className={styles.whatWeDoNumber}>0{index + 1}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
+          <div className={styles.splitLayout}>
+            <div className={styles.textContent}>
+              <h2>Engineers. Thinkers. Solvers.</h2>
+              <p>
+                We are a collective of obsession. Obsessed with clean code, obsessed with pixel-perfect UI, and obsessed with your ROI.
+              </p>
+              <p>
+                Our team spans the globe, bringing together diverse perspectives to solve singular problems. We don't just write code; we engineer outcomes.
+              </p>
+              <div className={styles.statsRow}>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>50+</span>
+                  <span className={styles.statLabel}>Enterprise Clients</span>
+                </div>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>1M+</span>
+                  <span className={styles.statLabel}>Lines of Code</span>
+                </div>
+                 <div className={styles.statItem}>
+                  <span className={styles.statNumber}>24/7</span>
+                  <span className={styles.statLabel}>Global Ops</span>
+                </div>
               </div>
-            ))}
+            </div>
+            <div className={styles.imageWrapper}>
+              <div className={styles.imageContainer}>
+                <Image 
+                  src="/images/about/office-culture.png" 
+                  alt="Team Culture" 
+                  width={600} 
+                  height={400} 
+                  className={styles.roundedImage}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -151,17 +190,16 @@ export default function AboutPage() {
       <section className={styles.careers} id="careers">
         <div className="container">
           <div className={styles.careersContent}>
-            <h2>Want to Build the Future with Us?</h2>
+            <h2>Join the Revolution</h2>
             <p>
-              We're always looking for talented individuals who share our passion 
-              for building exceptional software. If you're excited about AI, automation, 
-              and creating impactful solutions, we'd love to hear from you.
+              Ready to work on the edge of what's possible? We are always hiring 
+              exceptional talent in AI, Engineering, and Design.
             </p>
             <Button 
-              href="mailto:info@vectordynamic.com?subject=Career Inquiry"
+              href="mailto:careers@vectordynamic.com"
               size="lg"
             >
-              Get in Touch
+              View Open Roles
             </Button>
           </div>
         </div>

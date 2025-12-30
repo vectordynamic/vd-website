@@ -5,22 +5,32 @@ import Button from '@/components/ui/Button';
 import styles from './Hero.module.css';
 
 const headlines = [
-  'Enterprise Software',
-  'AI Automation',
-  'SaaS Products',
-  'Digital Transformation',
+  'Digital Dominance',
+  'Intelligent Ecosystem',
+  'Autonomous Future',
+  'Enterprise Success',
 ];
 
 const stats = [
-  { value: '50+', label: 'Projects Delivered' },
-  { value: '98%', label: 'Client Satisfaction' },
-  { value: '24/7', label: 'Support Available' },
+  { value: 'Global', label: 'Enterprise Clients' },
+  { value: '99%', label: 'Retention Rate' },
+  { value: '24/7', label: 'Intelligent Ops' },
 ];
 
 export default function Hero() {
   const [currentHeadline, setCurrentHeadline] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const headline = headlines[currentHeadline];
@@ -65,11 +75,11 @@ export default function Hero() {
         <div className={styles.content}>
           <span className={styles.badge}>
             <span className={styles.badgeDot}></span>
-            Building the Future of Software
+            Innovation. Scalability. Intelligence.
           </span>
 
           <h1 className={styles.title}>
-            We Power Your
+            Engineering Your
             <br />
             <span className={styles.typewriter}>
               {displayText}
@@ -78,9 +88,7 @@ export default function Hero() {
           </h1>
 
           <p className={styles.description}>
-            Vector Dynamic delivers cutting-edge software solutions that transform 
-            businesses. From enterprise systems to AI-powered automation — we build 
-            what you envision.
+            Vector Dynamic bridges the gap between <strong>Custom Engineering</strong> and <strong>Intelligent Automation</strong>. We build high-performance systems, deploy autonomous agents, and deliver enterprise-grade SaaS solutions.
           </p>
 
           <div className={styles.cta}>
@@ -106,8 +114,10 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className={styles.scrollIndicator}>
+      <div 
+        className={styles.scrollIndicator}
+        style={{ opacity: isScrolled ? 0 : 1, transition: 'opacity 0.3s ease' }}
+      >
         <div className={styles.mouse}>
           <div className={styles.wheel}></div>
         </div>

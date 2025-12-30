@@ -165,10 +165,11 @@
 
 /* Scroll Indicator */
 .scrollIndicator {
-  position: absolute;
+  position: fixed; /* Floats relative to viewport */
   bottom: var(--space-8);
   left: 50%;
   transform: translateX(-50%);
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -177,8 +178,7 @@
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
-  opacity: 0;
-  animation: fadeIn 0.8s ease-out 1s forwards;
+  transition: opacity 0.3s ease;
 }
 
 .mouse {

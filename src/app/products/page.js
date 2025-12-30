@@ -8,62 +8,7 @@ export const metadata = {
   description: 'Discover Opsera AI project management, AI Receptionist, and SaaS Inventory Manager. Intelligent products for modern businesses.',
 };
 
-const products = [
-  {
-    id: 'opsera',
-    name: 'Opsera',
-    tagline: 'Intelligent Project Orchestration',
-    description: 'AI-automated project management that seamlessly integrates with Slack, GitHub, Jira, and Trello. Streamline your workflows and boost team productivity.',
-    features: [
-      'Smart task prioritization & auto-assignment',
-      'AI-powered standup summaries',
-      'Cross-platform sync (Slack, GitHub, Jira, Trello)',
-      'Predictive sprint planning',
-      'Automated progress reports',
-      'Natural language commands',
-    ],
-    status: 'Coming Soon',
-    image: '/images/opsera-mockup.png',
-    href: '/products/opsera',
-    color: 'cyan',
-  },
-  {
-    id: 'ai-receptionist',
-    name: 'AI Receptionist',
-    tagline: 'Your 24/7 Intelligent Front Desk',
-    description: 'AI-powered virtual receptionist that handles calls, schedules appointments, and manages customer inquiries around the clock.',
-    features: [
-      'Natural voice conversations',
-      'Appointment scheduling & calendar sync',
-      'Call routing & transfer',
-      'Multi-language support',
-      'CRM integration',
-      'Real-time transcription & summaries',
-    ],
-    status: 'Coming Soon',
-    image: '/images/ai-receptionist-mockup.png',
-    href: '/products/ai-receptionist',
-    color: 'violet',
-  },
-  {
-    id: 'inventory',
-    name: 'Inventory Manager',
-    tagline: 'Smart Inventory, Zero Hassle',
-    description: 'AI-driven inventory management SaaS that helps businesses of all sizes track, forecast, and optimize their inventory operations.',
-    features: [
-      'Predictive stock forecasting',
-      'Automated reorder triggers',
-      'Multi-warehouse management',
-      'Barcode/QR scanning',
-      'Supplier management',
-      'Real-time analytics dashboard',
-    ],
-    status: 'Coming Soon',
-    image: '/images/inventory-mockup.png',
-    href: '/products/inventory',
-    color: 'magenta',
-  },
-];
+import { products } from '@/lib/data';
 
 const CheckIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
