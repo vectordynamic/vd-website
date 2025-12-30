@@ -4,8 +4,8 @@ import Button from '@/components/ui/Button';
 import styles from './page.module.css';
 
 export const metadata = {
-  title: 'Our Products',
-  description: 'Discover Opsera AI project management, AI Receptionist, and SaaS Inventory Manager. Intelligent products for modern businesses.',
+  title: 'Our Products | AI Solutions for Business & Life',
+  description: 'Explore our AI-powered suite: Opsera (Project Mgmt), Okebase (Business OS), Amardera (Home Mgmt), Sync Daily (Tech News), and AdVantage AI (Marketing). Solutions for work and life.',
 };
 
 import { products } from '@/lib/data';
@@ -19,6 +19,33 @@ const CheckIcon = () => (
 export default function ProductsPage() {
   return (
     <div className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            products.map((product) => ({
+              '@context': 'https://schema.org',
+              '@type': 'SoftwareApplication',
+              name: product.name,
+              description: product.description,
+              applicationCategory: product.schemaCategory || 'Application',
+              operatingSystem: 'Cloud, Web',
+              url: `https://vectordynamic.com${product.href}`,
+              offer: {
+                '@type': 'Offer',
+                price: '0',
+                priceCurrency: 'USD',
+                availability: 'https://schema.org/ComingSoon',
+              },
+              featureList: product.features.join(', '),
+              author: {
+                '@type': 'Organization',
+                name: 'Vector Dynamic',
+              },
+            }))
+          ),
+        }}
+      />
       {/* Hero */}
       <section className={styles.hero}>
         <div className="container">

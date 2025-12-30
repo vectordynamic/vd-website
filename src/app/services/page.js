@@ -25,6 +25,45 @@ const ArrowIcon = () => (
 export default function ServicesPage() {
   return (
     <div className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            services.map((service) => ({
+              '@context': 'https://schema.org',
+              '@type': 'Service',
+              name: service.title,
+              description: service.description,
+              serviceType: service.tagline,
+              provider: {
+                '@type': 'Organization',
+                name: 'Vector Dynamic',
+                url: 'https://vectordynamic.com',
+              },
+              areaServed: 'Worldwide',
+              url: `https://vectordynamic.com${service.href}`,
+              offers: {
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: service.title,
+                }
+              },
+              hasOfferCatalog: {
+                '@type': 'OfferCatalog',
+                name: 'Features',
+                itemListElement: service.features.map((feature) => ({
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: feature,
+                  },
+                })),
+              },
+            }))
+          ),
+        }}
+      />
       {/* Hero */}
       <section className={styles.hero}>
         <div className="container">
