@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import BackToTop from '@/components/ui/BackToTop';
 import FloatingCTA from '@/components/ui/FloatingCTA';
+import SmoothScroll from '@/components/ui/SmoothScroll';
 import '@/styles/globals.css';
 import '@/styles/components/buttons.css';
 import '@/styles/components/cards.css';
@@ -76,6 +77,7 @@ export default function RootLayout({ children }) {
           <Footer />
           <FloatingCTA />
           <BackToTop />
+          <SmoothScroll />
         </ThemeProvider>
       </body>
     </html>
