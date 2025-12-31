@@ -91,6 +91,7 @@ export default function ServicesOverview() {
               key={index} 
               href={service.href}
               className={styles.serviceCard}
+              aria-label={`Learn more about ${service.title}`}
             >
               <Card variant="glow" className="feature-card card-interactive h-full">
                 <CardIcon>{service.icon}</CardIcon>

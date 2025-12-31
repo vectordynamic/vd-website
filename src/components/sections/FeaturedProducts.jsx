@@ -130,7 +130,12 @@ export default function FeaturedProducts() {
                   ))}
                 </ul>
 
-                <Button href={product.href} variant="ghost" fullWidth>
+                <Button 
+                  href={product.href} 
+                  variant="ghost" 
+                  fullWidth
+                  aria-label={`Learn more about ${product.name}`}
+                >
                   Learn More
                 </Button>
               </div>
