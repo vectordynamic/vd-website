@@ -77,27 +77,13 @@ export const metadata = {
   },
 };
 
-import Script from 'next/script';
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
-      <head>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-KHBTJM0J0W"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-KHBTJM0J0W');
-          `}
-        </Script>
-      </head>
       <body suppressHydrationWarning>
+        <GoogleAnalytics GA_MEASUREMENT_ID="G-KHBTJM0J0W" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
