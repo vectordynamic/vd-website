@@ -15,7 +15,8 @@
 /* Scrolled State */
 /* Scrolled State */
 .header-scrolled {
-  background: rgba(10, 15, 28, 0.3); /* More transparent for blur to shine */
+  background: rgba(10, 15, 28, 0.3);
+  /* More transparent for blur to shine */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--color-border);
@@ -38,13 +39,18 @@
 .header-logo {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-0);
   flex-shrink: 0;
 }
 
 .header-logo img {
   height: 40px;
   width: auto;
+  transition: filter var(--transition-base);
+}
+
+[data-theme="light"] .header-logo img {
+  filter: invert(1);
 }
 
 .header-logo-text {
@@ -209,11 +215,11 @@
   .desktop-main-cta {
     display: none !important;
   }
-  
+
   .mobile-menu-toggle {
     display: block;
   }
-  
+
   .mobile-nav {
     display: block;
   }

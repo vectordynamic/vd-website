@@ -11,25 +11,25 @@ import { navigation } from '@/data/navigation';
 // Icons
 const MenuIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>
+    <circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /><circle cx="5" cy="12" r="1" />
   </svg>
 );
 
 const CloseIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+    <path d="M18 6 6 18" /><path d="m6 6 12 12" />
   </svg>
 );
 
 const SunIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+    <circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" />
   </svg>
 );
 
 const MoonIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
   </svg>
 );
 
@@ -83,10 +83,10 @@ export default function Header() {
         <div className="header-inner">
           {/* Logo */}
           <Link href="/" className="header-logo">
-            <Image 
-              src="/logo.png" 
-              alt="Vector Dynamic" 
-              width={40} 
+            <Image
+              src="/logo.svg"
+              alt="Vector Dynamic"
+              width={40}
               height={40}
               priority
             />
@@ -96,9 +96,9 @@ export default function Header() {
           {/* Desktop Navigation - with active state */}
           <nav className="header-nav" role="navigation" aria-label="Main navigation">
             {navigation.main.map((item) => (
-              <Link 
-                key={item.name} 
-                href={item.href} 
+              <Link
+                key={item.name}
+                href={item.href}
                 className={`nav-link ${isActive(item.href) ? 'active' : ''}`}
                 aria-current={isActive(item.href) ? 'page' : undefined}
               >
@@ -110,7 +110,7 @@ export default function Header() {
           {/* Actions */}
           <div className="header-actions">
             {/* Theme Toggle */}
-            <button 
+            <button
               onClick={toggleTheme}
               className="theme-toggle"
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
@@ -121,9 +121,9 @@ export default function Header() {
             <Button href="/contact" size="sm" className="desktop-main-cta">
               Get in Touch
             </Button>
-            
+
             {/* Mobile Menu Toggle */}
-            <button 
+            <button
               className="mobile-menu-toggle"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Open menu"
@@ -136,12 +136,12 @@ export default function Header() {
       </div>
 
       {/* Mobile Navigation */}
-      <nav 
+      <nav
         className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}
         role="navigation"
         aria-label="Mobile navigation"
       >
-        <button 
+        <button
           className="mobile-nav-close"
           onClick={() => setIsMobileMenuOpen(false)}
           aria-label="Close menu"
@@ -150,7 +150,7 @@ export default function Header() {
         </button>
 
         {navigation.main.map((item) => (
-          <Link 
+          <Link
             key={item.name}
             href={item.href}
             className={`mobile-nav-link ${isActive(item.href) ? 'active' : ''}`}
@@ -162,7 +162,7 @@ export default function Header() {
         ))}
 
         {/* Theme Toggle in Mobile Menu */}
-        <button 
+        <button
           onClick={toggleTheme}
           className="mobile-theme-toggle"
         >

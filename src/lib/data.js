@@ -26,7 +26,9 @@ export const techCategories = {
 export const products = [
   {
     id: 'opsera',
-    name: 'Opsera',
+    // name: 'Opsera',
+    name: 'To be anounced',
+    shadowName: 'Project O-1',
     tagline: 'Complete Project & Team Orchestration',
     description: 'The ultimate project management tool. Automate deadlines, track employee performance, push smart notifications, and streamline delivery from one hub.',
     features: [
@@ -44,7 +46,9 @@ export const products = [
   },
   {
     id: 'ai-receptionist',
-    name: 'AI Receptionist',
+    // name: 'AI Receptionist',
+    name: 'To be anounced',
+    shadowName: 'Project R-AI',
     tagline: 'Your 24/7 Intelligent Front Desk',
     description: 'AI-powered virtual receptionist that handles calls, schedules appointments, and manages customer inquiries around the clock.',
     features: [
@@ -62,7 +66,9 @@ export const products = [
   },
   {
     id: 'okebase',
-    name: 'Okebase',
+    // name: 'Okebase',
+    name: 'To be anounced',
+    shadowName: 'Project O-B',
     tagline: 'The All-in-One Business OS',
     description: 'Beyond inventory. Manage your entire business: Employee records, Product sales, financial reporting, and real-time Profit & Loss analytics with the power of AI.',
     features: [
@@ -84,7 +90,9 @@ export const products = [
   },
   {
     id: 'amardera',
-    name: 'Amardera',
+    // name: 'Amardera',
+    name: 'To be anounced',
+    shadowName: 'Project A-D',
     tagline: 'Smart Bachelor Home Management',
     description: 'The automated solution for shared living. Track meals, split bazaar expenses, manage utility bills, and harmonize shared flat life.',
     features: [
@@ -102,7 +110,9 @@ export const products = [
   },
   {
     id: 'sync-daily',
-    name: 'Sync Daily',
+    // name: 'Sync Daily',
+    name: 'To be anounced',
+    shadowName: 'Project S-D',
     tagline: 'AI-Curated Tech Intelligence',
     description: 'Next-gen newsletter and blog platform. Get the latest AI and tech news, curated, summarized, and delivered by intelligent algorithms.',
     features: [
@@ -120,7 +130,9 @@ export const products = [
   },
   {
     id: 'advantage-ai',
-    name: 'AdVantage AI',
+    // name: 'AdVantage AI',
+    name: 'To be anounced',
+    shadowName: 'Project A-V',
     tagline: 'Marketing Campaign Autopilot',
     description: 'End-to-end marketing automation. From AI content planning to launching and optimizing high-conversion Meta campaigns.',
     features: [
@@ -143,7 +155,7 @@ export const services = [
     id: 'custom-development',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>
+        <rect width="16" height="20" x="4" y="2" rx="2" ry="2" /><path d="M12 18h.01" />
       </svg>
     ),
     title: 'Custom System Development',
@@ -164,7 +176,7 @@ export const services = [
     id: 'enterprise',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M6 22V12a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10"/><path d="M6 6V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><path d="M12 6v6"/><path d="M12 16v6"/>
+        <path d="M6 22V12a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10" /><path d="M6 6V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2" /><path d="M12 6v6" /><path d="M12 16v6" />
       </svg>
     ),
     title: 'Enterprise Ecosystem',
@@ -185,7 +197,7 @@ export const services = [
     id: 'custom-ai',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2a10 10 0 1 0 10 10 10 10 0 0 0-10-10Z"/><path d="m14 8-4 8"/><path d="m10 8 4 8"/>
+        <path d="M12 2a10 10 0 1 0 10 10 10 10 0 0 0-10-10Z" /><path d="m14 8-4 8" /><path d="m10 8 4 8" />
       </svg>
     ),
     title: 'Custom AI Solutions',
@@ -206,7 +218,7 @@ export const services = [
     id: 'intelligent-automation',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>
+        <path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="M2 14h2" /><path d="M20 14h2" /><path d="M15 13v2" /><path d="M9 13v2" />
       </svg>
     ),
     title: 'Intelligent Automation',
@@ -227,7 +239,7 @@ export const services = [
     id: 'consulting',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
       </svg>
     ),
     title: 'Digital Consulting',
