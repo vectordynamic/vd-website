@@ -1,5 +1,6 @@
 import { Inter, Space_Grotesk } from 'next/font/google';
 import { ThemeProvider } from '@/lib/ThemeContext';
+import ReactQueryProvider from '@/components/providers/ReactQueryProvider';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import BackToTop from '@/components/ui/BackToTop';
@@ -12,13 +13,13 @@ import '@/styles/components/header.css';
 import '@/styles/components/footer.css';
 import '@/styles/components/forms.css';
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
 });
 
-const spaceGrotesk = Space_Grotesk({ 
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-space-grotesk',
   display: 'swap',
@@ -33,10 +34,10 @@ export const metadata = {
   description: 'Leading B2B & B2C software company delivering enterprise solutions, consumer apps, AI automation, and custom development. Transform your business or lifestyle with intelligent technology.',
   keywords: [
     // Core Business
-    'B2B software', 'B2C applications', 'enterprise solutions', 'SaaS development', 'digital transformation', 
+    'B2B software', 'B2C applications', 'enterprise solutions', 'SaaS development', 'digital transformation',
     // Products (Specific Long-tail)
     'project management software', 'team orchestration tools', 'Opsera',
-    'AI virtual receptionist', 'automated front desk', 
+    'AI virtual receptionist', 'automated front desk',
     'inventory management system', 'business OS', 'Okebase',
     'bachelor home management', 'roommate expense tracker', 'Amardera',
     'tech news aggregator', 'AI newsletter', 'Sync Daily',
@@ -92,7 +93,7 @@ export default function RootLayout({ children }) {
               '@type': 'Organization',
               name: 'Vector Dynamic',
               url: 'https://vectordynamic.com',
-              logo: 'https://vectordynamic.com/logo.png',
+              logo: 'https://vectordynamic.com/logo.svg',
               sameAs: [
                 'https://twitter.com/vectordynamic',
                 'https://linkedin.com/company/vectordynamic',
@@ -110,16 +111,18 @@ export default function RootLayout({ children }) {
           }}
         />
         <ThemeProvider>
-          {/* Skip to main content - Accessibility */}
-          <a href="#main-content" className="skip-link">
-            Skip to main content
-          </a>
-          <Header />
-          <main id="main-content">{children}</main>
-          <Footer />
-          <FloatingCTA />
-          <BackToTop />
-          <SmoothScroll />
+          <ReactQueryProvider>
+            {/* Skip to main content - Accessibility */}
+            <a href="#main-content" className="skip-link">
+              Skip to main content
+            </a>
+            <Header />
+            <main id="main-content">{children}</main>
+            <Footer />
+            <FloatingCTA />
+            <BackToTop />
+            <SmoothScroll />
+          </ReactQueryProvider>
         </ThemeProvider>
       </body>
     </html>
