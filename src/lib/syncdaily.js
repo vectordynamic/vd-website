@@ -12,7 +12,7 @@ const API_BASE_URL = 'https://syncdaily-api.vectordynamic.com/api/v1';
  */
 export async function getPublishedArticleBySlug(slug) {
     try {
-        const res = await fetch(`${API_BASE_URL}/published/${slug}`, {
+        const res = await fetch(`${API_BASE_URL}/published/${encodeURIComponent(slug)}`, {
             next: { revalidate: 60 }, // Lowered during dev
         });
 
