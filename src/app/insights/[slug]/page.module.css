@@ -182,7 +182,29 @@
 /* Sidebar */
 .sidebar {
     position: sticky;
-    top: 100px;
+    top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    padding-right: 4px;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: var(--radius-full);
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-tertiary);
 }
 
 .sidebarWidget {
@@ -191,6 +213,29 @@
     border-radius: var(--radius-xl);
     padding: var(--space-6);
     margin-bottom: var(--space-6);
+}
+
+.promotionWidget {
+    background: linear-gradient(to bottom right, var(--color-bg-secondary), rgba(139, 92, 246, 0.1));
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+.widgetText {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+}
+
+.promotionBtn {
+    display: inline-block;
+    background: var(--color-text-primary);
+    color: var(--color-bg-primary);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    text-decoration: none;
 }
 
 .widgetTitle {

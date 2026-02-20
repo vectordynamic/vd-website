@@ -1,21 +1,21 @@
 import { fetchSitemapNews } from '@/lib/sitemap-api';
 
 export async function GET() {
-    const SITE = process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com';
-    const PUBLICATION_NAME = 'Vector Dynamic';
-    const data = await fetchSitemapNews();
+  const SITE = process.env.NEXT_PUBLIC_SITE_URL;
+  const PUBLICATION_NAME = 'Vector Dynamic';
+  const data = await fetchSitemapNews();
 
-    const urls = (data.items || []).map((item) => {
-        const imageTag = item.image_url
-            ? `<image:image><image:loc>${item.image_url}</image:loc></image:image>`
-            : '';
+  const urls = (data.items || []).map((item) => {
+    const imageTag = item.image_url
+      ? `<image:image><image:loc>${item.image_url}</image:loc></image:image>`
+      : '';
 
-        // Route external news to /insights/news/[slug] (if handled) or direct external via JS. 
-        // Usually Google expects news to be on your domain. If 'articles' are external, 
-        // it's tricky to submit to Google News unless you have a proxy page.
-        // For now we map it to /insights for discovery.
+    // Route external news to /insights/news/[slug] (if handled) or direct external via JS. 
+    // Usually Google expects news to be on your domain. If 'articles' are external, 
+    // it's tricky to submit to Google News unless you have a proxy page.
+    // For now we map it to /insights for discovery.
 
-        return `
+    return `
     <url>
       <loc>${SITE}/insights/${item.slug || ''}</loc>
       <news:news>
@@ -28,9 +28,9 @@ export async function GET() {
       </news:news>
       ${imageTag}
     </url>`;
-    });
+  });
 
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
@@ -39,20 +39,20 @@ export async function GET() {
   ${urls.join('\n')}
 </urlset>`;
 
-    return new Response(xml, {
-        headers: {
-            'Content-Type': 'application/xml',
-            'Cache-Control': 'public, max-age=900',
-        },
-    });
+  return new Response(xml, {
+    headers: {
+      'Content-Type': 'application/xml',
+      'Cache-Control': 'public, max-age=900',
+    },
+  });
 }
 
 function escapeXml(str) {
-    if (!str) return '';
-    return str
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&apos;');
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
 }

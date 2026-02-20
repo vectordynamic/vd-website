@@ -12,7 +12,7 @@ import { products } from '@/lib/data';
 
 const CheckIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 6 9 17l-5-5"/>
+    <path d="M20 6 9 17l-5-5" />
   </svg>
 );
 
@@ -30,7 +30,7 @@ export default function ProductsPage() {
               description: product.description,
               applicationCategory: product.schemaCategory || 'Application',
               operatingSystem: 'Cloud, Web',
-              url: `https://vectordynamic.com${product.href}`,
+              url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}${product.href}`,
               offer: {
                 '@type': 'Offer',
                 price: '0',
@@ -76,13 +76,13 @@ export default function ProductsPage() {
                     className={styles.productImage}
                   />
                 </div>
-                
+
                 <div className={styles.cardContent}>
                   <span className={styles.status}>{product.status}</span>
                   <span className={styles.tagline}>{product.tagline}</span>
                   <h2 className={styles.productName}>{product.name}</h2>
                   <p className={styles.productDescription}>{product.description}</p>
-                  
+
                   <ul className={styles.features}>
                     {product.features.map((feature, i) => (
                       <li key={i}>
@@ -98,7 +98,7 @@ export default function ProductsPage() {
                     </Button>
                   </div>
                 </div>
-                
+
                 <div className={styles.glow}></div>
               </div>
             ))}
@@ -112,7 +112,7 @@ export default function ProductsPage() {
           <div className={styles.ctaContent}>
             <h2>Need a Custom Product?</h2>
             <p>
-              Our products are just the beginning. We can build custom AI-powered solutions 
+              Our products are just the beginning. We can build custom AI-powered solutions
               tailored specifically to your business needs.
             </p>
             <div className={styles.ctaButtons}>

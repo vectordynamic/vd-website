@@ -21,7 +21,7 @@ export default function Home() {
               applicationCategory: 'BusinessApplication',
               operatingSystem: 'Recall',
               description: 'Complete Project & Team Orchestration tool for enterprise management.',
-              url: 'https://vectordynamic.com/products/opsera',
+              url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/products/opsera`,
               offers: {
                 '@type': 'Offer',
                 price: '0',
@@ -36,7 +36,7 @@ export default function Home() {
               applicationCategory: 'FinanceApplication',
               operatingSystem: 'Recall',
               description: 'The All-in-One Business OS for inventory, employee records, and financial analytics.',
-              url: 'https://vectordynamic.com/products/okebase',
+              url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/products/okebase`,
               offers: {
                 '@type': 'Offer',
                 price: '0',

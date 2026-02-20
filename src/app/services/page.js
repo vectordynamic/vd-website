@@ -12,13 +12,13 @@ import { services } from '@/lib/data';
 
 const CheckIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 6 9 17l-5-5"/>
+    <path d="M20 6 9 17l-5-5" />
   </svg>
 );
 
 const ArrowIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+    <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
   </svg>
 );
 
@@ -38,10 +38,10 @@ export default function ServicesPage() {
               provider: {
                 '@type': 'Organization',
                 name: 'Vector Dynamic',
-                url: 'https://vectordynamic.com',
+                url: process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com',
               },
               areaServed: 'Worldwide',
-              url: `https://vectordynamic.com${service.href}`,
+              url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}${service.href}`,
               offers: {
                 '@type': 'Offer',
                 itemOffered: {
@@ -83,8 +83,8 @@ export default function ServicesPage() {
       <section className={styles.services}>
         <div className="container">
           {services.map((service, index) => (
-            <div 
-              key={service.id} 
+            <div
+              key={service.id}
               className={`${styles.serviceCard} ${index % 2 === 1 ? styles.reversed : ''}`}
             >
               <div className={styles.serviceContent}>
@@ -92,7 +92,7 @@ export default function ServicesPage() {
                 <span className={styles.serviceTagline}>{service.tagline}</span>
                 <h2 className={styles.serviceTitle}>{service.title}</h2>
                 <p className={styles.serviceDescription}>{service.description}</p>
-                
+
                 <ul className={styles.featureList}>
                   {service.features.map((feature, i) => (
                     <li key={i} className={styles.featureItem}>
@@ -112,7 +112,7 @@ export default function ServicesPage() {
                   Learn More <ArrowIcon />
                 </Button>
               </div>
-              
+
               <div className={styles.serviceVisual}>
                 <Image
                   src={service.image}

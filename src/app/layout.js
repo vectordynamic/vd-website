@@ -26,7 +26,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://vectordynamic.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'),
   title: {
     default: 'Vector Dynamic | Enterprise Software & AI Solutions',
     template: '%s | Vector Dynamic',
@@ -52,7 +52,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://vectordynamic.com',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com',
     siteName: 'Vector Dynamic',
     title: 'Vector Dynamic | Enterprise Software & AI Solutions',
     description: 'Leading B2B & B2C software company delivering enterprise solutions, consumer apps, AI automation, and custom development.',
@@ -76,15 +76,22 @@ export const metadata = {
     index: true,
     follow: true,
   },
+  other: {
+    'google-adsense-account': 'ca-pub-3878588095470324'
+  }
 };
 
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
+import Script from 'next/script';
+import { Suspense } from 'react';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <GoogleAnalytics GA_MEASUREMENT_ID="G-KHBTJM0J0W" />
+        <Suspense fallback={null}>
+          <GoogleAnalytics GA_MEASUREMENT_ID="G-KHBTJM0J0W" />
+        </Suspense>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -92,8 +99,8 @@ export default function RootLayout({ children }) {
               '@context': 'https://schema.org',
               '@type': 'Organization',
               name: 'Vector Dynamic',
-              url: 'https://vectordynamic.com',
-              logo: 'https://vectordynamic.com/logo.svg',
+              url: process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com',
+              logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/logo.svg`,
               sameAs: [
                 'https://twitter.com/vectordynamic',
                 'https://linkedin.com/company/vectordynamic',
@@ -109,6 +116,12 @@ export default function RootLayout({ children }) {
               knowsAbout: ['B2B Software', 'Consumer Applications', 'AI Agents', 'SaaS'],
             }),
           }}
+        />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3878588095470324"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
         />
         <ThemeProvider>
           <ReactQueryProvider>

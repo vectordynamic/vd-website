@@ -1,5 +1,5 @@
 export async function GET() {
-    const SITE = process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com';
+    const SITE = process.env.NEXT_PUBLIC_SITE_URL;
 
     const body = `User-agent: *
 Allow: /

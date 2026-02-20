@@ -2,6 +2,7 @@
 
 import styles from '@/app/insights/page.module.css';
 import Link from 'next/link';
+import GoogleAd from '@/components/ads/GoogleAd';
 
 export default function InsightsSidebar() {
     return (
@@ -33,10 +34,9 @@ export default function InsightsSidebar() {
                 </div>
             </div>
 
-            <div className={`${styles.sidebarWidget} ${styles.sponsoredWidget}`}>
-                <h3 className={styles.widgetTitle}>🎯 SPONSORED / HIRE US</h3>
-                <p className={styles.widgetText}>Need custom software? Let's build your next AI MVP in 30 days.</p>
-                <Link href="/contact" className={styles.sponsorBtn}>Contact Us</Link>
+            <div className={styles.sidebarWidget}>
+                <h3 className={styles.widgetTitle}>Sponsored</h3>
+                <GoogleAd adSlot="0987654321" adFormat="rectangle" fullWidthResponsive={true} />
             </div>
         </aside>
     );

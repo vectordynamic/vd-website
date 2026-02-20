@@ -33,7 +33,7 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     try {
       const response = await fetch('/api/contact', {
@@ -79,7 +79,7 @@ export default function ContactPage() {
           </nav>
           <h1 className={styles.title}>Let's Build Something Great Together</h1>
           <p className={styles.subtitle}>
-            Have a project in mind? We'd love to hear about it. Get in touch and let's 
+            Have a project in mind? We'd love to hear about it. Get in touch and let's
             discuss how we can help.
           </p>
         </div>
@@ -95,7 +95,7 @@ export default function ContactPage() {
                 <div className={styles.successMessage}>
                   <div className={styles.successIcon}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6 9 17l-5-5"/>
+                      <path d="M20 6 9 17l-5-5" />
                     </svg>
                   </div>
                   <h2>Message Sent!</h2>
@@ -192,10 +192,10 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <Button 
-                    type="submit" 
-                    size="lg" 
-                    fullWidth 
+                  <Button
+                    type="submit"
+                    size="lg"
+                    fullWidth
                     loading={isSubmitting}
                   >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -211,7 +211,7 @@ export default function ContactPage() {
                 <div className={styles.infoItem}>
                   <div className={styles.infoIcon}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                      <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                     </svg>
                   </div>
                   <div>
@@ -224,13 +224,13 @@ export default function ContactPage() {
                 <div className={styles.infoItem}>
                   <div className={styles.infoIcon}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
+                      <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" />
                     </svg>
                   </div>
                   <div>
                     <span className={styles.infoLabel}>Website</span>
-                    <a href="https://vectordynamic.com" className={styles.infoValue}>
-                      vectordynamic.com
+                    <a href={process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'} className={styles.infoValue}>
+                      {(process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com').replace('https://', '')}
                     </a>
                   </div>
                 </div>
@@ -239,7 +239,7 @@ export default function ContactPage() {
               <div className={styles.responseCard}>
                 <div className={styles.responseIcon}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
                   </svg>
                 </div>
                 <h4>Quick Response</h4>

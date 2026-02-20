@@ -31,13 +31,13 @@ export default async function InsightsPage() {
     '@type': 'CollectionPage',
     name: metadata.title,
     description: metadata.description,
-    url: 'https://vectordynamic.com/insights',
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/insights`,
     publisher: {
       '@type': 'Organization',
       name: 'Vector Dynamic',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://vectordynamic.com/logo.png', // Or actual logo URL
+        url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/logo.png`, // Or actual logo URL
       },
     },
   };

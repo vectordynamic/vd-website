@@ -4,6 +4,7 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import styles from './page.module.css';
 import { getPublishedArticleBySlug } from '@/lib/syncdaily';
+import ArticleSidebar from '@/components/insights/ArticleSidebar';
 
 // Dynamically generate SEO Metadata
 export async function generateMetadata({ params }) {
@@ -20,6 +21,9 @@ export async function generateMetadata({ params }) {
         title: article.meta?.meta_title || `${article.title} | Vector Dynamic`,
         description: article.meta?.meta_description || article.excerpt || `Read ${article.title}`,
         keywords: article.tags || [],
+        alternates: {
+            canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/insights/${slug}`
+        },
         openGraph: {
             title: article.title,
             description: article.meta?.meta_description || article.excerpt,
@@ -66,14 +70,14 @@ export default async function ArticlePage({ params }) {
         author: [{
             '@type': 'Organization',
             name: 'Vector Dynamic',
-            url: 'https://vectordynamic.com'
+            url: process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'
         }],
         publisher: {
             '@type': 'Organization',
             name: 'Vector Dynamic',
             logo: {
                 '@type': 'ImageObject',
-                url: 'https://vectordynamic.com/logo.svg'
+                url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/logo.svg`
             }
         },
         keywords: article.tags ? article.tags.join(', ') : '',
@@ -147,42 +151,7 @@ export default async function ArticlePage({ params }) {
                     </div>
 
                     {/* Sidebar */}
-                    <aside className={styles.sidebar}>
-                        <div className={styles.sidebarWidget}>
-                            <h3 className={styles.widgetTitle}>Share Article</h3>
-                            <div className="flex gap-4">
-                                {/* Share buttons (e.g. Twitter, LinkedIn) can go here */}
-                                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=https://vectordynamic.com/insights/${article.slug}`} target="_blank" rel="noopener noreferrer" className="btn btn-primary text-sm glass">Twitter / X</a>
-                                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=https://vectordynamic.com/insights/${article.slug}`} target="_blank" rel="noopener noreferrer" className="btn btn-primary text-sm glass">LinkedIn</a>
-                            </div>
-                        </div>
-
-                        {article.tags && article.tags.length > 0 && (
-                            <div className={styles.sidebarWidget}>
-                                <h3 className={styles.widgetTitle}>Topics</h3>
-                                <div className={styles.topicsList}>
-                                    {article.tags.map(tag => (
-                                        <span key={tag} className={styles.topicPill}>#{tag}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {article.sources && article.sources.length > 0 && (
-                            <div className={styles.sidebarWidget}>
-                                <h3 className={styles.widgetTitle}>References & Sources</h3>
-                                <div className={styles.sourcesList}>
-                                    {article.sources.map((src, i) => (
-                                        <a key={i} href={src.url || '#'} target="_blank" rel="noopener noreferrer" className={styles.sourceItem}>
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                                            {src.name || src.source_id || 'External Reference'}
-                                        </a>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </aside>
-
+                    <ArticleSidebar article={article} />
                 </div>
             </div>
         </article>
