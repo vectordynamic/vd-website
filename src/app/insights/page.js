@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from './page.module.css';
-import { getRawArticlesNewsFeed, getPublishedArticlesFeed } from '@/lib/syncdaily';
+import { getRawArticlesNewsFeed, getPublishedArticlesFeed, getLatestPublishedArticles } from '@/lib/syncdaily';
 import InsightsFeedHub from '@/components/insights/InsightsFeedHub';
 
 export const metadata = {
@@ -17,27 +17,37 @@ const categories = [
 ];
 
 export default async function InsightsPage() {
-  // Parallel fetch: Original content and Initial News feed
-  const [blogFeedRes, newsRes] = await Promise.all([
+  // Parallel fetch: Original content, Initial News feed, and Sidebar Must Reads
+  const [blogFeedRes, newsRes, latestRes] = await Promise.all([
     getPublishedArticlesFeed(null, 12), // First page of Our Blog
-    getRawArticlesNewsFeed(null, 12, '') // Get first page of Tech Radar
+    getRawArticlesNewsFeed(null, 12, ''), // Get first page of Tech Radar
+    getLatestPublishedArticles(3) // For Sidebar Must Reads
   ]);
 
   const initialBlogData = blogFeedRes || { articles: [] };
   const initialRadarData = newsRes || { items: [] };
+  const latestArticles = latestRes?.articles || [];
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: metadata.title,
     description: metadata.description,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: initialBlogData.articles.map((article, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/insights/${article.slug}`
+      }))
+    },
     url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/insights`,
     publisher: {
       '@type': 'Organization',
       name: 'Vector Dynamic',
       logo: {
         '@type': 'ImageObject',
-        url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/logo.png`, // Or actual logo URL
+        url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/logo.svg`,
       },
     },
   };
@@ -68,6 +78,7 @@ export default async function InsightsPage() {
         initialBlogData={initialBlogData}
         initialRadarData={initialRadarData}
         categories={categories}
+        latestArticles={latestArticles}
       />
 
       {/* Newsletter CTA */}

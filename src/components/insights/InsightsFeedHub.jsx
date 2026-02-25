@@ -5,7 +5,7 @@ import styles from '@/app/insights/page.module.css';
 import FeedList from './FeedList';
 import InsightsSidebar from './InsightsSidebar';
 
-export default function InsightsFeedHub({ initialBlogData, initialRadarData, categories }) {
+export default function InsightsFeedHub({ initialBlogData, initialRadarData, categories, latestArticles }) {
     const [activeTab, setActiveTab] = useState('blog'); // 'blog' | 'radar'
     const [activeView, setActiveView] = useState('classic'); // 'classic' | 'grid'
 
@@ -63,8 +63,8 @@ export default function InsightsFeedHub({ initialBlogData, initialRadarData, cat
                     </div>
 
                     {/* Right Column: Sticky Sidebar (Hides on Grid View via CSS) */}
-                    <div className={styles.hubSidebarArea}>
-                        <InsightsSidebar />
+                    <div className={styles.hubSidebarArea} data-lenis-prevent>
+                        <InsightsSidebar latestArticles={latestArticles} />
                     </div>
                 </div>
             </div>

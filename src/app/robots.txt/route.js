@@ -1,18 +1,20 @@
+import { NextResponse } from 'next/server';
+
+const SITE_URL = process.env.SITE_URL || 'https://vectordynamic.com';
+
 export async function GET() {
-    const SITE = process.env.NEXT_PUBLIC_SITE_URL;
-
-    const body = `User-agent: *
+    const robotsTxt = `User-agent: *
 Allow: /
+Disallow: /private/
 
-# Sitemaps
-Sitemap: ${SITE}/sitemap.xml
-
-# Important directives
-Disallow: /api/
-Disallow: /admin/
+Sitemap: ${SITE_URL}/sitemap.xml
+Sitemap: ${SITE_URL}/sitemap-news.xml
 `;
 
-    return new Response(body, {
-        headers: { 'Content-Type': 'text/plain' },
+    return new NextResponse(robotsTxt, {
+        headers: {
+            'Content-Type': 'text/plain',
+            'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=3600',
+        },
     });
 }

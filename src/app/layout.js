@@ -72,12 +72,14 @@ export const metadata = {
     images: ['/og-image.png'],
     creator: '@vectordynamic',
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
   other: {
-    'google-adsense-account': 'ca-pub-3878588095470324'
+    'google-adsense-account': 'ca-pub-3878588095470324',
+    // AI/LLM & SEO Deep Context (GEO)
+    'dc.description': 'Enterprise Software & AI Solutions powering business automation and consumer digital lifestyles.',
+    'dc.publisher': 'Vector Dynamic',
+    'dc.language': 'en',
+    'dc.format': 'text/html',
+    'dc.type': 'Service',
   }
 };
 
@@ -99,6 +101,7 @@ export default function RootLayout({ children }) {
               '@context': 'https://schema.org',
               '@type': 'Organization',
               name: 'Vector Dynamic',
+              alternateName: ['VectorDynamic', 'VD'],
               url: process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com',
               logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/logo.svg`,
               sameAs: [
@@ -113,7 +116,20 @@ export default function RootLayout({ children }) {
                 availableLanguage: 'en',
               },
               description: 'Leading B2B & B2C software company delivering enterprise solutions, consumer apps, AI automation, and custom development.',
-              knowsAbout: ['B2B Software', 'Consumer Applications', 'AI Agents', 'SaaS'],
+              knowsAbout: [
+                'B2B Software', 'Consumer Applications', 'AI Agents', 'SaaS',
+                'Digital Transformation', 'Enterprise Automation', 'Custom LLM Development',
+                'Mobile App Development', 'Cloud Architecture'
+              ],
+              areaServed: {
+                '@type': 'Country',
+                name: 'Global'
+              },
+              slogan: 'Engineering Your Intelligent Future',
+              brand: {
+                '@type': 'Brand',
+                name: 'Vector Dynamic'
+              }
             }),
           }}
         />

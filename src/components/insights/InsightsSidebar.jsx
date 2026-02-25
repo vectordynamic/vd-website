@@ -3,40 +3,51 @@
 import styles from '@/app/insights/page.module.css';
 import Link from 'next/link';
 import GoogleAd from '@/components/ads/GoogleAd';
+import { FiTrendingUp, FiMail, FiTag, FiBookOpen } from 'react-icons/fi';
 
-export default function InsightsSidebar() {
+export default function InsightsSidebar({ latestArticles = [] }) {
     return (
         <aside className={styles.sidebarColumn}>
-            <div className={styles.sidebarWidget}>
-                <h3 className={styles.widgetTitle}>ABOUT VECTOR DYNAMIC</h3>
-                <p className={styles.widgetText}>
-                    Learn how we build modern AI systems and scalable apps. We share our engineering journey, tutorials, and thoughts on the future of tech.
-                </p>
-            </div>
-
-            <div className={styles.sidebarWidget}>
-                <h3 className={styles.widgetTitle}>📰 NEWSLETTER</h3>
-                <p className={styles.widgetText}>Subscribe to our daily engineering updates.</p>
-                <form className={styles.sidebarForm}>
-                    <input type="email" placeholder="Email address" className={styles.sidebarInput} required />
-                    <button type="submit" className={styles.sidebarBtn}>Go</button>
-                </form>
-            </div>
-
-            <div className={styles.sidebarWidget}>
-                <h3 className={styles.widgetTitle}>🏷️ POPULAR TOPICS</h3>
-                <div className={styles.sidebarTags}>
-                    <span className={styles.sidebarTag}>#Cloud</span>
-                    <span className={styles.sidebarTag}>#Coding</span>
-                    <span className={styles.sidebarTag}>#AI</span>
-                    <span className={styles.sidebarTag}>#Startups</span>
-                    <span className={styles.sidebarTag}>#Hardware</span>
+            {/* 1. MUST READ - Dynamic data from API */}
+            {latestArticles.length > 0 && (
+                <div className={`${styles.sidebarWidget} ${styles.glass}`}>
+                    <h3 className={styles.widgetTitle}>
+                        <FiBookOpen className={styles.widgetIcon} />
+                        Must Read
+                    </h3>
+                    <div className={styles.mustReadList}>
+                        {latestArticles.map((article) => (
+                            <Link
+                                href={`/insights/${article.slug}`}
+                                key={article.id}
+                                className={styles.mustReadItem}
+                            >
+                                <div className={styles.mustReadContent}>
+                                    <span className={styles.mustReadCategory}>{article.category || 'Engineering'}</span>
+                                    <h4 className={styles.mustReadTitle}>{article.title}</h4>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
+            )}
+
+            {/* 2. SPONSORED - Kept prominent */}
+            <div className={`${styles.sidebarWidget} ${styles.adWidget}`}>
+                <h3 className={styles.widgetTitle}>
+                    <FiTrendingUp className={styles.widgetIcon} />
+                    SPONSORED
+                </h3>
+                <GoogleAd adSlot="0987654321" adFormat="rectangle" fullWidthResponsive={true} />
             </div>
 
-            <div className={styles.sidebarWidget}>
-                <h3 className={styles.widgetTitle}>Sponsored</h3>
-                <GoogleAd adSlot="0987654321" adFormat="rectangle" fullWidthResponsive={true} />
+            {/* 3. ABOUT VD */}
+            <div className={`${styles.sidebarWidget} ${styles.glass}`}>
+                <h3 className={styles.widgetTitle}>ABOUT VD</h3>
+                <p className={styles.widgetText}>
+                    Learn how we build modern AI systems and scalable apps. We share our engineering journey and thoughts on the future of tech.
+                </p>
+                <Link href="/about" className={styles.learnMoreLink}>Learn More →</Link>
             </div>
         </aside>
     );

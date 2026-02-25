@@ -8,19 +8,21 @@ export default function GoogleAd({
     fullWidthResponsive = true,
     className = ''
 }) {
-    const adRef = useRef(false);
+    const initializedRef = useRef(false);
+    const insRef = useRef(null);
 
     useEffect(() => {
-        // Prevent pushing ads multiple times in strict mode / dev
-        if (adRef.current) return;
+        // Prevent pushing ads multiple times
+        if (initializedRef.current) return;
 
-        try {
-            if (typeof window !== 'undefined' && window.adsbygoogle) {
+        // Ensure the ad element is present in the DOM before pushing
+        if (insRef.current && typeof window !== 'undefined' && window.adsbygoogle) {
+            try {
                 (window.adsbygoogle = window.adsbygoogle || []).push({});
-                adRef.current = true;
+                initializedRef.current = true;
+            } catch (err) {
+                console.error('AdSense Error:', err);
             }
-        } catch (err) {
-            console.error('AdSense Error:', err);
         }
     }, []);
 
@@ -49,6 +51,7 @@ export default function GoogleAd({
     return (
         <div style={{ overflow: 'hidden', minHeight: '250px' }} className={className}>
             <ins
+                ref={insRef}
                 className="adsbygoogle"
                 style={{ display: 'block' }}
                 data-ad-client={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ACCOUNT}

@@ -35,12 +35,20 @@ export default function ServicesPage() {
               name: service.title,
               description: service.description,
               serviceType: service.tagline,
+              brand: {
+                '@type': 'Brand',
+                name: 'Vector Dynamic'
+              },
               provider: {
                 '@type': 'Organization',
                 name: 'Vector Dynamic',
                 url: process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com',
+                logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/logo.svg`,
               },
-              areaServed: 'Worldwide',
+              areaServed: {
+                '@type': 'Country',
+                name: 'Global'
+              },
               url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}${service.href}`,
               offers: {
                 '@type': 'Offer',
@@ -51,9 +59,10 @@ export default function ServicesPage() {
               },
               hasOfferCatalog: {
                 '@type': 'OfferCatalog',
-                name: 'Features',
-                itemListElement: service.features.map((feature) => ({
+                name: service.title + ' Modules',
+                itemListElement: service.features.map((feature, idx) => ({
                   '@type': 'Offer',
+                  position: idx + 1,
                   itemOffered: {
                     '@type': 'Service',
                     name: feature,

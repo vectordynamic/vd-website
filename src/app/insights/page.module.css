@@ -551,13 +551,15 @@
 /* Sidebar Column */
 .hubSidebarArea {
   position: sticky;
-  top: 80px;
-  max-height: calc(100vh - 100px);
+  top: 100px;
+  /* Adjusted for header height + safety gap */
+  height: fit-content;
+  max-height: calc(100vh - 120px);
   overflow-y: auto;
   overscroll-behavior: contain;
   scroll-behavior: smooth;
-  padding-right: 4px;
-  /* Space for scrollbar */
+  padding-right: 8px;
+  /* Extra space for hidden scrollbar */
 }
 
 .hubSidebarArea::-webkit-scrollbar {
@@ -588,18 +590,44 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.sidebarWidget.glass {
+  background: var(--color-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-glass-border);
+}
+
+.sidebarWidget:hover {
+  border-color: var(--color-border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.adWidget {
+  border: 1px dashed var(--color-cyan);
+  background: rgba(6, 182, 212, 0.03);
 }
 
 .widgetTitle {
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   color: var(--color-text-primary);
   font-weight: var(--font-bold);
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
   display: flex;
   align-items: center;
   gap: var(--space-2);
+}
+
+.widgetIcon {
+  color: var(--color-cyan);
+  font-size: 1.1rem;
 }
 
 .widgetText {
@@ -609,44 +637,66 @@
   margin-bottom: var(--space-4);
 }
 
-.sidebarForm {
+/* Must Read Section */
+.mustReadList {
   display: flex;
-  gap: var(--space-2);
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
-.sidebarInput {
-  flex: 1;
-  background: var(--color-bg-elevated);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-2) var(--space-3);
-  color: var(--color-text-primary);
-  font-size: var(--text-sm);
+.mustReadItem {
+  display: block;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  transition: transform var(--transition-fast);
 }
 
-.sidebarBtn {
-  background: var(--color-cyan);
-  color: var(--color-bg-primary);
-  border: none;
-  border-radius: var(--radius-md);
-  padding: var(--space-2) var(--space-4);
+.mustReadItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.mustReadItem:hover {
+  transform: translateX(4px);
+}
+
+.mustReadCategory {
+  font-size: 10px;
   font-weight: var(--font-bold);
-  cursor: pointer;
+  color: var(--color-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-1);
+  display: block;
 }
 
-.sidebarTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
+.mustReadTitle {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.sidebarTag {
-  background: var(--color-bg-elevated);
-  color: var(--color-text-secondary);
+/* Newsletter Widget */
+.newsletterWidget {
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, rgba(139, 92, 246, 0.05) 100%);
+}
+
+.learnMoreLink {
+  color: var(--color-cyan);
   font-size: var(--text-xs);
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-full);
-  border: 1px solid var(--color-border);
+  font-weight: var(--font-bold);
+  text-decoration: none;
+  transition: gap var(--transition-fast);
+}
+
+.learnMoreLink:hover {
+  text-decoration: underline;
 }
 
 .promotionWidget {

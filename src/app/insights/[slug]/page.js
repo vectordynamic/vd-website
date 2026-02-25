@@ -3,8 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import styles from './page.module.css';
-import { getPublishedArticleBySlug } from '@/lib/syncdaily';
+import { getPublishedArticleBySlug, getLatestPublishedArticles } from '@/lib/syncdaily';
 import ArticleSidebar from '@/components/insights/ArticleSidebar';
+import SocialShare from '@/components/insights/SocialShare';
+import { FiChevronRight } from 'react-icons/fi';
 
 // Dynamically generate SEO Metadata
 export async function generateMetadata({ params }) {
@@ -50,11 +52,19 @@ export async function generateMetadata({ params }) {
 
 export default async function ArticlePage({ params }) {
     const { slug } = await params;
-    const article = await getPublishedArticleBySlug(slug);
+
+    // Parallel fetch: Current article + Latest articles for sidebar/bottom
+    const [article, latestRes] = await Promise.all([
+        getPublishedArticleBySlug(slug),
+        getLatestPublishedArticles(4)
+    ]);
 
     if (!article) {
         notFound();
     }
+
+    const latestArticles = latestRes?.articles || [];
+    const relatedArticles = latestArticles.filter(a => a.slug !== slug).slice(0, 3);
 
     console.log(`[DEBUG] Loaded Article: ${slug}`);
     console.log(`[DEBUG] Content Length: ${article.content?.length} characters`);
@@ -83,12 +93,41 @@ export default async function ArticlePage({ params }) {
         keywords: article.tags ? article.tags.join(', ') : '',
     };
 
+    const breadcrumbLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Insights',
+                item: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/insights`
+            },
+            {
+                '@type': 'ListItem',
+                position: 3,
+                name: article.title,
+                item: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/insights/${slug}`
+            }
+        ]
+    };
+
     return (
         <article className={styles.articlePage}>
-            {/* Inject JSON-LD Schema */}
+            {/* Inject Structured Data */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
             />
 
             <header className={styles.articlePageHeader}>
@@ -148,12 +187,51 @@ export default async function ArticlePage({ params }) {
                                 </ReactMarkdown>
                             )}
                         </div>
+
+                        {/* Social Share Section (Prominent Bottom) */}
+                        <SocialShare title={article.title} slug={slug} />
                     </div>
 
                     {/* Sidebar */}
-                    <ArticleSidebar article={article} />
+                    <div className={styles.sidebarWrapper} data-lenis-prevent>
+                        <ArticleSidebar article={article} latestArticles={latestArticles} />
+                    </div>
                 </div>
             </div>
+
+            {/* Related Articles Section (Bottom Grid) */}
+            {relatedArticles.length > 0 && (
+                <section className={styles.relatedSection}>
+                    <div className="container">
+                        <div className={styles.relatedHeader}>
+                            <h2>More Insights</h2>
+                            <Link href="/insights" className={styles.viewAll}>
+                                View Archive <FiChevronRight />
+                            </Link>
+                        </div>
+                        <div className={styles.relatedGrid}>
+                            {relatedArticles.map(item => (
+                                <Link href={`/insights/${item.slug}`} key={item.id} className={styles.relatedCard}>
+                                    {item.image_url && (
+                                        <div className={styles.relatedCardImage}>
+                                            <Image src={item.image_url} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" />
+                                        </div>
+                                    )}
+                                    <div className={styles.relatedCardContent}>
+                                        <span className={styles.relatedCardCategory}>{item.category || 'Tech'}</span>
+                                        <h3 className={styles.relatedCardTitle}>{item.title}</h3>
+                                        <div className={styles.relatedCardMeta}>
+                                            <span>{new Date(item.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                                            <span>•</span>
+                                            <span>{item.stats?.reading_time_minutes || 5} min read</span>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
         </article>
     );
 }

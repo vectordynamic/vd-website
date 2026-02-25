@@ -7,6 +7,11 @@ import ProcessSection from '@/components/sections/ProcessSection';
 import CTABanner from '@/components/sections/CTABanner';
 import styles from './page.module.css';
 
+export const metadata = {
+  title: 'Vector Dynamic | Enterprise Software & AI Solutions',
+  description: 'Leading B2B & B2C software company delivering enterprise solutions, consumer apps, AI automation, and custom development.',
+};
+
 export default function Home() {
   return (
     <div className={styles.page}>

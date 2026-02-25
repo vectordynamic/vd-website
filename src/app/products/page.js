@@ -28,20 +28,27 @@ export default function ProductsPage() {
               '@type': 'SoftwareApplication',
               name: product.name,
               description: product.description,
-              applicationCategory: product.schemaCategory || 'Application',
-              operatingSystem: 'Cloud, Web',
+              applicationCategory: product.schemaCategory || 'BusinessApplication',
+              applicationSubCategory: product.tagline,
+              operatingSystem: 'Cloud-native, Web, Mobile-responsive',
               url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}${product.href}`,
-              offer: {
+              image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}${product.image}`,
+              offers: {
                 '@type': 'Offer',
                 price: '0',
                 priceCurrency: 'USD',
                 availability: 'https://schema.org/ComingSoon',
               },
               featureList: product.features.join(', '),
-              author: {
+              creator: {
                 '@type': 'Organization',
                 name: 'Vector Dynamic',
+                url: process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com',
               },
+              brand: {
+                '@type': 'Brand',
+                name: 'Vector Dynamic'
+              }
             }))
           ),
         }}

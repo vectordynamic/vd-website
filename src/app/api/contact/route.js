@@ -1,7 +1,13 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const getResend = () => {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey && process.env.NODE_ENV === 'production') {
+    console.warn('Warning: RESEND_API_KEY is missing in production.');
+  }
+  return new Resend(apiKey || 're_placeholder');
+};
 
 export async function POST(request) {
   try {
@@ -15,10 +21,11 @@ export async function POST(request) {
       );
     }
 
+    const resend = getResend();
     const { data, error } = await resend.emails.send({
-      from: 'Vector Dynamic <info@vectordynamic.com>', 
-      to: ['info@vectordynamic.com'], 
-      reply_to: email, 
+      from: 'Vector Dynamic <info@vectordynamic.com>',
+      to: ['info@vectordynamic.com'],
+      reply_to: email,
       subject: `New Inquiry from ${name}: ${inquiryType || 'General'}`,
       html: `
         <h2>New Contact Form Submission</h2>
