@@ -145,6 +145,9 @@ export default function ServicesPage() {
             <Button href="/contact" size="lg">
               Book a Free Consultation
             </Button>
+            <p className={styles.ctaFootnote}>
+              Running a software or AI agency? <Link href="/partners">See our agency partnership program</Link>.
+            </p>
           </div>
         </div>
       </section>

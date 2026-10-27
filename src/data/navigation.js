@@ -6,6 +6,7 @@ export const navigation = {
     { name: 'Services', href: '/services' },
     { name: 'Products', href: '/products' },
     { name: 'Solutions', href: '/solutions' },
+    { name: 'Partners', href: '/partners' },
     { name: 'About', href: '/about' },
     { name: 'Insights', href: '/insights' },
     { name: 'Contact', href: '/contact' },
@@ -14,18 +15,20 @@ export const navigation = {
   services: [
     { name: 'Custom Development', href: '/services/custom-development' },
     { name: 'Enterprise Solutions', href: '/services/enterprise' },
-    { name: 'AI & Automation', href: '/services/ai-automation' },
+    { name: 'Custom AI', href: '/services/custom-ai' },
+    { name: 'Intelligent Automation', href: '/services/intelligent-automation' },
     { name: 'Consulting', href: '/services/consulting' },
   ],
 
   products: [
     { name: 'Opsera', href: '/products/opsera' },
     { name: 'AI Receptionist', href: '/products/ai-receptionist' },
-    { name: 'Inventory Manager', href: '/products/inventory' },
+    { name: 'Okebase', href: '/products/okebase' },
   ],
 
   company: [
     { name: 'About Us', href: '/about' },
+    { name: 'Agency Partners', href: '/partners' },
     { name: 'Careers', href: '/about#careers' },
     { name: 'Contact', href: '/contact' },
   ],

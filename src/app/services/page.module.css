@@ -196,6 +196,16 @@
   margin-bottom: var(--space-8);
 }
 
+.ctaFootnote {
+  margin-top: var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+}
+
+.ctaFootnote a {
+  color: var(--color-cyan);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .serviceCard {

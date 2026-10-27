@@ -56,20 +56,11 @@ export const metadata = {
     siteName: 'Vector Dynamic',
     title: 'Vector Dynamic | Enterprise Software & AI Solutions',
     description: 'Leading B2B & B2C software company delivering enterprise solutions, consumer apps, AI automation, and custom development.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Vector Dynamic',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Vector Dynamic | Enterprise Software & AI Solutions',
     description: 'Leading B2B & B2C software company delivering enterprise solutions, consumer apps, AI automation, and custom development.',
-    images: ['/og-image.png'],
     creator: '@vectordynamic',
   },
   other: {
