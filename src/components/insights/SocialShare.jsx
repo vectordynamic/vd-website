@@ -1,43 +1,31 @@
 'use client';
 
-import { FiTwitter, FiLinkedin, FiLink } from 'react-icons/fi';
-import styles from '@/app/insights/[slug]/page.module.css';
+import { useState } from 'react';
+import { site } from '@/content/site';
+import s from './insights.module.css';
 
 export default function SocialShare({ title, slug }) {
-    const url = `${process.env.NEXT_PUBLIC_SITE_URL}/insights/${slug}`;
+  const [copied, setCopied] = useState(false);
+  const url = `${site.url}/insights/${slug}`;
+  const enc = encodeURIComponent;
 
-    const handleCopyLink = () => {
-        navigator.clipboard.writeText(window.location.href);
-        // Optional: Add a toast notification here
-    };
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.prompt('Copy this link', url);
+    }
+  };
 
-    return (
-        <div className={styles.shareSection}>
-            <h3 className={styles.shareTitle}>Share this insight</h3>
-            <div className={styles.shareButtons}>
-                <a
-                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${styles.shareButton} ${styles.twitter}`}
-                >
-                    <FiTwitter /> Twitter
-                </a>
-                <a
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${styles.shareButton} ${styles.linkedin}`}
-                >
-                    <FiLinkedin /> LinkedIn
-                </a>
-                <button
-                    className={`${styles.shareButton} ${styles.copyLink}`}
-                    onClick={handleCopyLink}
-                >
-                    <FiLink /> Copy Link
-                </button>
-            </div>
-        </div>
-    );
+  return (
+    <div className={s.share}>
+      <h2 className={s.shareH}>Share</h2>
+      <a className={s.shareLink} target="_blank" rel="noopener noreferrer" href={`https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`}>LinkedIn</a>
+      <a className={s.shareLink} target="_blank" rel="noopener noreferrer" href={`https://twitter.com/intent/tweet?text=${enc(title)}&url=${enc(url)}`}>X</a>
+      <a className={s.shareLink} href={`mailto:?subject=${enc(title)}&body=${enc(url)}`}>Email</a>
+      <button type="button" className={s.shareLink} onClick={copy} aria-live="polite">{copied ? 'Copied' : 'Copy link'}</button>
+    </div>
+  );
 }

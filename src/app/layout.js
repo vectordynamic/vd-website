@@ -1,149 +1,64 @@
-import { Inter, Space_Grotesk } from 'next/font/google';
-import { ThemeProvider } from '@/lib/ThemeContext';
-import ReactQueryProvider from '@/components/providers/ReactQueryProvider';
+import { Suspense } from 'react';
+import { Newsreader, Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import BackToTop from '@/components/ui/BackToTop';
-import FloatingCTA from '@/components/ui/FloatingCTA';
-import SmoothScroll from '@/components/ui/SmoothScroll';
+import ScrollProgress from '@/components/ui/ScrollProgress';
+import CookieBanner from '@/components/ui/CookieBanner';
+import { site } from '@/content/site';
+import { jsonLd } from '@/lib/jsonld';
 import '@/styles/globals.css';
-import '@/styles/components/buttons.css';
-import '@/styles/components/cards.css';
-import '@/styles/components/header.css';
-import '@/styles/components/footer.css';
-import '@/styles/components/forms.css';
+import '@/styles/brand.css';
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
+const serif = Newsreader({ subsets: ['latin'], variable: '--vd-font-serif', display: 'swap' });
+const sans = Hanken_Grotesk({ subsets: ['latin'], variable: '--vd-font-sans', display: 'swap' });
+const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--vd-font-mono', display: 'swap' });
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-space-grotesk',
-  display: 'swap',
-});
+const TITLE = 'Vector Dynamic | Custom Software, ERP and AI, Built to Scale';
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'),
-  title: {
-    default: 'Vector Dynamic | Enterprise Software & AI Solutions',
-    template: '%s | Vector Dynamic',
-  },
-  description: 'Leading B2B & B2C software company delivering enterprise solutions, consumer apps, AI automation, and custom development. Transform your business or lifestyle with intelligent technology.',
+  metadataBase: new URL(site.url),
+  title: { default: TITLE, template: '%s | Vector Dynamic' },
+  description: site.description,
   keywords: [
-    // Core Business
-    'B2B software', 'B2C applications', 'enterprise solutions', 'SaaS development', 'digital transformation',
-    // Products (Specific Long-tail)
-    'project management software', 'team orchestration tools', 'Opsera',
-    'AI virtual receptionist', 'automated front desk',
-    'inventory management system', 'business OS', 'Okebase',
-    'bachelor home management', 'roommate expense tracker', 'Amardera',
-    'tech news aggregator', 'AI newsletter', 'Sync Daily',
-    'marketing automation AI', 'meta ads autopilot', 'AdVantage AI',
-    // Services
-    'custom software development', 'mobile app development', 'AI solutions',
-    'custom LLM development', 'computer vision', 'autonomous agents',
-    'CRM development', 'ERP source code', 'cloud migration'
+    'custom software development', 'custom ERP development', 'AI development company',
+    'AI automation', 'software development partner', 'business systems', 'workflow automation',
+    'LLM applications', 'legacy modernization',
   ],
   authors: [{ name: 'Vector Dynamic' }],
   creator: 'Vector Dynamic',
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com',
-    siteName: 'Vector Dynamic',
-    title: 'Vector Dynamic | Enterprise Software & AI Solutions',
-    description: 'Leading B2B & B2C software company delivering enterprise solutions, consumer apps, AI automation, and custom development.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Vector Dynamic | Enterprise Software & AI Solutions',
-    description: 'Leading B2B & B2C software company delivering enterprise solutions, consumer apps, AI automation, and custom development.',
-    creator: '@vectordynamic',
-  },
-  other: {
-    'google-adsense-account': 'ca-pub-3878588095470324',
-    // AI/LLM & SEO Deep Context (GEO)
-    'dc.description': 'Enterprise Software & AI Solutions powering business automation and consumer digital lifestyles.',
-    'dc.publisher': 'Vector Dynamic',
-    'dc.language': 'en',
-    'dc.format': 'text/html',
-    'dc.type': 'Service',
-  }
+  openGraph: { type: 'website', locale: 'en_US', url: site.url, siteName: 'Vector Dynamic', title: TITLE, description: site.description },
+  twitter: { card: 'summary_large_image', title: TITLE, description: site.description, creator: '@vectordynamic' },
 };
 
-import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
-import Script from 'next/script';
-import { Suspense } from 'react';
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  url: site.url,
+  logo: `${site.url}/logo.svg`,
+  email: site.email,
+  description: site.description,
+  sameAs: Object.values(site.social).filter(Boolean),
+  contactPoint: { '@type': 'ContactPoint', contactType: 'sales', email: site.email, availableLanguage: 'en' },
+};
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
-      <body suppressHydrationWarning>
+    <html lang="en" data-theme="light" className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
+      <body>
         <Suspense fallback={null}>
           <GoogleAnalytics GA_MEASUREMENT_ID="G-KHBTJM0J0W" />
         </Suspense>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Organization',
-              name: 'Vector Dynamic',
-              alternateName: ['VectorDynamic', 'VD'],
-              url: process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com',
-              logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/logo.svg`,
-              sameAs: [
-                'https://twitter.com/vectordynamic',
-                'https://linkedin.com/company/vectordynamic',
-              ],
-              contactPoint: {
-                '@type': 'ContactPoint',
-                telephone: '+1-555-0123-456',
-                contactType: 'customer service',
-                areaServed: 'Worldwide',
-                availableLanguage: 'en',
-              },
-              description: 'Leading B2B & B2C software company delivering enterprise solutions, consumer apps, AI automation, and custom development.',
-              knowsAbout: [
-                'B2B Software', 'Consumer Applications', 'AI Agents', 'SaaS',
-                'Digital Transformation', 'Enterprise Automation', 'Custom LLM Development',
-                'Mobile App Development', 'Cloud Architecture'
-              ],
-              areaServed: {
-                '@type': 'Country',
-                name: 'Global'
-              },
-              slogan: 'Engineering Your Intelligent Future',
-              brand: {
-                '@type': 'Brand',
-                name: 'Vector Dynamic'
-              }
-            }),
-          }}
-        />
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3878588095470324"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-        <ThemeProvider>
-          <ReactQueryProvider>
-            {/* Skip to main content - Accessibility */}
-            <a href="#main-content" className="skip-link">
-              Skip to main content
-            </a>
-            <Header />
-            <main id="main-content">{children}</main>
-            <Footer />
-            <FloatingCTA />
-            <BackToTop />
-            <SmoothScroll />
-          </ReactQueryProvider>
-        </ThemeProvider>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(organization) }} />
+        <>
+          <ScrollProgress />
+          <a href="#main-content" className="skip-link">Skip to main content</a>
+          <Header />
+          <main id="main-content">{children}</main>
+          <Footer />
+          <CookieBanner />
+        </>
       </body>
     </html>
   );

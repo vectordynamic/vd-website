@@ -9,7 +9,7 @@ export const metadata = {
 export default function TermsPage() {
   return (
     <div className={styles.page}>
-      <div className="container">
+      <div className="vd-container">
         <nav className={styles.breadcrumb}>
           <Link href="/">Home</Link>
           <span>/</span>
@@ -18,7 +18,7 @@ export default function TermsPage() {
 
         <article className={styles.content}>
           <h1>Terms of Service</h1>
-          <p className={styles.lastUpdated}>Last updated: December 2024</p>
+          <p className={styles.lastUpdated}>Last updated: November 2026</p>
 
           <section>
             <h2>1. Agreement to Terms</h2>

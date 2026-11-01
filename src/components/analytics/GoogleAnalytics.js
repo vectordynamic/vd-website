@@ -9,7 +9,7 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (pathname) {
+    if (pathname && typeof window.gtag === 'function') {
       const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
       
       window.gtag('config', GA_MEASUREMENT_ID, {
@@ -33,6 +33,8 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }) {
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+            try { if (localStorage.getItem('vd-consent') === 'granted') { gtag('consent', 'update', { analytics_storage: 'granted' }); } } catch (e) {}
             gtag('js', new Date());
             gtag('config', '${GA_MEASUREMENT_ID}', {
               page_path: window.location.pathname,

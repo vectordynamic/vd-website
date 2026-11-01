@@ -1,64 +1,50 @@
-import Hero from '@/components/sections/Hero';
-import TrustBar from '@/components/sections/TrustBar';
-import ServicesOverview from '@/components/sections/ServicesOverview';
-import WhyUs from '@/components/sections/WhyUs';
-import FeaturedProducts from '@/components/sections/FeaturedProducts';
-import ProcessSection from '@/components/sections/ProcessSection';
-import CTABanner from '@/components/sections/CTABanner';
-import styles from './page.module.css';
+import { home } from '@/content/home';
+import { site } from '@/content/site';
+import { jsonLd } from '@/lib/jsonld';
+import { Hero, Problem, Practices, AiBand, Portfolio, Ladder, Process, Engineering, Commitments, Fit, Faq, Closing } from '@/components/home/HomeSections';
 
 export const metadata = {
-  title: 'Vector Dynamic | Enterprise Software & AI Solutions',
-  description: 'Leading B2B & B2C software company delivering enterprise solutions, consumer apps, AI automation, and custom development.',
+  title: { absolute: 'Vector Dynamic | Custom Software, ERP and AI, Built to Scale' },
+  description: home.hero.lede,
+  alternates: { canonical: '/' },
 };
+
+const structuredData = [
+  ...home.practices.map((p) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: p.title,
+    description: p.summary,
+    provider: { '@type': 'Organization', name: site.name, url: site.url },
+    areaServed: 'Worldwide',
+  })),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: home.faq.items.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            {
-              '@context': 'https://schema.org',
-              '@type': 'SoftwareApplication',
-              name: 'Opsera',
-              applicationCategory: 'BusinessApplication',
-              operatingSystem: 'Recall',
-              description: 'Complete Project & Team Orchestration tool for enterprise management.',
-              url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/products/opsera`,
-              offers: {
-                '@type': 'Offer',
-                price: '0',
-                priceCurrency: 'USD',
-                availability: 'https://schema.org/ComingSoon',
-              },
-            },
-            {
-              '@context': 'https://schema.org',
-              '@type': 'SoftwareApplication',
-              name: 'Okebase',
-              applicationCategory: 'FinanceApplication',
-              operatingSystem: 'Recall',
-              description: 'The All-in-One Business OS for inventory, employee records, and financial analytics.',
-              url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/products/okebase`,
-              offers: {
-                '@type': 'Offer',
-                price: '0',
-                priceCurrency: 'USD',
-                availability: 'https://schema.org/ComingSoon',
-              },
-            }
-          ]),
-        }}
-      />
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }} />
       <Hero />
-      <TrustBar />
-      <ServicesOverview />
-      <WhyUs />
-      <FeaturedProducts />
-      <ProcessSection />
-      <CTABanner />
-    </div>
+      <Problem />
+      <Practices />
+      <AiBand />
+      <Portfolio />
+      <Ladder />
+      <Process />
+      <Engineering />
+      <Commitments />
+      <Fit />
+      <Faq />
+      <Closing />
+    </>
   );
 }
