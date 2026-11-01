@@ -1,56 +1,29 @@
-// Navigation data for Vector Dynamic website
-
 export const navigation = {
   main: [
-    { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
-    { name: 'Products', href: '/products' },
-    { name: 'Solutions', href: '/solutions' },
-    { name: 'Partners', href: '/partners' },
+    { name: 'Work', href: '/#work' },
+    { name: 'How we work', href: '/#process' },
+    { name: 'Insights', href: '/insights' },
     { name: 'About', href: '/about' },
-    { name: 'Insights', href: '/insights' },
-    { name: 'Contact', href: '/contact' },
   ],
-
-  services: [
-    { name: 'Custom Development', href: '/services/custom-development' },
-    { name: 'Enterprise Solutions', href: '/services/enterprise' },
-    { name: 'Custom AI', href: '/services/custom-ai' },
-    { name: 'Intelligent Automation', href: '/services/intelligent-automation' },
-    { name: 'Consulting', href: '/services/consulting' },
-  ],
-
-  products: [
-    { name: 'Opsera', href: '/products/opsera' },
-    { name: 'AI Receptionist', href: '/products/ai-receptionist' },
-    { name: 'Okebase', href: '/products/okebase' },
-  ],
-
-  company: [
-    { name: 'About Us', href: '/about' },
-    { name: 'Agency Partners', href: '/partners' },
-    { name: 'Careers', href: '/about#careers' },
-    { name: 'Contact', href: '/contact' },
-  ],
-
-  resources: [
-    { name: 'Insights', href: '/insights' },
-    { name: 'Case Studies', href: '/insights?category=case-studies' },
-  ],
-
-  legal: [
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms of Service', href: '/terms' },
-  ],
-};
-
-export const socialLinks = {
-  linkedin: 'https://linkedin.com/company/vectordynamic',
-  twitter: 'https://twitter.com/vectordynamic',
-  github: 'https://github.com/vectordynamic',
-};
-
-export const contactInfo = {
-  email: 'info@vectordynamic.com',
-  website: 'vectordynamic.com',
+  cta: { label: 'Book a review', href: '/audit' },
+  footer: {
+    services: [
+      { name: 'Custom Development', href: '/services/custom-development' },
+      { name: 'Enterprise Solutions', href: '/services/enterprise' },
+      { name: 'Custom AI', href: '/services/custom-ai' },
+      { name: 'Intelligent Automation', href: '/services/intelligent-automation' },
+      { name: 'Consulting', href: '/services/consulting' },
+    ],
+    company: [
+      { name: 'About', href: '/about' },
+      { name: 'Agency partners', href: '/partners' },
+      { name: 'Insights', href: '/insights' },
+      { name: 'Contact', href: '/contact' },
+    ],
+    legal: [
+      { name: 'Privacy', href: '/privacy' },
+      { name: 'Terms', href: '/terms' },
+    ],
+  },
 };

@@ -66,8 +66,6 @@ export default async function ArticlePage({ params }) {
     const latestArticles = latestRes?.articles || [];
     const relatedArticles = latestArticles.filter(a => a.slug !== slug).slice(0, 3);
 
-    console.log(`[DEBUG] Loaded Article: ${slug}`);
-    console.log(`[DEBUG] Content Length: ${article.content?.length} characters`);
 
     // Prepeare JSON-LD Structured Data
     const jsonLd = {

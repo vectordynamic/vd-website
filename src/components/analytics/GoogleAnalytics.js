@@ -9,7 +9,7 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (pathname) {
+    if (pathname && typeof window.gtag === 'function') {
       const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
       
       window.gtag('config', GA_MEASUREMENT_ID, {

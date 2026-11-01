@@ -2,6 +2,13 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
+  async redirects() {
+    return [
+      { source: '/products', destination: '/#work', permanent: false },
+      { source: '/products/:id', destination: '/#work', permanent: false },
+      { source: '/solutions', destination: '/services', permanent: false },
+    ];
+  },
   images: {
     remotePatterns: [
       {

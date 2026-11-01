@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import styles from '@/app/insights/[slug]/page.module.css';
-import GoogleAd from '@/components/ads/GoogleAd';
 import { FiTrendingUp, FiBookOpen, FiShare2, FiLink, FiExternalLink } from 'react-icons/fi';
 
 export default function ArticleSidebar({ article, latestArticles = [] }) {
@@ -32,15 +31,6 @@ export default function ArticleSidebar({ article, latestArticles = [] }) {
                     </div>
                 </div>
             )}
-
-            {/* 2. SPONSORED */}
-            <div className={`${styles.sidebarWidget} ${styles.adWidget}`}>
-                <h3 className={styles.widgetTitle}>
-                    <FiTrendingUp className={styles.widgetIcon} />
-                    SPONSORED
-                </h3>
-                <GoogleAd adSlot="1234567890" adFormat="rectangle" fullWidthResponsive={true} />
-            </div>
         </aside>
     );
 }

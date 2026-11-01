@@ -1,0 +1,67 @@
+/* Vector Dynamic brand system. Light, editorial, one accent. */
+:root {
+  --vd-paper: #F6F3EC;
+  --vd-surface: #FFFFFF;
+  --vd-ink: #101418;
+  --vd-graphite: #3A424B;
+  --vd-muted: #5B636B;
+  --vd-rule: #D9D3C7;
+  --vd-signal: #C93D20;
+  --vd-signal-hover: #A8321A;
+  --vd-signal-on-ink: #F0835F;
+  --vd-ink-muted: #A7ADB3;
+  --vd-verdigris: #1F6F66;
+
+  --vd-max: 1200px;
+  --vd-gutter: clamp(20px, 4vw, 40px);
+  --vd-section: clamp(72px, 10vw, 128px);
+
+  /* Legacy pages (about, services, partners, insights) pick up the new type */
+  --font-inter: var(--vd-font-sans);
+  --font-space-grotesk: var(--vd-font-serif);
+}
+
+body {
+  background: var(--vd-paper);
+  background-image: none;
+  color: var(--vd-ink);
+  font-family: var(--vd-font-sans), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+body::before { display: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--vd-font-serif), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+:focus-visible { outline: 2px solid var(--vd-signal); outline-offset: 2px; }
+::selection { background: var(--vd-ink); color: var(--vd-paper); }
+
+.vd-container { width: 100%; max-width: var(--vd-max); margin-inline: auto; padding-inline: var(--vd-gutter); }
+.vd-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.vd-mono { font-family: var(--vd-font-mono), ui-monospace, monospace; }
+
+/* Buttons */
+.vd-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--vd-font-sans), sans-serif; font-weight: 600; font-size: 0.975rem;
+  line-height: 1; text-decoration: none; cursor: pointer; border: 0;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.vd-btn--primary { background: var(--vd-signal); color: #fff; padding: 1rem 1.5rem; border-radius: 2px; }
+.vd-btn--primary:hover { background: var(--vd-signal-hover); }
+.vd-btn--quiet { background: none; color: var(--vd-ink); padding: 0.25rem 0; border-bottom: 1px solid currentColor; }
+.vd-btn--quiet:hover { color: var(--vd-signal); }
+
+/* Skip link (kept from the original site) */
+.skip-link { position: absolute; left: -9999px; top: 0; z-index: 200; background: var(--vd-ink); color: var(--vd-paper); padding: 0.75rem 1rem; }
+.skip-link:focus { left: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }

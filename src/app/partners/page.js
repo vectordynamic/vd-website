@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
-import TrustBar from '@/components/sections/TrustBar';
 import { services } from '@/lib/data';
 import styles from './page.module.css';
 
@@ -295,7 +294,6 @@ export default function PartnersPage() {
       </section>
 
       {/* Tech stack */}
-      <TrustBar />
 
       {/* FAQ */}
       <section id="faq" className={styles.section}>

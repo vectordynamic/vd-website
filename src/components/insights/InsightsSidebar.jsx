@@ -2,7 +2,6 @@
 
 import styles from '@/app/insights/page.module.css';
 import Link from 'next/link';
-import GoogleAd from '@/components/ads/GoogleAd';
 import { FiTrendingUp, FiMail, FiTag, FiBookOpen } from 'react-icons/fi';
 
 export default function InsightsSidebar({ latestArticles = [] }) {
@@ -31,15 +30,6 @@ export default function InsightsSidebar({ latestArticles = [] }) {
                     </div>
                 </div>
             )}
-
-            {/* 2. SPONSORED - Kept prominent */}
-            <div className={`${styles.sidebarWidget} ${styles.adWidget}`}>
-                <h3 className={styles.widgetTitle}>
-                    <FiTrendingUp className={styles.widgetIcon} />
-                    SPONSORED
-                </h3>
-                <GoogleAd adSlot="0987654321" adFormat="rectangle" fullWidthResponsive={true} />
-            </div>
 
             {/* 3. ABOUT VD */}
             <div className={`${styles.sidebarWidget} ${styles.glass}`}>

@@ -9,8 +9,7 @@ export async function GET() {
         const staticRoutes = [
             '',
             '/services',
-            '/products',
-            '/solutions',
+            '/audit',
             '/partners',
             '/insights',
             '/about',
