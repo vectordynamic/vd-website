@@ -1,89 +1,34 @@
-import { NextResponse } from 'next/server';
+import { site } from '@/content/site';
+import { home } from '@/content/home';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://syncdaily-api.vectordynamic.com';
-const SITE_URL = process.env.SITE_URL || 'https://vectordynamic.com';
+const esc = (v) => String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 export async function GET() {
-    try {
-        // 1. Static Routes
-        const staticRoutes = [
-            '',
-            '/services',
-            '/audit',
-            '/partners',
-            '/insights',
-            '/about',
-            '/contact',
-            '/privacy',
-            '/terms',
-        ].map((route) => ({
-            url: `${SITE_URL}${route}`,
-            lastmod: new Date().toISOString(),
-            changefreq: 'daily',
-            priority: route === '' ? '1.0' : '0.8',
-        }));
+  const staticPaths = [
+    '', '/services', ...home.practices.map((p) => `/services/${p.id}`),
+    '/audit', '/about', '/partners', '/insights', '/contact', '/privacy', '/terms',
+  ];
+  const urls = new Map(staticPaths.map((p) => [`${site.url}${p}`, null]));
 
-        // 2. Fetch Blog Articles (Chunk 0)
-        let articleRoutes = [];
-        try {
-            const artRes = await fetch(`${API_URL}/api/v1/sitemap/articles?chunk=0`, {
-                next: { revalidate: 3600 }
-            });
-            if (artRes.ok) {
-                const artData = await artRes.json();
-                articleRoutes = (artData.items || []).map((item) => ({
-                    url: `${SITE_URL}/insights/${item.slug}`,
-                    lastmod: item.updated_at || item.published_at || new Date().toISOString(),
-                    changefreq: 'weekly',
-                    priority: '0.6',
-                }));
-            }
-        } catch (e) {
-            console.error('Error fetching sitemap articles:', e);
-        }
-
-        // 3. Fetch Published Posts (Chunk 0)
-        let publishedRoutes = [];
-        try {
-            const pubRes = await fetch(`${API_URL}/api/v1/sitemap/published?chunk=0`, {
-                next: { revalidate: 3600 }
-            });
-            if (pubRes.ok) {
-                const pubData = await pubRes.json();
-                publishedRoutes = (pubData.items || []).map((item) => ({
-                    url: `${SITE_URL}/insights/${item.slug}`,
-                    lastmod: item.updated_at || item.published_at || new Date().toISOString(),
-                    changefreq: 'weekly',
-                    priority: '0.7',
-                }));
-            }
-        } catch (e) {
-            console.error('Error fetching sitemap published:', e);
-        }
-
-        const allRoutes = [...staticRoutes, ...articleRoutes, ...publishedRoutes];
-
-        const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${allRoutes.map((route) => `
-    <url>
-      <loc>${route.url}</loc>
-      <lastmod>${route.lastmod}</lastmod>
-      <changefreq>${route.changefreq}</changefreq>
-      <priority>${route.priority}</priority>
-    </url>
-  `).join('')}
-</urlset>`;
-
-        return new NextResponse(xml, {
-            headers: {
-                'Content-Type': 'application/xml',
-                'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=600',
-            },
-        });
-
-    } catch (error) {
-        console.error('Sitemap route error:', error);
-        return new NextResponse('Error generating sitemap', { status: 500 });
+  // Published articles (dates come from the API, never invented). Duplicates collapse by URL.
+  try {
+    const res = await fetch(`${API_URL}/api/v1/sitemap/published?chunk=0`, { next: { revalidate: 3600 } });
+    if (res.ok) {
+      const data = await res.json();
+      for (const item of data.items || []) {
+        urls.set(`${site.url}/insights/${item.slug}`, item.updated_at || item.published_at || null);
+      }
     }
+  } catch (e) {
+    console.error('Sitemap: could not fetch published articles', e);
+  }
+
+  const body = [...urls.entries()]
+    .map(([loc, lastmod]) => `  <url><loc>${esc(loc)}</loc>${lastmod ? `<lastmod>${esc(lastmod)}</lastmod>` : ''}</url>`)
+    .join('\n');
+
+  return new Response(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`, {
+    headers: { 'Content-Type': 'application/xml', 'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=600' },
+  });
 }

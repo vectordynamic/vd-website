@@ -1,15 +1,12 @@
 import { Suspense } from 'react';
 import { Newsreader, Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
-import ReactQueryProvider from '@/components/providers/ReactQueryProvider';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ScrollProgress from '@/components/ui/ScrollProgress';
+import CookieBanner from '@/components/ui/CookieBanner';
 import { site } from '@/content/site';
 import '@/styles/globals.css';
-import '@/styles/components/buttons.css';
-import '@/styles/components/cards.css';
-import '@/styles/components/forms.css';
 import '@/styles/brand.css';
 
 const serif = Newsreader({ subsets: ['latin'], variable: '--vd-font-serif', display: 'swap' });
@@ -53,13 +50,14 @@ export default function RootLayout({ children }) {
           <GoogleAnalytics GA_MEASUREMENT_ID="G-KHBTJM0J0W" />
         </Suspense>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
-        <ReactQueryProvider>
+        <>
           <ScrollProgress />
           <a href="#main-content" className="skip-link">Skip to main content</a>
           <Header />
           <main id="main-content">{children}</main>
           <Footer />
-        </ReactQueryProvider>
+          <CookieBanner />
+        </>
       </body>
     </html>
   );

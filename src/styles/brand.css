@@ -91,3 +91,14 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 /* Reading progress line */
 .vd-progress { position: fixed; inset: 0 0 auto 0; height: 2px; z-index: 300; pointer-events: none; }
 .vd-progress__bar { height: 100%; background: var(--vd-signal); transform-origin: left; transform: scaleX(0); }
+
+/* Cookie notice */
+.vd-consent { position: fixed; z-index: 250; left: var(--vd-gutter); right: var(--vd-gutter); bottom: 1.25rem; max-width: 640px; margin-inline: auto; background: var(--vd-ink); color: #e8eaec; padding: 1.1rem 1.25rem; display: flex; gap: 1.25rem; align-items: center; justify-content: space-between; flex-wrap: wrap; font-size: 0.9rem; box-shadow: 0 18px 40px -18px rgba(16, 20, 24, 0.6); animation: vd-consent-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 1s backwards; }
+.vd-consent p { margin: 0; flex: 1 1 280px; color: #e8eaec; }
+.vd-consent a { color: var(--vd-signal-on-ink); }
+.vd-consent__actions { display: flex; gap: 0.6rem; }
+.vd-consent__btn { font: inherit; font-weight: 600; font-size: 0.875rem; cursor: pointer; padding: 0.6rem 1rem; border-radius: 2px; background: none; color: #fff; border: 1px solid #4a525a; transition: background-color 0.2s, border-color 0.2s; }
+.vd-consent__btn:hover { border-color: #fff; }
+.vd-consent__btn--accept { background: var(--vd-signal); border-color: var(--vd-signal); }
+.vd-consent__btn--accept:hover { background: var(--vd-signal-hover); border-color: var(--vd-signal-hover); }
+@keyframes vd-consent-in { from { opacity: 0; transform: translateY(16px); } }

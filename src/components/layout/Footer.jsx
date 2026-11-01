@@ -29,7 +29,6 @@ export default function Footer() {
             <p className={s.footTag}>{site.tagline}</p>
             <ul className={s.footList}>
               <li><a className={s.footA} href={`mailto:${site.email}`}>{site.email}</a></li>
-              <li className={s.footA}>{site.location}</li>
             </ul>
           </div>
           <Col title="Services" links={navigation.footer.services} />

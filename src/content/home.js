@@ -131,7 +131,7 @@ export const home = {
   faq: {
     title: 'Questions buyers ask us',
     items: [
-      { q: 'Where is your team, and how do we work across time zones?', a: 'Our engineering team is based in Dhaka, Bangladesh. We agree a daily overlap window with your working hours, hold every call inside it, and send a written update every week, so nothing depends on being awake at the same time.' },
+      { q: 'How do we work across time zones?', a: 'We agree a daily overlap window with your working hours, hold every call inside it, and send a written update every week, so nothing depends on being awake at the same time.' },
       { q: 'Who owns the code and the data?', a: 'Your data is always yours. Code ownership is agreed in the proposal before work starts: either a full transfer to you, or a license to use and run the system while we keep the source. We explain the trade-off on the first call, because a full transfer changes the price.' },
       { q: 'Which AI models and tools do you work with?', a: 'OpenAI, Anthropic Claude and Google Gemini, plus open-source models, with knowledge bases and agent workflows around them. We choose by quality, cost and your data-privacy needs.' },
       { q: 'How do you protect our systems and data?', a: 'Access is limited by role and removed at hand-over, credentials stay in your own secrets manager, and we sign a mutual NDA on request.' },

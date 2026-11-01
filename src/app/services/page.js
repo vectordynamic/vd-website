@@ -1,156 +1,25 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import Button from '@/components/ui/Button';
-import styles from './page.module.css';
+import { PageHero, Section, Steps, PracticeRows, CtaBand } from '@/components/page/Page';
+import { home } from '@/content/home';
+import { services } from '@/content/pages';
 
 export const metadata = {
-  title: 'Software Development Services',
-  description: 'Custom software, enterprise solutions (CRM, ERP, HRM), AI & automation, and strategic consulting. End-to-end development expertise.',
+  title: 'Services',
+  description: 'Custom software, ERP and business systems, AI-powered software and agents, and workflow automation, built to scale and kept running.',
+  alternates: { canonical: '/services' },
 };
 
-import { services } from '@/lib/data';
-
-const CheckIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 6 9 17l-5-5" />
-  </svg>
-);
-
-const ArrowIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-  </svg>
-);
-
 export default function ServicesPage() {
+  const { intro, standard } = services;
   return (
-    <div className={styles.page}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            services.map((service) => ({
-              '@context': 'https://schema.org',
-              '@type': 'Service',
-              name: service.title,
-              description: service.description,
-              serviceType: service.tagline,
-              brand: {
-                '@type': 'Brand',
-                name: 'Vector Dynamic'
-              },
-              provider: {
-                '@type': 'Organization',
-                name: 'Vector Dynamic',
-                url: process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com',
-                logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}/logo.svg`,
-              },
-              areaServed: {
-                '@type': 'Country',
-                name: 'Global'
-              },
-              url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://vectordynamic.com'}${service.href}`,
-              offers: {
-                '@type': 'Offer',
-                itemOffered: {
-                  '@type': 'Service',
-                  name: service.title,
-                }
-              },
-              hasOfferCatalog: {
-                '@type': 'OfferCatalog',
-                name: service.title + ' Modules',
-                itemListElement: service.features.map((feature, idx) => ({
-                  '@type': 'Offer',
-                  position: idx + 1,
-                  itemOffered: {
-                    '@type': 'Service',
-                    name: feature,
-                  },
-                })),
-              },
-            }))
-          ),
-        }}
-      />
-      {/* Hero */}
-      <section className={styles.hero}>
-        <div className="container">
-          <nav className={styles.breadcrumb}>
-            <Link href="/">Home</Link>
-            <span>/</span>
-            <span>Services</span>
-          </nav>
-          <h1 className={styles.title}>What We Build</h1>
-          <p className={styles.subtitle}>
-            From enterprise software to AI-powered automation, we deliver solutions that scale with your ambitions.
-          </p>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className={styles.services}>
-        <div className="container">
-          {services.map((service, index) => (
-            <div
-              key={service.id}
-              className={`${styles.serviceCard} ${index % 2 === 1 ? styles.reversed : ''}`}
-            >
-              <div className={styles.serviceContent}>
-                <div className={styles.serviceIcon}>{service.icon}</div>
-                <span className={styles.serviceTagline}>{service.tagline}</span>
-                <h2 className={styles.serviceTitle}>{service.title}</h2>
-                <p className={styles.serviceDescription}>{service.description}</p>
-
-                <ul className={styles.featureList}>
-                  {service.features.map((feature, i) => (
-                    <li key={i} className={styles.featureItem}>
-                      <CheckIcon />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className={styles.technologies}>
-                  {service.technologies.map((tech, i) => (
-                    <span key={i} className={styles.techBadge}>{tech}</span>
-                  ))}
-                </div>
-
-                <Button href={service.href} className={styles.serviceButton}>
-                  Learn More <ArrowIcon />
-                </Button>
-              </div>
-
-              <div className={styles.serviceVisual}>
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  width={500}
-                  height={400}
-                  className={styles.serviceImage}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className={styles.cta}>
-        <div className="container">
-          <div className={styles.ctaContent}>
-            <h2>Not Sure What You Need?</h2>
-            <p>Schedule a free consultation and we'll help you identify the right solution for your business.</p>
-            <Button href="/contact" size="lg">
-              Book a Free Consultation
-            </Button>
-            <p className={styles.ctaFootnote}>
-              Running a software or AI agency? <Link href="/partners">See our agency partnership program</Link>.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
+    <>
+      <PageHero crumbs={[{ label: 'Home', href: '/' }, { label: 'Services' }]} eyebrow={intro.eyebrow} title={intro.title} lede={intro.lede} />
+      <Section>
+        <PracticeRows practices={home.practices} />
+      </Section>
+      <Section tone="surface" eyebrow="Engineering" title={standard.title}>
+        <Steps items={standard.items} />
+      </Section>
+      <CtaBand />
+    </>
   );
 }

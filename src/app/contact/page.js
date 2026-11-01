@@ -20,7 +20,6 @@ export default function ContactPage() {
           <div className={s.side}>
             {site.bookingUrl && <div><LinkButton href={site.bookingUrl}>Book a 30-minute call</LinkButton></div>}
             <div><span className={s.eyebrow}>Email</span><br /><a href={`mailto:${site.email}`}>{site.email}</a></div>
-            <div><span className={s.eyebrow}>Based in</span><br />{site.location}</div>
           </div>
         </div>
         <InquiryForm variant="contact" />

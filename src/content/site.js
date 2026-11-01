@@ -7,7 +7,7 @@ export const site = {
   phone: null,
   address: null,
   foundedYear: null,
-  location: 'Dhaka, Bangladesh',
+  location: null,
   tagline: 'Custom software, ERP and AI, built to scale and kept running.',
   description:
     'Vector Dynamic builds custom software, ERP and business systems, AI and automation for growing B2B companies, then keeps them running.',

@@ -1,105 +1,94 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import Button from '@/components/ui/Button';
-import { services } from '@/lib/data';
-import styles from './page.module.css';
+import { PageHero, Section, TwoCol, Rows, Steps, Checklist, Faq, WorkLinks, MoreLinks, CtaBand } from '@/components/page/Page';
+import LinkButton from '@/components/ui/LinkButton';
+import { home } from '@/content/home';
+import { services } from '@/content/pages';
+import { site, ctaHref } from '@/content/site';
+
+export function generateStaticParams() {
+  return home.practices.map((p) => ({ id: p.id }));
+}
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
-  const service = services.find((s) => s.id === id);
-  if (!service) return { title: 'Service Not Found' };
-  
-  return {
-    title: `${service.title} | Vector Dynamic`,
-    description: service.description,
-  };
-}
-
-export async function generateStaticParams() {
-  return services.map((service) => ({
-    id: service.id,
-  }));
+  const p = home.practices.find((x) => x.id === id);
+  if (!p) return {};
+  return { title: p.title, description: services.details[id].intro, alternates: { canonical: `/services/${id}` } };
 }
 
 export default async function ServicePage({ params }) {
   const { id } = await params;
-  const service = services.find((s) => s.id === id);
+  const practice = home.practices.find((p) => p.id === id);
+  if (!practice) notFound();
+  const d = services.details[id];
+  const work = home.portfolio.items
+    .filter((w) => d.work.includes(w.name))
+    .map((w) => ({ ...w, status: w.status }));
+  const others = home.practices.filter((p) => p.id !== id).map((p) => ({ href: `/services/${p.id}`, label: p.title }));
 
-  if (!service) {
-    notFound();
-  }
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: practice.title,
+      description: d.intro,
+      provider: { '@type': 'Organization', name: site.name, url: site.url },
+      areaServed: 'Worldwide',
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: d.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    },
+  ];
 
   return (
-    <div className={styles.page}>
-      {/* Hero */}
-      <section className={styles.hero}>
-        <div className="container">
-          <h1 className={styles.title}>{service.title}</h1>
-          <p className={styles.tagline}>{service.tagline}</p>
-        </div>
-      </section>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <PageHero
+        crumbs={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: practice.title }]}
+        eyebrow="Service"
+        title={d.headline}
+        lede={d.intro}
+      >
+        <LinkButton href={ctaHref}>Book a 30-minute systems review</LinkButton>
+        <LinkButton href="/#process" variant="quiet">See how we work</LinkButton>
+      </PageHero>
 
-      {/* Content */}
-      <section className={styles.content}>
-        <div className="container">
-          <div className={styles.grid}>
-            <div className={styles.description}>
-              <h2>Our Approach</h2>
-              <p>{service.description}</p>
-              
-              <div className={styles.features}>
-                <h3>Capabilities</h3>
-                <ul className={styles.featureList}>
-                  {service.features.map((feature, index) => (
-                    <li key={index} className={styles.featureItem}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M20 6 9 17l-5-5"/>
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-               <div className={styles.technologies}>
-                <h3>Technologies We Use</h3>
-                <div className={styles.techGrid}>
-                  {service.technologies.map((tech, index) => (
-                    <span key={index} className={styles.techBadge}>{tech}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-             <div className={styles.imagewrapper}>
-              <Image
-                src={service.image}
-                alt={service.title}
-                width={800}
-                height={600}
-                className={styles.serviceimage}
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className={styles.cta}>
-        <div className="container">
-          <div className={styles.ctaContent}>
-            <h2>Ready to Build?</h2>
-            <p>
-              Let's discuss how our {service.title} expertise can solve your specific business challenges.
+      <Section tone="surface" eyebrow="Does this sound familiar?" title="Signs you need this">
+        <TwoCol>
+          <Checklist items={d.signs} />
+          <div>
+            <p style={{ fontFamily: 'var(--vd-font-serif), serif', fontStyle: 'italic', fontSize: '1.35rem', color: 'var(--vd-muted)', margin: 0 }}>
+              “{practice.trigger}”
             </p>
-            <Button href="/contact" size="lg">
-              Book a Consultation
-            </Button>
+            {practice.note && <p style={{ color: 'var(--vd-verdigris)', fontWeight: 600, marginTop: '1rem' }}>{practice.note}</p>}
           </div>
-        </div>
-      </section>
-    </div>
+        </TwoCol>
+      </Section>
+
+      <Section eyebrow="What we build" title="What this covers">
+        <Rows items={d.builds} />
+      </Section>
+
+      <Section tone="surface" eyebrow="Approach" title="How we approach it">
+        <Steps items={d.approach} />
+      </Section>
+
+      {work.length > 0 && (
+        <Section eyebrow="Built by Vector Dynamic" title="Related work">
+          <WorkLinks items={work} />
+        </Section>
+      )}
+
+      <Section tone="surface" eyebrow="FAQ" title="Common questions">
+        <Faq items={d.faq} />
+      </Section>
+
+      <Section eyebrow="Also from us" title="Other services">
+        <MoreLinks items={others} />
+      </Section>
+      <CtaBand />
+    </>
   );
 }

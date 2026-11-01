@@ -9,7 +9,7 @@ export const metadata = {
 export default function PrivacyPage() {
   return (
     <div className={styles.page}>
-      <div className="container">
+      <div className="vd-container">
         <nav className={styles.breadcrumb}>
           <Link href="/">Home</Link>
           <span>/</span>
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
 
         <article className={styles.content}>
           <h1>Privacy Policy</h1>
-          <p className={styles.lastUpdated}>Last updated: December 2024</p>
+          <p className={styles.lastUpdated}>Last updated: November 2026</p>
 
           <section>
             <h2>1. Introduction</h2>
@@ -98,6 +98,11 @@ export default function PrivacyPage() {
 
           <section>
             <h2>7. Cookies</h2>
+            <p>
+              We use analytics cookies only if you accept them in the cookie notice. If you decline,
+              analytics stays off and the site works exactly the same. You can change your choice at any
+              time by clearing this site's data in your browser.
+            </p>
             <p>
               Our website uses cookies to enhance your experience. You can control cookie 
               preferences through your browser settings. Some features may not function 
