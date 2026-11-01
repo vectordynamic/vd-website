@@ -1,43 +1,65 @@
 import LinkButton from '@/components/ui/LinkButton';
+import Reveal from '@/components/ui/Reveal';
 import { LOGO_PATHS } from '@/components/brand/Logo';
 import { home } from '@/content/home';
 import { site, ctaHref } from '@/content/site';
 import s from './home.module.css';
 
-const Section = ({ id, tone = '', eyebrow, title, children, narrow }) => (
+const Section = ({ id, tone = '', eyebrow, title, children }) => (
   <section id={id} className={`${s.section} ${tone ? s[tone] : ''}`}>
     <div className="vd-container">
-      {eyebrow && <p className={s.eyebrow}>{eyebrow}</p>}
-      {title && <h2 className={s.h2}>{title}</h2>}
+      {(eyebrow || title) && (
+        <Reveal>
+          {eyebrow && <p className={s.eyebrow}>{eyebrow}</p>}
+          {title && <h2 className={s.h2}>{title}</h2>}
+        </Reveal>
+      )}
       {children}
     </div>
   </section>
 );
 
-const NODES = [
-  { x: 60, y: 70, t: '01  Software', a: 'start' },
-  { x: 420, y: 70, t: '02  ERP', a: 'end' },
-  { x: 60, y: 410, t: '03  AI', a: 'start' },
-  { x: 420, y: 410, t: '04  Automation', a: 'end' },
+// Node positions around the centre. `up` puts the label above the dot.
+const POS = [
+  { x: 56, y: 96, a: 'start', up: true },
+  { x: 424, y: 96, a: 'end', up: true },
+  { x: 56, y: 384, a: 'start', up: false },
+  { x: 424, y: 384, a: 'end', up: false },
 ];
 
-function Diagram() {
+function Diagram({ items }) {
   return (
     <svg className={s.diagram} viewBox="0 0 480 480" fill="none" aria-hidden="true">
-      {[70, 130, 190].map((r) => (
-        <circle key={r} cx="240" cy="240" r={r} stroke="#D9D3C7" strokeWidth="1" />
+      <circle className={s.orbit} cx="240" cy="240" r="200" stroke="#D9D3C7" strokeWidth="1" strokeDasharray="2 7" />
+      {[70, 135].map((r, i) => (
+        <circle key={r} className={s.ring} style={{ animationDelay: `${i * 0.2}s` }} cx="240" cy="240" r={r} stroke="#D9D3C7" strokeWidth="1" />
       ))}
-      {NODES.map((n) => (
-        <g key={n.t}>
-          <line x1="240" y1="240" x2={n.x} y2={n.y} stroke="#101418" strokeWidth="1" />
-          <circle cx={n.x} cy={n.y} r="5" fill="#C93D20" />
-          <text x={n.x + (n.a === 'start' ? 0 : 0)} y={n.y + (n.y < 240 ? -18 : 28)} textAnchor={n.a} fontFamily="var(--vd-font-mono), monospace" fontSize="13" fill="#101418" letterSpacing="0.5">{n.t}</text>
-        </g>
-      ))}
-      <circle cx="240" cy="240" r="46" fill="#101418" />
-      <svg x="212" y="212" width="56" height="56" viewBox="30 8 50 50" fill="#F6F3EC">
-        {LOGO_PATHS.map((d) => <path key={d} d={d} />)}
-      </svg>
+      {items.map((it, i) => {
+        const p = POS[i];
+        const d = 0.5 + i * 0.18;
+        const ly = p.up ? p.y - 34 : p.y + 30;
+        return (
+          <g key={it.label}>
+            <line className={s.draw} pathLength="1" style={{ animationDelay: `${d}s` }} x1="240" y1="240" x2={p.x} y2={p.y} stroke="#101418" strokeWidth="1" />
+            <circle className={s.pulse} style={{ animationDelay: `${d + 1.2}s` }} cx={p.x} cy={p.y} r="5" stroke="#C93D20" strokeWidth="1.5" />
+            <circle className={s.dot} style={{ animationDelay: `${d + 0.9}s` }} cx={p.x} cy={p.y} r="5" fill="#C93D20" />
+            <g className={s.tx} style={{ animationDelay: `${d + 1}s` }}>
+              <text x={p.x} y={ly} textAnchor={p.a} fontFamily="var(--vd-font-mono), monospace" fontSize="12.5" letterSpacing="0.4" fill="#101418">
+                {it.n}  {it.label}
+              </text>
+              <text x={p.x} y={ly + 17} textAnchor={p.a} fontFamily="var(--vd-font-sans), sans-serif" fontSize="12.5" fill="#5B636B">
+                {it.sub}
+              </text>
+            </g>
+          </g>
+        );
+      })}
+      <g className={s.core}>
+        <circle cx="240" cy="240" r="46" fill="#101418" />
+        <svg x="212" y="212" width="56" height="56" viewBox="30 8 50 50" fill="#F6F3EC">
+          {LOGO_PATHS.map((d) => <path key={d} d={d} />)}
+        </svg>
+      </g>
     </svg>
   );
 }
@@ -57,9 +79,9 @@ export function Hero() {
               <LinkButton href={h.secondary.href} variant="quiet">{h.secondary.label}</LinkButton>
             </div>
           </div>
-          <Diagram />
+          <Diagram items={h.diagram} />
         </div>
-        <ul className={s.facts}>
+        <ul className={`${s.facts} ${s.fadeIn}`}>
           {h.facts.map((f) => <li key={f}>{f}</li>)}
         </ul>
       </div>
@@ -71,7 +93,7 @@ export function Problem() {
   const p = home.problem;
   return (
     <Section>
-      <div className={s.twoCol}>
+      <Reveal className={s.twoCol}>
         <h2 className={s.h2}>{p.title}</h2>
         <div className={s.body}>
           {p.body.map((t) => <p key={t}>{t}</p>)}
@@ -81,7 +103,7 @@ export function Problem() {
             ))}
           </p>
         </div>
-      </div>
+      </Reveal>
     </Section>
   );
 }
@@ -89,7 +111,7 @@ export function Problem() {
 export function Practices() {
   return (
     <Section id="services" eyebrow="What we build" title="Four practice areas. One standard of engineering.">
-      <div>
+      <Reveal>
         {home.practices.map((p, i) => (
           <div key={p.id} className={s.row}>
             <span className={s.num}>0{i + 1}</span>
@@ -102,7 +124,7 @@ export function Practices() {
             <ul className={s.covers}>{p.covers.map((c) => <li key={c}>{c}</li>)}</ul>
           </div>
         ))}
-      </div>
+      </Reveal>
     </Section>
   );
 }
@@ -113,7 +135,7 @@ export function Portfolio() {
   return (
     <Section id="work" tone="surface" eyebrow="Work" title={p.title}>
       <p className={s.intro}>{p.intro}</p>
-      <div>
+      <Reveal>
         {p.items.map((it) => (
           <div key={it.name} className={s.item}>
             <h3 className={s.itemName}>
@@ -124,7 +146,7 @@ export function Portfolio() {
             <p className={s.itemText}>{it.summary}</p>
           </div>
         ))}
-      </div>
+      </Reveal>
     </Section>
   );
 }
@@ -133,7 +155,7 @@ export function Ladder() {
   const l = home.ladder;
   return (
     <Section eyebrow="Engagement" title={l.title}>
-      <div className={s.cols3}>
+      <Reveal className={s.cols3}>
         {l.steps.map((st) => (
           <div key={st.n} className={s.col}>
             <p className={s.meta}>{st.n} · {st.time}</p>
@@ -143,7 +165,7 @@ export function Ladder() {
             {st.cta && <LinkButton href={st.cta.href} variant="quiet">{st.cta.label}</LinkButton>}
           </div>
         ))}
-      </div>
+      </Reveal>
     </Section>
   );
 }
@@ -152,7 +174,7 @@ export function Process() {
   const p = home.process;
   return (
     <Section id="process" tone="surface" eyebrow="Process" title={p.title}>
-      <div className={s.cols4}>
+      <Reveal className={s.cols4}>
         {p.steps.map((st, i) => (
           <div key={st.name} className={s.step}>
             <p className={s.meta}>0{i + 1} · {st.time}</p>
@@ -160,7 +182,7 @@ export function Process() {
             <p>{st.out}</p>
           </div>
         ))}
-      </div>
+      </Reveal>
     </Section>
   );
 }
@@ -169,12 +191,12 @@ export function Engineering() {
   const e = home.engineering;
   return (
     <Section tone="ink" eyebrow="Engineering">
-      <div className={s.twoCol}>
+      <Reveal className={s.twoCol}>
         <h2 className={s.h2}>{e.title}</h2>
         <ul className={s.points}>
           {e.points.map((t, i) => <li key={t}><span>0{i + 1}</span>{t}</li>)}
         </ul>
-      </div>
+      </Reveal>
     </Section>
   );
 }
@@ -183,9 +205,9 @@ export function Commitments() {
   const c = home.commitments;
   return (
     <Section eyebrow="Commitments" title={c.title}>
-      <div className={s.grid3}>
+      <Reveal className={s.grid3}>
         {c.items.map((t, i) => <div key={t} className={s.commit}><span>0{i + 1}</span>{t}</div>)}
-      </div>
+      </Reveal>
     </Section>
   );
 }
@@ -194,7 +216,7 @@ export function Fit() {
   const f = home.fit;
   return (
     <Section tone="surface" eyebrow="Fit" title={f.title}>
-      <div className={s.twoCol}>
+      <Reveal className={s.twoCol}>
         <div>
           <h3 className={s.listH}>A good fit</h3>
           <ul className={`${s.list} ${s.good}`}>{f.good.map((t) => <li key={t}><b>+</b>{t}</li>)}</ul>
@@ -203,7 +225,7 @@ export function Fit() {
           <h3 className={s.listH}>Not a fit</h3>
           <ul className={`${s.list} ${s.bad}`}>{f.bad.map((t) => <li key={t}><b>–</b>{t}</li>)}</ul>
         </div>
-      </div>
+      </Reveal>
     </Section>
   );
 }
@@ -212,14 +234,14 @@ export function Faq() {
   const f = home.faq;
   return (
     <Section eyebrow="FAQ" title={f.title}>
-      <div className={s.faq}>
+      <Reveal className={s.faq}>
         {f.items.map((it) => (
           <details key={it.q}>
             <summary>{it.q}</summary>
             <p>{it.a}</p>
           </details>
         ))}
-      </div>
+      </Reveal>
     </Section>
   );
 }
@@ -228,14 +250,14 @@ export function Closing() {
   const c = home.closing;
   return (
     <Section tone="surface">
-      <div className={s.closing}>
+      <Reveal className={s.closing}>
         <h2 className={s.h2}>{c.title}</h2>
         <p>{c.body}</p>
         <div className={s.actions}>
           <LinkButton href={ctaHref}>{home.hero.primary}</LinkButton>
           <LinkButton href={`mailto:${site.email}`} variant="quiet">{site.email}</LinkButton>
         </div>
-      </div>
+      </Reveal>
     </Section>
   );
 }

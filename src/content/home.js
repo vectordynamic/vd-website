@@ -1,7 +1,13 @@
 // All homepage copy lives here. Plain words, no invented numbers, no client claims.
 export const home = {
   hero: {
-    eyebrow: 'Custom software · ERP · AI · Automation',
+    eyebrow: 'Custom software · Business systems · Applied AI · Automation',
+    diagram: [
+      { n: '01', label: 'Software', sub: 'Custom platforms and apps' },
+      { n: '02', label: 'Business Systems', sub: 'Your operations in one place' },
+      { n: '03', label: 'Applied AI', sub: 'From pilot to production' },
+      { n: '04', label: 'Automation', sub: 'Repetitive work, handled' },
+    ],
     title: 'The software and AI your business runs on. Built to scale. Kept running.',
     lede: 'Vector Dynamic is a senior engineering team. We build custom platforms, ERP and business systems, AI and automation for growing B2B companies, with the code in your repository from day one.',
     primary: 'Book a 30-minute systems review',
@@ -34,22 +40,22 @@ export const home = {
     },
     {
       id: 'erp',
-      title: 'ERP and Business Systems',
-      summary: 'Custom ERP, CRM, HR, inventory and finance modules, or extensions to the ERP you already run.',
+      title: 'Business Systems and ERP',
+      summary: 'Replace spreadsheets and disconnected tools with one system for sales, inventory, finance and people. Custom ERP and CRM, or extensions to the ERP you already run.',
       covers: ['Custom ERP and CRM', 'Inventory, sales and finance', 'HR and payroll modules', 'Odoo and NetSuite extensions', 'Data migration'],
       trigger: 'We run the business on ten spreadsheets and three logins.',
       note: 'We’ll tell you when not to build custom.',
     },
     {
       id: 'ai',
-      title: 'AI and Machine Learning',
+      title: 'Applied AI and Machine Learning',
       summary: 'LLM applications, knowledge search, computer vision and predictive models that run in production, not only in a demo.',
       covers: ['LLM applications and RAG', 'Computer vision', 'Predictive models', 'ML pipelines that scale', 'Evaluation and monitoring'],
       trigger: 'Our AI pilot never made it into the real workflow.',
     },
     {
       id: 'automation',
-      title: 'Automation and Integration',
+      title: 'Workflow Automation and Integration',
       summary: 'Workflow automation, AI agents and integrations that take repetitive work off your team.',
       covers: ['Workflow automation', 'AI agents and assistants', 'Document processing', 'System-to-system integration', 'Automated reporting'],
       trigger: 'Smart people spend hours copying data between systems.',

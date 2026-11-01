@@ -17,8 +17,7 @@
 .facts li { padding: 1rem 1.25rem 0 0; font-family: var(--vd-font-mono), monospace; font-size: 0.8rem; line-height: 1.5; color: var(--vd-graphite); }
 .diagram { width: 100%; height: auto; color: var(--vd-ink); }
 @media (max-width: 900px) { .heroGrid { grid-template-columns: 1fr; } .diagram { display: none; } .facts { grid-template-columns: 1fr 1fr; row-gap: 1rem; } }
-@media (prefers-reduced-motion: no-preference) { .hero { animation: rise 0.5s ease both; } }
-@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
 
 /* Problem */
 .twoCol { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); }
@@ -102,3 +101,69 @@
 .closing { text-align: left; }
 .closing .h2 { max-width: 18ch; font-size: clamp(2.2rem, 5vw, 4rem); margin-bottom: 1.25rem; }
 .closing p { color: var(--vd-graphite); max-width: 48ch; margin: 0 0 2rem; }
+
+/* ===== Motion and hover ===== */
+.fadeIn { animation: fade 1s ease 0.8s backwards; }
+@keyframes fade { from { opacity: 0; } }
+
+/* Hero: staggered entrance */
+.heroGrid > div > * { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; }
+.heroGrid > div > :nth-child(1) { animation-delay: 0.05s; }
+.heroGrid > div > :nth-child(2) { animation-delay: 0.15s; }
+.heroGrid > div > :nth-child(3) { animation-delay: 0.3s; }
+.heroGrid > div > :nth-child(4) { animation-delay: 0.45s; }
+
+/* Hero diagram: rings fade in, lines draw, nodes pop, nodes pulse, outer ring orbits */
+.ring { animation: fade 1.4s ease backwards; }
+.orbit { transform-box: fill-box; transform-origin: center; animation: spin 120s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.draw { stroke-dasharray: 1; animation: draw 1.3s cubic-bezier(0.4, 0, 0.2, 1) backwards; }
+@keyframes draw { from { stroke-dashoffset: 1; } }
+.dot { transform-box: fill-box; transform-origin: center; animation: pop 0.7s cubic-bezier(0.3, 1.5, 0.5, 1) backwards; }
+@keyframes pop { from { opacity: 0; transform: scale(0.2); } }
+.pulse { transform-box: fill-box; transform-origin: center; animation: pulse 3.2s ease-out infinite; }
+@keyframes pulse { 0% { transform: scale(1); opacity: 0.5; } 70%, 100% { transform: scale(3.6); opacity: 0; } }
+.core { animation: pop 0.9s cubic-bezier(0.3, 1.3, 0.5, 1) 0.1s backwards; transform-box: fill-box; transform-origin: center; }
+.tx { animation: fade 0.9s ease backwards; }
+
+/* Accent rule that sweeps across the top of a block on hover */
+.row, .col, .step, .commit { position: relative; }
+.row::before, .col::before, .step::before, .commit::before {
+  content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 2px;
+  background: var(--vd-signal); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); pointer-events: none;
+}
+.step::before { top: -2px; }
+.row:hover::before, .col:hover::before, .step:hover::before, .commit:hover::before { transform: scaleX(1); }
+
+.num { transition: color 0.3s ease; }
+.row:hover .num { color: var(--vd-signal); }
+.rowTitle { transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.row:hover .rowTitle { transform: translateX(10px); }
+.covers li { transition: border-color 0.3s ease, padding-left 0.35s ease; }
+.row:hover .covers li { border-color: var(--vd-ink); }
+.row:hover .covers li:hover { padding-left: 0.4rem; }
+
+.item { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+.item:hover { background: var(--vd-paper); box-shadow: inset 3px 0 0 var(--vd-signal); }
+.itemName { transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.item:hover .itemName { transform: translateX(14px); }
+
+.colName, .stepName { transition: color 0.3s ease; }
+.col:hover .colName, .step:hover .stepName { color: var(--vd-signal); }
+.commit { transition: color 0.3s ease; }
+.commit:hover span { color: var(--vd-signal); }
+.commit span { transition: color 0.3s ease; }
+
+.list li { transition: transform 0.3s ease; }
+.list li:hover { transform: translateX(6px); }
+.points li { transition: padding-left 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.3s ease; }
+.points li:hover { padding-left: 0.75rem; color: #fff; }
+
+/* FAQ: hover colour, plus rotates to a cross, smooth open */
+.faq summary { transition: color 0.2s ease; }
+.faq summary:hover { color: var(--vd-signal); }
+.faq summary::after { transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.2s ease; font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: '+'; transform: rotate(45deg); color: var(--vd-signal); }
+.faq details::details-content { block-size: 0; overflow: clip; transition: block-size 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), content-visibility 0.4s allow-discrete; }
+.faq details[open]::details-content { block-size: auto; }

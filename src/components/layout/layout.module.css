@@ -4,8 +4,10 @@
 .bar { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 2rem; }
 .brand { display: inline-flex; align-items: center; gap: 0.65rem; color: var(--vd-ink); text-decoration: none; font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; }
 .nav { display: flex; align-items: center; gap: 2rem; }
-.link { color: var(--vd-graphite); text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 0.25rem 0; border-bottom: 1px solid transparent; }
-.link:hover, .link[aria-current='page'] { color: var(--vd-ink); border-bottom-color: var(--vd-ink); }
+.link { color: var(--vd-graphite); text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 0.25rem 0; background: linear-gradient(var(--vd-signal), var(--vd-signal)) 0 100% / 0 1px no-repeat; transition: background-size 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.2s ease; }
+.link:hover, .link[aria-current='page'] { color: var(--vd-ink); background-size: 100% 1px; }
+.footA { transition: color 0.2s ease, transform 0.25s ease; display: inline-block; }
+.footA:hover { transform: translateX(3px); }
 .cta { padding: 0.75rem 1.1rem !important; font-size: 0.9rem !important; }
 .menuBtn { display: none; background: none; border: 1px solid var(--vd-rule); border-radius: 2px; padding: 0.55rem 0.8rem; font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--vd-ink); cursor: pointer; }
 .panel { display: none; }

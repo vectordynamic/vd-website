@@ -50,12 +50,21 @@ h1, h2, h3, h4 {
   display: inline-flex; align-items: center; gap: 0.5rem;
   font-family: var(--vd-font-sans), sans-serif; font-weight: 600; font-size: 0.975rem;
   line-height: 1; text-decoration: none; cursor: pointer; border: 0;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 .vd-btn--primary { background: var(--vd-signal); color: #fff; padding: 1rem 1.5rem; border-radius: 2px; }
-.vd-btn--primary:hover { background: var(--vd-signal-hover); }
-.vd-btn--quiet { background: none; color: var(--vd-ink); padding: 0.25rem 0; border-bottom: 1px solid currentColor; }
-.vd-btn--quiet:hover { color: var(--vd-signal); }
+.vd-btn--primary::after { content: '→'; display: inline-block; transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.vd-btn--primary:hover { background: var(--vd-signal-hover); transform: translateY(-1px); box-shadow: 0 10px 22px -12px rgba(201, 61, 32, 0.8); }
+.vd-btn--primary:hover::after { transform: translateX(5px); }
+.vd-btn--primary:active { transform: none; box-shadow: none; }
+/* Quiet link: ink underline, red underline sweeps in from the left on hover */
+.vd-btn--quiet {
+  color: var(--vd-ink); padding: 0.25rem 0 0.3rem; border-bottom: 0;
+  background: linear-gradient(var(--vd-signal), var(--vd-signal)) 0 100% / 0 1px no-repeat,
+              linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  transition: background-size 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.2s ease;
+}
+.vd-btn--quiet:hover { color: var(--vd-signal); background-size: 100% 1px, 100% 1px; }
 
 /* Skip link (kept from the original site) */
 .skip-link { position: absolute; left: -9999px; top: 0; z-index: 200; background: var(--vd-ink); color: var(--vd-paper); padding: 0.75rem 1rem; }
@@ -65,3 +74,16 @@ h1, h2, h3, h4 {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+
+/* Scroll reveal (see components/ui/Reveal.jsx). Visible by default; only armed by JS. */
+:root { interpolate-size: allow-keywords; }
+[data-reveal='hidden'] > * { opacity: 0; }
+[data-reveal='shown'] > * { animation: vd-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; }
+@keyframes vd-in { from { opacity: 0; transform: translateY(18px); } }
+[data-reveal] > :nth-child(1) { animation-delay: 0s; }
+[data-reveal] > :nth-child(2) { animation-delay: 0.08s; }
+[data-reveal] > :nth-child(3) { animation-delay: 0.16s; }
+[data-reveal] > :nth-child(4) { animation-delay: 0.24s; }
+[data-reveal] > :nth-child(5) { animation-delay: 0.32s; }
+[data-reveal] > :nth-child(6) { animation-delay: 0.4s; }
+[data-reveal] > :nth-child(n + 7) { animation-delay: 0.48s; }
