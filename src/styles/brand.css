@@ -87,3 +87,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 [data-reveal] > :nth-child(5) { animation-delay: 0.32s; }
 [data-reveal] > :nth-child(6) { animation-delay: 0.4s; }
 [data-reveal] > :nth-child(n + 7) { animation-delay: 0.48s; }
+
+/* Reading progress line */
+.vd-progress { position: fixed; inset: 0 0 auto 0; height: 2px; z-index: 300; pointer-events: none; }
+.vd-progress__bar { height: 100%; background: var(--vd-signal); transform-origin: left; transform: scaleX(0); }

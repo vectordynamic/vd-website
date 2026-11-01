@@ -1,9 +1,18 @@
+import { Fragment } from 'react';
 import LinkButton from '@/components/ui/LinkButton';
 import Reveal from '@/components/ui/Reveal';
-import { LOGO_PATHS } from '@/components/brand/Logo';
+import { LOGO_PATHS, logoViewBox } from '@/components/brand/Logo';
 import { home } from '@/content/home';
 import { site, ctaHref } from '@/content/site';
 import s from './home.module.css';
+
+// Splits a heading into words that slide up out of a mask. Text stays intact for SEO and screen readers.
+const Words = ({ text }) =>
+  text.split(' ').map((w, i) => (
+    <Fragment key={i}>
+      <span className={s.word}><span className={s.wordIn} style={{ '--w': i }}>{w}</span></span>{' '}
+    </Fragment>
+  ));
 
 const Section = ({ id, tone = '', eyebrow, title, children }) => (
   <section id={id} className={`${s.section} ${tone ? s[tone] : ''}`}>
@@ -11,7 +20,7 @@ const Section = ({ id, tone = '', eyebrow, title, children }) => (
       {(eyebrow || title) && (
         <Reveal>
           {eyebrow && <p className={s.eyebrow}>{eyebrow}</p>}
-          {title && <h2 className={s.h2}>{title}</h2>}
+          {title && <h2 className={s.h2}><Words text={title} /></h2>}
         </Reveal>
       )}
       {children}
@@ -56,7 +65,7 @@ function Diagram({ items }) {
       })}
       <g className={s.core}>
         <circle cx="240" cy="240" r="46" fill="#101418" />
-        <svg x="212" y="212" width="56" height="56" viewBox="30 8 50 50" fill="#F6F3EC">
+        <svg x="212" y="212" width="56" height="56" viewBox={logoViewBox(1.15)} fill="#F6F3EC">
           {LOGO_PATHS.map((d) => <path key={d} d={d} />)}
         </svg>
       </g>
@@ -72,7 +81,7 @@ export function Hero() {
         <div className={s.heroGrid}>
           <div>
             <p className={s.eyebrow}>{h.eyebrow}</p>
-            <h1 className={s.h1}>{h.title}</h1>
+            <h1 className={s.h1}><Words text={h.title} /></h1>
             <p className={s.lede}>{h.lede}</p>
             <div className={s.actions}>
               <LinkButton href={ctaHref}>{h.primary}</LinkButton>
@@ -94,7 +103,7 @@ export function Problem() {
   return (
     <Section>
       <Reveal className={s.twoCol}>
-        <h2 className={s.h2}>{p.title}</h2>
+        <h2 className={s.h2}><Words text={p.title} /></h2>
         <div className={s.body}>
           {p.body.map((t) => <p key={t}>{t}</p>)}
           <p className={s.sources}>
@@ -124,6 +133,26 @@ export function Practices() {
             <ul className={s.covers}>{p.covers.map((c) => <li key={c}>{c}</li>)}</ul>
           </div>
         ))}
+      </Reveal>
+    </Section>
+  );
+}
+
+export function AiBand() {
+  const a = home.aiBand;
+  return (
+    <Section tone="ink" eyebrow={a.eyebrow} title={a.title}>
+      <p className={s.aiLede}>{a.lede}</p>
+      <Reveal className={s.aiCols}>
+        {a.points.map((pt) => (
+          <div key={pt.name} className={s.aiCol}>
+            <h3>{pt.name}</h3>
+            <p>{pt.text}</p>
+          </div>
+        ))}
+      </Reveal>
+      <Reveal className={s.chips}>
+        {a.tools.map((t) => <span key={t} className={s.chip}>{t}</span>)}
       </Reveal>
     </Section>
   );
@@ -174,10 +203,11 @@ export function Process() {
   const p = home.process;
   return (
     <Section id="process" tone="surface" eyebrow="Process" title={p.title}>
+      <p className={s.intro}>{p.note}</p>
       <Reveal className={s.cols4}>
         {p.steps.map((st, i) => (
           <div key={st.name} className={s.step}>
-            <p className={s.meta}>0{i + 1} · {st.time}</p>
+            <p className={s.meta}>Phase 0{i + 1}</p>
             <h3 className={s.stepName}>{st.name}</h3>
             <p>{st.out}</p>
           </div>
@@ -192,7 +222,7 @@ export function Engineering() {
   return (
     <Section tone="ink" eyebrow="Engineering">
       <Reveal className={s.twoCol}>
-        <h2 className={s.h2}>{e.title}</h2>
+        <h2 className={s.h2}><Words text={e.title} /></h2>
         <ul className={s.points}>
           {e.points.map((t, i) => <li key={t}><span>0{i + 1}</span>{t}</li>)}
         </ul>

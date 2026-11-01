@@ -4,6 +4,7 @@ import ReactQueryProvider from '@/components/providers/ReactQueryProvider';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import ScrollProgress from '@/components/ui/ScrollProgress';
 import { site } from '@/content/site';
 import '@/styles/globals.css';
 import '@/styles/components/buttons.css';
@@ -53,6 +54,7 @@ export default function RootLayout({ children }) {
         </Suspense>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
         <ReactQueryProvider>
+          <ScrollProgress />
           <a href="#main-content" className="skip-link">Skip to main content</a>
           <Header />
           <main id="main-content">{children}</main>

@@ -1,6 +1,6 @@
 import { home } from '@/content/home';
 import { site } from '@/content/site';
-import { Hero, Problem, Practices, Portfolio, Ladder, Process, Engineering, Commitments, Fit, Faq, Closing } from '@/components/home/HomeSections';
+import { Hero, Problem, Practices, AiBand, Portfolio, Ladder, Process, Engineering, Commitments, Fit, Faq, Closing } from '@/components/home/HomeSections';
 
 export const metadata = {
   title: { absolute: 'Vector Dynamic | Custom Software, ERP and AI, Built to Scale' },
@@ -35,6 +35,7 @@ export default function Home() {
       <Hero />
       <Problem />
       <Practices />
+      <AiBand />
       <Portfolio />
       <Ladder />
       <Process />

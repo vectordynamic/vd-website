@@ -1,22 +1,22 @@
 // All homepage copy lives here. Plain words, no invented numbers, no client claims.
 export const home = {
   hero: {
-    eyebrow: 'Custom software · Business systems · Applied AI · Automation',
+    eyebrow: 'Custom software · Business systems · AI integration · Automation',
     diagram: [
-      { n: '01', label: 'Software', sub: 'Custom platforms and apps' },
+      { n: '01', label: 'Software', sub: 'Custom platforms, apps and APIs' },
       { n: '02', label: 'Business Systems', sub: 'Your operations in one place' },
-      { n: '03', label: 'Applied AI', sub: 'From pilot to production' },
+      { n: '03', label: 'AI Integration', sub: 'Assistants, agents, knowledge bases' },
       { n: '04', label: 'Automation', sub: 'Repetitive work, handled' },
     ],
     title: 'The software and AI your business runs on. Built to scale. Kept running.',
-    lede: 'Vector Dynamic is a senior engineering team. We build custom platforms, ERP and business systems, AI and automation for growing B2B companies, with the code in your repository from day one.',
+    lede: 'Vector Dynamic is a senior engineering team. We build custom software, business systems, AI-powered products and automation for growing B2B companies, and we stay on to keep them running.',
     primary: 'Book a 30-minute systems review',
     secondary: { label: 'See how we work', href: '/#process' },
     facts: [
-      'Code in your repository from day one',
-      'You own all code and IP',
-      'Fixed-price build sprints',
+      'Fixed-price builds, billed by milestone',
+      'Ownership terms agreed upfront',
       'Weekly demo and written update',
+      'Direct line to the engineers building it',
     ],
   },
   problem: {
@@ -34,23 +34,23 @@ export const home = {
     {
       id: 'custom-software',
       title: 'Custom Software and Platforms',
-      summary: 'Web platforms, SaaS products, internal tools and mobile apps, designed around how your team works.',
-      covers: ['Web platforms and SaaS', 'Internal tools and dashboards', 'Mobile apps', 'APIs and microservices', 'Legacy modernization'],
+      summary: 'Web platforms, SaaS products, internal tools and mobile apps, plus the APIs and integrations that connect them to the rest of your stack.',
+      covers: ['Web platforms and SaaS', 'Internal tools and dashboards', 'Mobile apps', 'API development and integrations', 'Microservices and cloud architecture', 'Legacy modernization'],
       trigger: 'Off-the-shelf tools don’t fit how we work.',
     },
     {
       id: 'erp',
       title: 'Business Systems and ERP',
-      summary: 'Replace spreadsheets and disconnected tools with one system for sales, inventory, finance and people. Custom ERP and CRM, or extensions to the ERP you already run.',
-      covers: ['Custom ERP and CRM', 'Inventory, sales and finance', 'HR and payroll modules', 'Odoo and NetSuite extensions', 'Data migration'],
+      summary: 'Replace spreadsheets and disconnected tools with one system for sales, inventory, finance and people. We build custom ERP, CRM and management systems around how you operate.',
+      covers: ['Custom ERP and management systems', 'CRM and sales pipelines', 'Inventory, sales and finance', 'HR and payroll modules', 'Data migration', 'Odoo, when it is the better fit'],
       trigger: 'We run the business on ten spreadsheets and three logins.',
       note: 'We’ll tell you when not to build custom.',
     },
     {
       id: 'ai',
-      title: 'Applied AI and Machine Learning',
-      summary: 'LLM applications, knowledge search, computer vision and predictive models that run in production, not only in a demo.',
-      covers: ['LLM applications and RAG', 'Computer vision', 'Predictive models', 'ML pipelines that scale', 'Evaluation and monitoring'],
+      title: 'AI-Powered Software and Agents',
+      summary: 'We build software with AI built in: assistants, agents and knowledge bases powered by OpenAI, Claude, Gemini and open models, connected to your data and your tools.',
+      covers: ['AI features inside your product', 'Assistants and AI agents', 'Knowledge bases and document search', 'Chatbots and voice assistants', 'Computer vision and predictive models', 'Monitoring, evaluation and cost control'],
       trigger: 'Our AI pilot never made it into the real workflow.',
     },
     {
@@ -61,6 +61,17 @@ export const home = {
       trigger: 'Smart people spend hours copying data between systems.',
     },
   ],
+  aiBand: {
+    eyebrow: 'AI inside',
+    title: 'AI is built into what we build.',
+    lede: 'Whatever the system, we can wire in the models and data that make it smarter, so AI is part of the product and not a separate project.',
+    points: [
+      { name: 'Models', text: 'We integrate OpenAI, Anthropic Claude, Google Gemini and open-source models, and choose between them on quality, cost and your data-privacy needs.' },
+      { name: 'Knowledge', text: 'Knowledge bases and document search that let the AI answer from your own data, with sources you can check.' },
+      { name: 'Agents', text: 'Assistants and agents that use tools, call your APIs and finish tasks, with monitoring and cost limits around them.' },
+    ],
+    tools: ['OpenAI', 'Anthropic Claude', 'Google Gemini', 'Google Cloud AI', 'Open-source models', 'Vector databases', 'Agent frameworks'],
+  },
   portfolio: {
     title: 'Built by Vector Dynamic',
     intro: 'Our own products, designed and run by the same team that would build yours.',
@@ -75,18 +86,20 @@ export const home = {
   ladder: {
     title: 'How you start',
     steps: [
-      { n: '01', name: 'Systems Review', time: '1–2 weeks', price: 'Free for qualified teams', body: 'We study one workflow or system and send a written review: where time and money leak, what to build or fix, and a rough estimate.', cta: { label: 'Request a review', href: '/audit' } },
-      { n: '02', name: 'Build Sprint', time: '4–8 weeks', price: 'Fixed price, from $15,000', body: 'One working system, module or automation in production, with documentation and hand-over. Billed by milestone.' },
-      { n: '03', name: 'Run and Grow', time: 'Monthly, 3-month minimum', price: 'Managed from $2,000 a month · Dedicated pods priced per engineer', body: 'We monitor, fix and improve what we built, or add a dedicated team of 2 to 5 engineers to your roadmap.' },
+      { n: '01', name: 'Systems Review', time: 'About 1–2 weeks', price: 'Free for qualified teams', body: 'We study one workflow or system and send a written review: where time and money leak, what to build or fix, and a rough estimate.', cta: { label: 'Request a review', href: '/audit' } },
+      { n: '02', name: 'Fixed-Price Build', time: 'Scoped per project', price: 'Fixed price, set after the review', body: 'One working system, module or automation in production, with documentation and hand-over. Billed by milestone.' },
+      { n: '03', name: 'Run and Grow', time: 'Monthly plan', price: 'Sized to the system you run', body: 'We monitor, fix and improve what we built, or add a dedicated team of engineers to your roadmap.' },
     ],
   },
   process: {
     title: 'How an engagement runs',
+    note: 'Every project is different. Timelines are agreed in the proposal, and you see progress every week.',
     steps: [
-      { name: 'Discover', time: 'Week 1', out: 'Written scope, architecture sketch and a fixed quote' },
-      { name: 'Build', time: 'Weeks 2–6', out: 'Weekly demo on real data and a written weekly update' },
-      { name: 'Launch', time: 'Final week', out: 'Production release, monitoring, runbook and hand-over session' },
-      { name: 'Run', time: 'Ongoing', out: 'Monthly report, fixes and improvements' },
+      { name: 'Discover', out: 'We map the problem, the users and the systems involved. You get a written scope, an architecture sketch and a fixed quote.' },
+      { name: 'Design', out: 'Workflows, screens and the data model are agreed with you before any code is written.' },
+      { name: 'Build', out: 'Weekly demos on real data and a written update every week, so nothing is a surprise.' },
+      { name: 'Launch', out: 'Production release with monitoring, a runbook and a hand-over session for your team.' },
+      { name: 'Maintain', out: 'Monitoring, fixes, updates and improvements on a monthly plan, for as long as you need us.' },
     ],
   },
   engineering: {
@@ -103,27 +116,28 @@ export const home = {
     title: 'What we commit to',
     items: [
       'Fixed price, billed by milestone',
-      'You own all code and IP once paid',
-      'Code in your repository from day one',
+      'Ownership terms agreed in writing before work starts',
+      'Your data stays yours',
       'Mutual NDA on request',
       'A weekly demo and a written update',
-      'No lock-in: full documentation and hand-over',
+      'Full documentation and a clear hand-over plan',
     ],
   },
   fit: {
     title: 'Who we work best with',
-    good: ['B2B companies with 20 to 300 people', 'Teams with a real operational problem and a budget to fix it', 'Founders and operators who want a long-term engineering partner'],
-    bad: ['Projects under $15,000', 'Teams shopping for the lowest hourly rate', 'Ideas with no decision-maker involved'],
+    good: ['Founder-led and growing B2B companies with 5 to 50 people', 'Teams with a real operational problem and a budget to fix it', 'Owners and operators who want a long-term engineering partner'],
+    bad: ['Teams shopping only for the lowest hourly rate', 'Ideas with no decision-maker involved', 'Projects that need a final price before any discussion'],
   },
   faq: {
     title: 'Questions buyers ask us',
     items: [
       { q: 'Where is your team, and how do we work across time zones?', a: 'Our engineering team is based in Dhaka, Bangladesh. We agree a daily overlap window with your working hours, hold every call inside it, and send a written update every week, so nothing depends on being awake at the same time.' },
-      { q: 'Who owns the code and the data?', a: 'You do. Code lives in your repository from the first day, systems run in cloud accounts you own, and all intellectual property transfers to you on payment.' },
+      { q: 'Who owns the code and the data?', a: 'Your data is always yours. Code ownership is agreed in the proposal before work starts: either a full transfer to you, or a license to use and run the system while we keep the source. We explain the trade-off on the first call, because a full transfer changes the price.' },
+      { q: 'Which AI models and tools do you work with?', a: 'OpenAI, Anthropic Claude and Google Gemini, plus open-source models, with knowledge bases and agent workflows around them. We choose by quality, cost and your data-privacy needs.' },
       { q: 'How do you protect our systems and data?', a: 'Access is limited by role and removed at hand-over, credentials stay in your own secrets manager, and we sign a mutual NDA on request.' },
-      { q: 'Will we be one of your first clients?', a: 'We are a young company, and we say so. That is why engagements use fixed prices, milestone billing and full code ownership: your risk stays small and visible at every step.' },
-      { q: 'Can you work with our existing ERP, CRM or codebase?', a: 'Yes. Most projects extend or connect systems you already run. When building custom is not worth it, we say so in the review.' },
-      { q: 'What does a project cost?', a: 'Build sprints start at $15,000 at a fixed price. Ongoing support starts at $2,000 a month. The Systems Review is free for qualified teams.' },
+      { q: 'Will we be one of your first clients?', a: 'We are a young company, and we say so. That is why engagements use fixed prices, milestone billing and written terms: your risk stays small and visible at every step.' },
+      { q: 'Can you work with our existing ERP, CRM or codebase?', a: 'Yes. Most projects extend or connect systems you already run, through their APIs. When building custom is not worth it, we say so in the review.' },
+      { q: 'What does a project cost?', a: 'Every project is scoped and quoted at a fixed price after a short discovery, so you know the cost before work starts. Ongoing support is a monthly plan sized to the system. The Systems Review is free for qualified teams.' },
     ],
   },
   closing: {
@@ -138,5 +152,5 @@ export const audit = {
   looksAt: ['Where time and money leak in the workflow', 'What to automate, fix, replace or leave alone', 'Risks in the current system: data, security and scale'],
   receive: ['A 2 to 4 page written review', 'Three prioritized quick wins', 'A rough build estimate and timeline'],
   timing: 'A 30-minute call, then the written review within 1 to 2 weeks.',
-  qualify: 'Best for B2B companies with 20 to 300 people and a real operational problem.',
+  qualify: 'Best for founder-led B2B companies with 5 to 50 people and a real operational problem.',
 };
