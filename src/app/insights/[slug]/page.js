@@ -8,6 +8,7 @@ import SocialShare from '@/components/insights/SocialShare';
 import { Section, CtaBand } from '@/components/page/Page';
 import Reveal from '@/components/ui/Reveal';
 import { site } from '@/content/site';
+import { jsonLd } from '@/lib/jsonld';
 import s from '@/components/insights/insights.module.css';
 
 export async function generateMetadata({ params }) {
@@ -36,7 +37,7 @@ export default async function ArticlePage({ params }) {
   const mins = article.stats?.reading_time_minutes;
   const url = `${site.url}/insights/${slug}`;
 
-  const jsonLd = [
+  const structuredData = [
     {
       '@context': 'https://schema.org',
       '@type': 'TechArticle',
@@ -62,7 +63,7 @@ export default async function ArticlePage({ params }) {
 
   return (
     <article>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }} />
       <header className={s.articleHead}>
         <div className="vd-container">
           <nav className={s.crumbs} aria-label="Breadcrumb">

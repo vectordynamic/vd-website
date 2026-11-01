@@ -2,6 +2,7 @@ import { PageHero, Section } from '@/components/page/Page';
 import ArticleGrid from '@/components/insights/ArticleGrid';
 import { getPublishedArticlesFeed } from '@/lib/syncdaily';
 import { site } from '@/content/site';
+import { jsonLd } from '@/lib/jsonld';
 
 export const metadata = {
   title: 'Insights',
@@ -12,7 +13,7 @@ export const metadata = {
 export default async function InsightsPage() {
   const initial = (await getPublishedArticlesFeed(null, 12)) || { articles: [] };
 
-  const jsonLd = {
+  const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'Insights',
@@ -26,7 +27,7 @@ export default async function InsightsPage() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }} />
       <PageHero
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Insights' }]}
         eyebrow="Insights"

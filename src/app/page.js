@@ -1,5 +1,6 @@
 import { home } from '@/content/home';
 import { site } from '@/content/site';
+import { jsonLd } from '@/lib/jsonld';
 import { Hero, Problem, Practices, AiBand, Portfolio, Ladder, Process, Engineering, Commitments, Fit, Faq, Closing } from '@/components/home/HomeSections';
 
 export const metadata = {
@@ -8,7 +9,7 @@ export const metadata = {
   alternates: { canonical: '/' },
 };
 
-const jsonLd = [
+const structuredData = [
   ...home.practices.map((p) => ({
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -31,7 +32,7 @@ const jsonLd = [
 export default function Home() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }} />
       <Hero />
       <Problem />
       <Practices />

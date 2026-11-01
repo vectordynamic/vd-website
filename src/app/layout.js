@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import ScrollProgress from '@/components/ui/ScrollProgress';
 import CookieBanner from '@/components/ui/CookieBanner';
 import { site } from '@/content/site';
+import { jsonLd } from '@/lib/jsonld';
 import '@/styles/globals.css';
 import '@/styles/brand.css';
 
@@ -49,7 +50,7 @@ export default function RootLayout({ children }) {
         <Suspense fallback={null}>
           <GoogleAnalytics GA_MEASUREMENT_ID="G-KHBTJM0J0W" />
         </Suspense>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(organization) }} />
         <>
           <ScrollProgress />
           <a href="#main-content" className="skip-link">Skip to main content</a>

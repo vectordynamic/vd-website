@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { jsonLd } from '@/lib/jsonld';
 import { PageHero, Section, TwoCol, Rows, Steps, Checklist, Faq, WorkLinks, MoreLinks, CtaBand } from '@/components/page/Page';
 import LinkButton from '@/components/ui/LinkButton';
 import { home } from '@/content/home';
@@ -26,7 +27,7 @@ export default async function ServicePage({ params }) {
     .map((w) => ({ ...w, status: w.status }));
   const others = home.practices.filter((p) => p.id !== id).map((p) => ({ href: `/services/${p.id}`, label: p.title }));
 
-  const jsonLd = [
+  const structuredData = [
     {
       '@context': 'https://schema.org',
       '@type': 'Service',
@@ -44,7 +45,7 @@ export default async function ServicePage({ params }) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }} />
       <PageHero
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: practice.title }]}
         eyebrow="Service"
