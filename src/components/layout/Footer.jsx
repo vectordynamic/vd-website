@@ -4,6 +4,8 @@ import { navigation } from '@/data/navigation';
 import { site } from '@/content/site';
 import s from './layout.module.css';
 
+const SOCIAL_LABELS = { linkedin: 'LinkedIn', github: 'GitHub', twitter: 'X (Twitter)' };
+
 const Col = ({ title, links }) => (
   <div>
     <h2 className={s.footH}>{title}</h2>
@@ -46,7 +48,7 @@ export default function Footer() {
               {social.map(([k, url]) => (
                 <li key={k}>
                   <a className={s.footA} href={url} target="_blank" rel="noopener noreferrer">
-                    {k === 'github' ? 'GitHub' : k === 'linkedin' ? 'LinkedIn' : k[0].toUpperCase() + k.slice(1)}
+                    {SOCIAL_LABELS[k] || k[0].toUpperCase() + k.slice(1)}
                   </a>
                 </li>
               ))}

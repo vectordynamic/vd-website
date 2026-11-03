@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vector Dynamic Website
 
-## Getting Started
+Marketing and lead-generation site for [vectordynamic.com](https://vectordynamic.com), built with Next.js 16 (App Router), React 19, and the React Compiler.
 
-First, run the development server:
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env   # or create .env manually (see below)
+npm run dev            # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+| Command | What it does |
+| :--- | :--- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Production build (Google Fonts need network access) |
+| `npm start` | Serve the production build |
+| `npm run lint` | ESLint across the project |
+| `npm test` | Vitest unit tests (inquiry validation, rate limiter, UTM, analytics, `/api/contact`, copy rules) |
+| `npm run smoke` | SSR smoke suite: starts `next start` on port 3105 if needed, then checks every page (HTTP 200, `<h1>`, SSR text), `robots.txt`, `sitemap.xml`, `llms.txt`, redirects, and `POST /api/contact` validation and honeypot. Run `npm run build` first. |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Typical pre-deploy check:
 
-## Learn More
+```bash
+npm test && npm run lint && npm run build && npm run smoke
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Environment variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Set these in `.env` locally and in your hosting provider's environment settings for production. `.env*` files are git-ignored.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable | Required | Purpose |
+| :--- | :--- | :--- |
+| `RESEND_API_KEY` | Yes | Resend API key used by `POST /api/contact` to email inquiries. Without it the form returns a 503 with a direct-email fallback. |
+| `CONTACT_FROM_EMAIL` | No | Sender, e.g. `Vector Dynamic <info@vectordynamic.com>`. The domain must be verified in Resend. Defaults to `Vector Dynamic <info@vectordynamic.com>`. |
+| `CONTACT_TO_EMAIL` | No | Inbox that receives inquiries. Defaults to `info@vectordynamic.com`. |
+| `NEXT_PUBLIC_SITE_URL` | No | Canonical site URL used in metadata, sitemap, and JSON-LD. Defaults to `https://vectordynamic.com`. |
+| `NEXT_PUBLIC_BOOKING_URL` | No | Cal.com or Calendly URL. When set, `/book` embeds the scheduler; otherwise it shows a call-request form. |
+| `NEXT_PUBLIC_DEMO_VIDEO_URL` | No | Loom or YouTube embed URL. When set, the homepage shows a walkthrough link and `/work/syncdaily` embeds the video. |
+| `SMOKE_PORT` / `SMOKE_BASE_URL` | No | Only for `npm run smoke`. Override the port (default `3105`) or point the suite at an already-running server. |
 
-## Deploy on Vercel
+## Content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+All copy lives in `src/content/` so it can be edited without touching components:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `site.js`: company facts. Unknown facts stay `null` or empty; never invent them. Add `founders: [{ name, role, bio, linkedin }]` to show Leadership cards on `/` and `/about`.
+- `home.js`, `pages.js`: homepage, services, how-we-work, about, partners, and book copy.
+- `work.js`, `industries.js`, `articles.js`: case studies (`/work`), industry pages (`/for/[industry]`), and insight guides (`/insights`).
+
+`src/content/copy-rules.test.js` fails the test run if banned buzzwords or non-US spellings slip into the content.
+
+## Lead capture
+
+Forms (`/book`, `/audit`, `/partners`, `/contact`, `/for/[industry]`) post to `POST /api/contact`, which validates input, drops honeypot spam silently, rate-limits by IP (5 requests per 10 minutes), and sends the email through Resend with first-touch UTM data attached. Analytics (GA4) loads only after the visitor accepts the cookie notice.
