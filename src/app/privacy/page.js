@@ -1,16 +1,18 @@
 import Link from 'next/link';
+import { site } from '@/content/site';
 import styles from './page.module.css';
 
 export const metadata = {
   title: 'Privacy Policy',
-  description: 'Vector Dynamic Privacy Policy - How we collect, use, and protect your personal information.',
+  description: 'Vector Dynamic Privacy Policy — How we collect, process, and safeguard information across vectordynamic.com and B2B inquiries.',
+  alternates: { canonical: '/privacy' },
 };
 
 export default function PrivacyPage() {
   return (
     <div className={styles.page}>
       <div className="vd-container">
-        <nav className={styles.breadcrumb}>
+        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
           <Link href="/">Home</Link>
           <span>/</span>
           <span>Privacy Policy</span>
@@ -23,116 +25,87 @@ export default function PrivacyPage() {
           <section>
             <h2>1. Introduction</h2>
             <p>
-              Vector Dynamic ("we," "our," or "us") is committed to protecting your privacy. 
-              This Privacy Policy explains how we collect, use, disclose, and safeguard your 
-              information when you visit our website vectordynamic.com or use our services.
+              Vector Dynamic (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) respects your privacy and handles business and personal data transparently.
+              This Privacy Policy explains what information we collect when you visit <strong>vectordynamic.com</strong>, request a Systems Review, book a discovery call, or correspond with our engineering team.
             </p>
           </section>
 
           <section>
             <h2>2. Information We Collect</h2>
-            <h3>Personal Information</h3>
-            <p>We may collect personal information that you provide directly to us, including:</p>
+            <h3>Information You Provide Directly</h3>
+            <p>When you submit an inquiry, Systems Review request, call request, or partnership form, we collect:</p>
             <ul>
-              <li>Name and contact information (email address, phone number)</li>
-              <li>Company name and job title</li>
-              <li>Information provided when you fill out forms or request services</li>
-              <li>Communication preferences</li>
+              <li>Your name and work email address</li>
+              <li>Company name, website URL, and optional phone number or region/timezone</li>
+              <li>Project scope, budget band, and workflow details you choose to share</li>
+              <li>First-touch campaign attribution parameters (such as <code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>, and HTTP referrer) stored temporarily in your browser session so we understand how you found us</li>
             </ul>
 
-            <h3>Automatically Collected Information</h3>
-            <p>When you visit our website, we may automatically collect:</p>
+            <h3>Technical &amp; Analytics Information</h3>
             <ul>
-              <li>IP address and device information</li>
-              <li>Browser type and version</li>
-              <li>Pages viewed and time spent on site</li>
-              <li>Referring website addresses</li>
+              <li><strong>Security &amp; rate limiting:</strong> Request IP addresses are checked briefly in memory on our API route solely to prevent automated form spam.</li>
+              <li><strong>Optional analytics:</strong> Google Analytics 4 runs <em>only</em> if you explicitly click &ldquo;Accept&rdquo; on our cookie notice. If you click &ldquo;Decline&rdquo; or ignore the banner, analytics scripts remain disabled.</li>
             </ul>
           </section>
 
           <section>
             <h2>3. How We Use Your Information</h2>
-            <p>We use the information we collect to:</p>
+            <p>We process inquiry and technical data strictly to:</p>
             <ul>
-              <li>Respond to your inquiries and provide requested services</li>
-              <li>Send you updates about our services and products</li>
-              <li>Improve our website and services</li>
-              <li>Analyze usage patterns and trends</li>
-              <li>Protect against fraudulent or unauthorized activity</li>
+              <li>Review your technical inquiry and respond directly from an engineer or founder</li>
+              <li>Prepare requested deliverables (such as a written Systems Review, scope brief, or mutual NDA)</li>
+              <li>Protect our website and forms against abuse and spam</li>
+              <li>Measure aggregate website performance when analytics consent has been granted</li>
+            </ul>
+            <p>
+              We do <strong>not</strong> place B2B inquiry contacts onto automated marketing spam lists, and we never sell or rent your contact details.
+            </p>
+          </section>
+
+          <section>
+            <h2>4. Subprocessors &amp; Data Sharing</h2>
+            <p>We share data only with essential infrastructure providers acting under strict confidentiality:</p>
+            <ul>
+              <li><strong>Transactional email delivery (Resend):</strong> Form submissions on vectordynamic.com are transmitted securely via Resend to deliver your inquiry directly to our engineering inbox.</li>
+              <li><strong>Hosting &amp; infrastructure:</strong> Cloud hosting providers serving our Next.js web application over encrypted HTTPS connections.</li>
+              <li><strong>Analytics (Google Analytics 4):</strong> Loaded only after explicit opt-in consent.</li>
+              <li><strong>Legal compliance:</strong> When required by applicable law or valid legal process.</li>
             </ul>
           </section>
 
           <section>
-            <h2>4. Information Sharing</h2>
+            <h2>5. Client Project Confidentiality &amp; AI Data Protection</h2>
             <p>
-              We do not sell, trade, or rent your personal information to third parties. 
-              We may share information with:
+              Before reviewing internal source code, operational spreadsheets, or proprietary datasets for a client engagement, we execute a mutual Non-Disclosure Agreement (NDA) on request. Any AI or LLM integrations we engineer for clients use commercial API tiers or private deployments where customer data is excluded from model training.
             </p>
+          </section>
+
+          <section>
+            <h2>6. Data Retention &amp; Security</h2>
+            <p>
+              We retain business inquiry correspondence only as long as necessary to evaluate a potential engagement, fulfill contractual obligations, or comply with tax and accounting regulations. All website traffic is encrypted in transit via TLS, and access to company email and infrastructure requires multi-factor authentication.
+            </p>
+          </section>
+
+          <section>
+            <h2>7. International Rights (GDPR, UK GDPR &amp; CCPA)</h2>
+            <p>Depending on your jurisdiction (including the UK, European Economic Area, and US states), you have the right to:</p>
             <ul>
-              <li>Service providers who assist in our operations</li>
-              <li>Legal authorities when required by law</li>
-              <li>Business partners with your consent</li>
+              <li>Request a copy of the personal data we hold about you</li>
+              <li>Correct inaccurate or incomplete information</li>
+              <li>Request erasure (&ldquo;right to be forgotten&rdquo;) of your inquiry records</li>
+              <li>Object to or restrict processing, or withdraw analytics cookie consent at any time by clearing site storage in your browser</li>
             </ul>
-          </section>
-
-          <section>
-            <h2>5. Data Security</h2>
             <p>
-              We implement appropriate technical and organizational measures to protect 
-              your personal information against unauthorized access, alteration, disclosure, 
-              or destruction.
+              To exercise any of these rights, email <a href={`mailto:${site.email}`}>{site.email}</a> and we will respond promptly.
             </p>
           </section>
 
           <section>
-            <h2>6. Your Rights</h2>
-            <p>You have the right to:</p>
-            <ul>
-              <li>Access your personal information</li>
-              <li>Correct inaccurate data</li>
-              <li>Request deletion of your data</li>
-              <li>Opt-out of marketing communications</li>
-              <li>Withdraw consent at any time</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2>7. Cookies</h2>
+            <h2>8. Contact Us</h2>
             <p>
-              We use analytics cookies only if you accept them in the cookie notice. If you decline,
-              analytics stays off and the site works exactly the same. You can change your choice at any
-              time by clearing this site's data in your browser.
-            </p>
-            <p>
-              Our website uses cookies to enhance your experience. You can control cookie 
-              preferences through your browser settings. Some features may not function 
-              properly if cookies are disabled.
-            </p>
-          </section>
-
-          <section>
-            <h2>8. Third-Party Links</h2>
-            <p>
-              Our website may contain links to third-party websites. We are not responsible 
-              for the privacy practices of these external sites.
-            </p>
-          </section>
-
-          <section>
-            <h2>9. Changes to This Policy</h2>
-            <p>
-              We may update this Privacy Policy from time to time. Changes will be posted 
-              on this page with an updated revision date.
-            </p>
-          </section>
-
-          <section>
-            <h2>10. Contact Us</h2>
-            <p>
-              If you have questions about this Privacy Policy, please contact us at:
-            </p>
-            <p>
-              <strong>Email:</strong> <a href="mailto:info@vectordynamic.com">info@vectordynamic.com</a>
+              For privacy questions, data-deletion requests, or mutual NDA inquiries, contact us directly at{' '}
+              <a href={`mailto:${site.email}`}>{site.email}</a>.
             </p>
           </section>
         </article>

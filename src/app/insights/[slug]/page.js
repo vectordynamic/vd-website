@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
-import { getPublishedArticleBySlug, getLatestPublishedArticles } from '@/lib/syncdaily';
+import { getAllArticles, getArticleBySlug } from '@/content/articles';
 import ArticleCard, { formatDate } from '@/components/insights/ArticleCard';
 import SocialShare from '@/components/insights/SocialShare';
 import { Section, CtaBand } from '@/components/page/Page';
@@ -11,29 +11,57 @@ import { site } from '@/content/site';
 import { jsonLd } from '@/lib/jsonld';
 import s from '@/components/insights/insights.module.css';
 
+export function generateStaticParams() {
+  return getAllArticles().map((a) => ({ slug: a.slug }));
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const article = await getPublishedArticleBySlug(slug);
+  const article = getArticleBySlug(slug);
   if (!article) return { title: 'Article not found' };
 
-  const description = article.meta?.meta_description || article.excerpt || `Read ${article.title}`;
-  const images = article.image_url ? [{ url: article.image_url, width: 1200, height: 630, alt: article.title }] : undefined;
+  const description = article.excerpt || `Read ${article.title}`;
   return {
-    title: article.meta?.meta_title || article.title,
+    title: article.title,
     description,
     keywords: article.tags || [],
-    alternates: { canonical: `${site.url}/insights/${slug}` },
-    openGraph: { title: article.title, description, type: 'article', publishedTime: article.published_at, authors: ['Vector Dynamic'], images },
-    twitter: { card: 'summary_large_image', title: article.title, description, images: images && [article.image_url] },
+    alternates: { canonical: `/insights/${slug}` },
+    openGraph: {
+      title: article.title,
+      description,
+      type: 'article',
+      publishedTime: article.published_at,
+      authors: ['Vector Dynamic Engineering'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description,
+    },
   };
 }
 
+const markdownComponents = {
+  a: ({ href = '', children }) => {
+    if (href.startsWith('/')) {
+      return <Link href={href}>{children}</Link>;
+    }
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
+    );
+  },
+};
+
 export default async function ArticlePage({ params }) {
   const { slug } = await params;
-  const [article, latestRes] = await Promise.all([getPublishedArticleBySlug(slug), getLatestPublishedArticles(4)]);
+  const article = getArticleBySlug(slug);
   if (!article) notFound();
 
-  const related = (latestRes?.articles || []).filter((a) => a.slug !== slug).slice(0, 3);
+  const related = getAllArticles()
+    .filter((a) => a.slug !== slug)
+    .slice(0, 2);
   const mins = article.stats?.reading_time_minutes;
   const url = `${site.url}/insights/${slug}`;
 
@@ -42,7 +70,7 @@ export default async function ArticlePage({ params }) {
       '@context': 'https://schema.org',
       '@type': 'TechArticle',
       headline: article.title,
-      image: article.image_url ? [article.image_url] : [],
+      description: article.excerpt,
       datePublished: article.published_at,
       dateModified: article.updated_at || article.published_at,
       author: [{ '@type': 'Organization', name: site.name, url: site.url }],
@@ -76,34 +104,38 @@ export default async function ArticlePage({ params }) {
           <div className={s.articleMeta}>
             <span>{formatDate(article.published_at)}</span>
             {mins && <span>{mins} min read</span>}
-            <span>Vector Dynamic</span>
+            <span>Vector Dynamic Engineering</span>
           </div>
         </div>
       </header>
 
-      <div className="vd-container">
-        {article.image_url && (
+      {article.image_url && (
+        <div className="vd-container">
           <div className={s.hero}>
             <Image src={article.image_url} alt={article.title} fill priority sizes="(max-width: 1000px) 100vw, 1000px" />
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       <div className={s.narrow}>
         <div className={s.prose}>
-          {article.content ? <ReactMarkdown>{article.content}</ReactMarkdown> : <p>This article is not available right now.</p>}
+          <ReactMarkdown components={markdownComponents}>{article.content}</ReactMarkdown>
         </div>
         <SocialShare title={article.title} slug={slug} />
       </div>
 
       {related.length > 0 && (
-        <Section tone="surface" eyebrow="Keep reading" title="More insights">
+        <Section tone="surface" eyebrow="Keep Reading" title="More engineering guides">
           <Reveal className={s.grid}>
-            {related.map((a) => <ArticleCard key={a.id || a.slug} article={a} />)}
+            {related.map((a) => <ArticleCard key={a.slug} article={a} />)}
           </Reveal>
         </Section>
       )}
-      <CtaBand title="Need software or AI built for your business?" body="Book a 30-minute call. We will tell you what we would build, what we would not, and what it would take." />
+
+      <CtaBand
+        title="Weighing a build like this for your business?"
+        body="Book a 30-minute discovery call with an engineer, or request a free 2–4 page written review of your workflow."
+      />
     </article>
   );
 }

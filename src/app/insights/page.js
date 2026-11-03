@@ -1,27 +1,34 @@
-import { PageHero, Section } from '@/components/page/Page';
+import { PageHero, Section, CtaBand } from '@/components/page/Page';
 import ArticleGrid from '@/components/insights/ArticleGrid';
-import { getPublishedArticlesFeed } from '@/lib/syncdaily';
-import { site } from '@/content/site';
+import LinkButton from '@/components/ui/LinkButton';
+import { getAllArticles } from '@/content/articles';
+import { site, auditHref } from '@/content/site';
 import { jsonLd } from '@/lib/jsonld';
 
 export const metadata = {
-  title: 'Insights',
-  description: 'Briefings on AI, security, cloud and software from Vector Dynamic.',
+  title: 'Engineering Insights & B2B Architecture Guides',
+  description:
+    'Practical decision guides from Vector Dynamic engineers on custom ERP vs. Odoo, shipping production AI without pilot failure, and B2B workflow automation.',
   alternates: { canonical: '/insights' },
 };
 
-export default async function InsightsPage() {
-  const initial = (await getPublishedArticlesFeed(null, 12)) || { articles: [] };
+export default function InsightsPage() {
+  const articles = getAllArticles();
 
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Insights',
+    name: 'Engineering Insights — Vector Dynamic',
     url: `${site.url}/insights`,
     publisher: { '@type': 'Organization', name: site.name, url: site.url },
     mainEntity: {
       '@type': 'ItemList',
-      itemListElement: (initial.articles || []).map((a, i) => ({ '@type': 'ListItem', position: i + 1, url: `${site.url}/insights/${a.slug}` })),
+      itemListElement: articles.map((a, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: a.title,
+        url: `${site.url}/insights/${a.slug}`,
+      })),
     },
   };
 
@@ -30,13 +37,23 @@ export default async function InsightsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }} />
       <PageHero
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Insights' }]}
-        eyebrow="Insights"
-        title="Technology news and analysis."
-        lede="Briefings on AI, security, cloud and software, published by our own AI-assisted editorial pipeline."
-      />
+        eyebrow="Engineering Insights"
+        title="Practical guides on custom ERP, applied AI, and B2B systems."
+        lede="Written by the engineers who scope and ship our systems—covering build-vs-buy trade-offs, production AI guardrails, and operational ROI."
+      >
+        <LinkButton href={auditHref} event="cta_click" eventParams={{ location: 'insights_hero_audit' }}>
+          Request a free written Systems Review
+        </LinkButton>
+        <LinkButton href="/work/syncdaily" variant="quiet">
+          Inspect our live SyncDaily pipeline
+        </LinkButton>
+      </PageHero>
+
       <Section>
-        <ArticleGrid initial={initial} />
+        <ArticleGrid articles={articles} />
       </Section>
+
+      <CtaBand />
     </>
   );
 }

@@ -1,30 +1,32 @@
-# Profile copy (matches the website wording)
+# Profile copy (synced with vectordynamic.com)
 
-Use the same wording on every profile so buyers see one consistent company.
+Use this exact wording across LinkedIn, Google Business Profile, Crunchbase, Wellfound, and Clutch so foreign prospects see one consistent, verifiable company everywhere.
 
 ## One-line tagline (LinkedIn headline, Crunchbase, directories)
 Custom software, ERP and AI, built to scale and kept running.
 
-## Short description (about 150 characters)
-Vector Dynamic builds custom software, ERP and business systems, AI and automation for growing B2B companies, then keeps them running.
+## Short description (~155 characters)
+Vector Dynamic is a senior engineering team building custom software, ERP systems, AI-powered products and workflow automation for growing B2B companies.
 
-## Full description (LinkedIn "About", Google Business, Crunchbase, Clutch)
-Vector Dynamic is a senior engineering team that builds the software and AI your business runs on.
+## Full description (LinkedIn "About", Google Business Profile, Crunchbase, Wellfound, Clutch)
+Vector Dynamic is a senior engineering team that designs, ships, and maintains the software and AI your business runs on.
 
-We build four things: custom software and platforms (web, mobile, APIs and integrations); business systems and ERP, including custom ERP, CRM and management systems; AI-powered software and agents, with models such as OpenAI, Claude and Gemini connected to your data and tools; and workflow automation that takes repetitive work off your team.
+We focus on four practice areas:
+1. Custom Software and Platforms — web platforms, B2B SaaS, internal tools, mobile apps, and APIs.
+2. Business Systems and ERP — modular custom ERP, CRM, inventory, purchasing, finance views, and Odoo implementations when off-the-shelf fits better.
+3. AI-Powered Software and Agents — grounded knowledge search (RAG), document extraction, voice/chat intake, and tool-using agents with strict evaluation and spend caps.
+4. Workflow Automation and Integration — two-way API integrations and automated workflows that remove repetitive manual data entry.
 
-Every project is built to scale, tested and monitored before launch, and kept running afterwards. We work at fixed prices billed by milestone, agree ownership terms in writing before work starts, and send a weekly demo and written update, so you always see progress.
+Every engagement runs at fixed milestone prices with 100% custom code and IP ownership in your Git repository, a fixed daily 4-hour timezone overlap window, a live weekly demo on real data, and a written Friday engineering report.
 
-Start with a free written systems review of one workflow or system: vectordynamic.com/audit
+ We also partner with consultants, marketing/design agencies, and software houses through referral revenue-share, wholesale white-label delivery, and 1-week trial overflow tasks: https://vectordynamic.com/partners
 
-## Specialties / tags
-Custom software development, ERP development, CRM, AI integration, AI agents, knowledge bases, workflow automation, API integrations, legacy modernization, SaaS development
+Start with a 30-minute discovery call (https://vectordynamic.com/book) or request a free written Systems Review of one workflow: https://vectordynamic.com/audit
 
-## Services list (Google Business, Clutch)
-1. Custom Software and Platforms
-2. Business Systems and ERP
-3. AI-Powered Software and Agents
-4. Workflow Automation and Integration
+## Specialties / directory tags
+Custom software development, Custom ERP development, Odoo implementation, Business systems, CRM development, Applied AI, RAG knowledge bases, AI agents, Workflow automation, API integrations, Legacy modernization, B2B SaaS engineering, White-label software partner
 
-## Call to action
-Book a free systems review: vectordynamic.com/audit
+## Calls to action
+- Direct B2B buyers (async hook): Request a free written Systems Review → https://vectordynamic.com/audit
+- Direct B2B buyers (ready to talk): Book a 30-minute discovery call → https://vectordynamic.com/book
+- Agencies, consultants & software houses: Explore win-win partnerships → https://vectordynamic.com/partners

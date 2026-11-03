@@ -4,8 +4,8 @@ const nextConfig = {
   reactCompiler: true,
   async redirects() {
     return [
-      { source: '/products', destination: '/#work', permanent: false },
-      { source: '/products/:id', destination: '/#work', permanent: false },
+      { source: '/products', destination: '/work', permanent: false },
+      { source: '/products/:id', destination: '/work', permanent: false },
       { source: '/solutions', destination: '/services', permanent: false },
       { source: '/services/custom-development', destination: '/services/custom-software', permanent: true },
       { source: '/services/enterprise', destination: '/services/erp', permanent: true },

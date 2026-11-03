@@ -1,0 +1,192 @@
+/* Delivery Standard, Sample Friday Report & Engineering Pods (/how-we-work) */
+
+.phases {
+  border-top: 1px solid var(--vd-ink);
+}
+
+.phaseRow {
+  display: grid;
+  grid-template-columns: 4rem 1fr 1.35fr;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding-block: 2rem;
+  border-bottom: 1px solid var(--vd-ink);
+  align-items: start;
+}
+
+.phaseNum {
+  font-family: var(--vd-font-mono), monospace;
+  font-size: 0.85rem;
+  color: var(--vd-signal);
+  padding-top: 0.25rem;
+}
+
+.phaseName {
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  margin: 0 0 0.45rem;
+  font-weight: 500;
+}
+
+.phaseTiming {
+  font-family: var(--vd-font-mono), monospace;
+  font-size: 0.78rem;
+  color: var(--vd-muted);
+  margin: 0;
+}
+
+.phaseSummary {
+  margin: 0 0 0.85rem;
+  color: var(--vd-graphite);
+  max-width: 56ch;
+}
+
+.deliverableBox {
+  background: var(--vd-surface);
+  border-left: 2px solid var(--vd-verdigris);
+  padding: 0.65rem 0.9rem;
+  font-size: 0.92rem;
+  color: var(--vd-ink);
+}
+
+.deliverableBox strong {
+  font-family: var(--vd-font-mono), monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--vd-verdigris);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+/* Sample Friday Engineering Report card */
+.reportCard {
+  background: var(--vd-paper);
+  border: 1px solid var(--vd-ink);
+  padding: clamp(1.5rem, 3.5vw, 2.75rem);
+  max-width: 880px;
+}
+
+.reportMeta {
+  font-family: var(--vd-font-mono), monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vd-signal);
+  padding-bottom: 1rem;
+  margin: 0 0 1.5rem;
+  border-bottom: 1px solid var(--vd-ink);
+}
+
+.reportBlocks {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.reportBlock {
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  gap: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--vd-rule);
+  align-items: baseline;
+}
+
+.reportBlock:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.reportLabel {
+  font-family: var(--vd-font-mono), monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--vd-ink);
+  font-weight: 500;
+}
+
+.reportText {
+  margin: 0;
+  color: var(--vd-graphite);
+  font-size: 0.98rem;
+}
+
+/* Hiring vs Dedicated Pod table */
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--vd-ink);
+  background: var(--vd-paper);
+}
+
+.podTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.podTable th,
+.podTable td {
+  text-align: left;
+  padding: 1.15rem 1.35rem;
+  border-bottom: 1px solid var(--vd-rule);
+  vertical-align: top;
+  font-size: 0.96rem;
+}
+
+.podTable thead th {
+  font-family: var(--vd-font-mono), monospace;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--vd-ink);
+  color: #fff;
+  border-bottom: 1px solid var(--vd-ink);
+}
+
+.podTable thead th:last-child {
+  color: #6ee7b7;
+}
+
+.podTable tbody tr:last-child th,
+.podTable tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.podTable tbody th {
+  font-weight: 600;
+  color: var(--vd-ink);
+  width: 24%;
+}
+
+.hiringCell {
+  color: var(--vd-muted);
+  width: 38%;
+}
+
+.podCell {
+  color: var(--vd-ink);
+  font-weight: 500;
+  background: rgba(31, 111, 102, 0.05);
+  width: 38%;
+}
+
+.podActions {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (max-width: 820px) {
+  .phaseRow {
+    grid-template-columns: 2.5rem 1fr;
+  }
+  .phaseRight {
+    grid-column: 2;
+  }
+  .reportBlock {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}
+

@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Newsreader, Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
+import UtmCapture from '@/components/analytics/UtmCapture';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ScrollProgress from '@/components/ui/ScrollProgress';
@@ -21,14 +22,32 @@ export const metadata = {
   title: { default: TITLE, template: '%s | Vector Dynamic' },
   description: site.description,
   keywords: [
-    'custom software development', 'custom ERP development', 'AI development company',
-    'AI automation', 'software development partner', 'business systems', 'workflow automation',
-    'LLM applications', 'legacy modernization',
+    'custom software development',
+    'custom ERP development',
+    'AI development company',
+    'workflow automation',
+    'software development partner',
+    'Odoo implementation',
+    'RAG knowledge base',
+    'B2B SaaS engineering',
+    'legacy modernization',
   ],
   authors: [{ name: 'Vector Dynamic' }],
   creator: 'Vector Dynamic',
-  openGraph: { type: 'website', locale: 'en_US', url: site.url, siteName: 'Vector Dynamic', title: TITLE, description: site.description },
-  twitter: { card: 'summary_large_image', title: TITLE, description: site.description, creator: '@vectordynamic' },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: site.url,
+    siteName: 'Vector Dynamic',
+    title: TITLE,
+    description: site.description,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: site.description,
+    creator: '@vectordynamic',
+  },
 };
 
 const organization = {
@@ -40,7 +59,14 @@ const organization = {
   email: site.email,
   description: site.description,
   sameAs: Object.values(site.social).filter(Boolean),
-  contactPoint: { '@type': 'ContactPoint', contactType: 'sales', email: site.email, availableLanguage: 'en' },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    email: site.email,
+    availableLanguage: ['en'],
+  },
+  ...(site.phone ? { telephone: site.phone } : {}),
+  ...(site.address ? { address: site.address } : {}),
 };
 
 export default function RootLayout({ children }) {
@@ -49,16 +75,15 @@ export default function RootLayout({ children }) {
       <body>
         <Suspense fallback={null}>
           <GoogleAnalytics GA_MEASUREMENT_ID="G-KHBTJM0J0W" />
+          <UtmCapture />
         </Suspense>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(organization) }} />
-        <>
-          <ScrollProgress />
-          <a href="#main-content" className="skip-link">Skip to main content</a>
-          <Header />
-          <main id="main-content">{children}</main>
-          <Footer />
-          <CookieBanner />
-        </>
+        <ScrollProgress />
+        <a href="#main-content" className="skip-link">Skip to main content</a>
+        <Header />
+        <main id="main-content">{children}</main>
+        <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

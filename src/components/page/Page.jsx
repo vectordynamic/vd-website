@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 import Reveal from '@/components/ui/Reveal';
 import LinkButton from '@/components/ui/LinkButton';
-import { ctaHref } from '@/content/site';
+import { bookHref, auditHref } from '@/content/site';
 import s from './page.module.css';
 
 // Words slide up out of a mask. Text stays intact for SEO and screen readers.
@@ -129,14 +129,30 @@ export function PracticeRows({ practices }) {
   );
 }
 
-export function CtaBand({ title = 'Tell us about the system you need.', body = 'Book a 30-minute call and leave with a clear next step, whether or not we work together.', label = 'Book a 30-minute systems review', href = ctaHref }) {
+export function CtaBand({
+  title = 'Tell us about the system your operations need.',
+  body = 'Book a 30-minute discovery call with a senior engineer, or request a free written review of one workflow.',
+  label = 'Book a 30-minute discovery call',
+  href = bookHref,
+  secondaryLabel = 'Or request a free written systems review',
+  secondaryHref = auditHref,
+}) {
   return (
     <section className={`${s.section} ${s.surface}`}>
       <div className="vd-container">
         <Reveal className={s.cta}>
           <h2 className={s.h2}><Words text={title} /></h2>
           <p>{body}</p>
-          <div className={s.actions}><LinkButton href={href}>{label}</LinkButton></div>
+          <div className={s.actions}>
+            <LinkButton href={href} event="cta_click" eventParams={{ location: 'page_cta_band_primary' }}>
+              {label}
+            </LinkButton>
+            {secondaryHref && secondaryLabel && (
+              <LinkButton href={secondaryHref} variant="quiet" event="cta_click" eventParams={{ location: 'page_cta_band_secondary' }}>
+                {secondaryLabel}
+              </LinkButton>
+            )}
+          </div>
         </Reveal>
       </div>
     </section>
@@ -147,9 +163,9 @@ export function WorkLinks({ items }) {
   return (
     <Reveal>
       {items.map((it) => (
-        <Link key={it.name} href="/#work" className={s.workLink}>
+        <Link key={it.slug || it.name} href={it.slug ? `/work/${it.slug}` : '/work'} className={s.workLink}>
           <h3 className={s.workName}>{it.name}</h3>
-          <span className={s.workStatus}>{it.status}</span>
+          <span className={`${s.workStatus} ${it.isLive ? s.workLive : ''}`}>{it.status}</span>
           <p className={s.rowText}>{it.summary}</p>
         </Link>
       ))}

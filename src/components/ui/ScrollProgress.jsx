@@ -3,10 +3,14 @@
 import { useEffect, useRef } from 'react';
 
 // Thin accent line at the top of the viewport showing reading progress.
+// Uses native CSS animation-timeline: scroll() when supported; attaches a JS fallback otherwise.
 export default function ScrollProgress() {
   const bar = useRef(null);
 
   useEffect(() => {
+    if (typeof CSS !== 'undefined' && CSS.supports?.('animation-timeline', 'scroll()')) {
+      return undefined;
+    }
     let raf = 0;
     const update = () => {
       raf = 0;
