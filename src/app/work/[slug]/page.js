@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import { PageHero, Section, TwoCol, Rows, WorkLinks, CtaBand, Words } from '@/components/page/Page';
 import LinkButton from '@/components/ui/LinkButton';
 import Reveal from '@/components/ui/Reveal';
@@ -72,6 +73,24 @@ export default async function WorkDetailPage({ params }) {
           Explore {item.practiceLabel}
         </LinkButton>
       </PageHero>
+
+      {item.image && (
+        <Section tone="surface" eyebrow="System Architecture">
+          <Reveal>
+            <div className={s.archImageCard}>
+              <Image
+                src={item.image}
+                alt={item.alt || `${item.name} architecture schematic`}
+                width={1200}
+                height={670}
+                priority
+                sizes="(max-width: 900px) 100vw, 1120px"
+                className={s.archImage}
+              />
+            </div>
+          </Reveal>
+        </Section>
+      )}
 
       {showDemoVideo && (
         <Section tone="surface" eyebrow="2-Minute Engineering Walkthrough" title="See the live pipeline in action">

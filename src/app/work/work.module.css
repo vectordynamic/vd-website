@@ -17,6 +17,63 @@
   margin-bottom: 1.25rem;
 }
 
+.featuredImageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid #2a3037;
+  border-radius: var(--vd-radius);
+  overflow: hidden;
+  margin-block: 1.5rem;
+}
+
+.featuredImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.archImageCard {
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--vd-rule);
+  border-radius: var(--vd-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--vd-shadow);
+  background: var(--vd-paper);
+}
+
+.archImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 670;
+  object-fit: cover;
+}
+
+.cardImageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--vd-rule);
+  border-radius: var(--vd-radius);
+  overflow: hidden;
+  margin-top: 1.25rem;
+}
+
+.cardImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.02);
+}
+
 .liveBadge {
   display: inline-flex;
   align-items: center;

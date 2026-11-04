@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { PageHero, Section, CtaBand } from '@/components/page/Page';
 import LinkButton from '@/components/ui/LinkButton';
 import Reveal from '@/components/ui/Reveal';
@@ -62,6 +63,19 @@ export default function WorkIndexPage() {
             </div>
             <h2 className={s.featuredTitle}>{flagship.name}: {flagship.headline}</h2>
             <p className={s.featuredSummary}>{flagship.summary}</p>
+            {flagship.image && (
+              <div className={s.featuredImageFrame}>
+                <Image
+                  src={flagship.image}
+                  alt={flagship.alt || `${flagship.name} architecture schematic`}
+                  width={1200}
+                  height={670}
+                  priority
+                  sizes="(max-width: 900px) 100vw, 1120px"
+                  className={s.featuredImage}
+                />
+              </div>
+            )}
             <div className={s.miniPipeline}>
               {flagship.architecture.map((st) => (
                 <div key={st.stage} className={s.miniStage}>
@@ -89,6 +103,18 @@ export default function WorkIndexPage() {
               <div>
                 <p className={s.cardHeadline}>{it.headline}</p>
                 <p className={s.cardSummary}>{it.summary}</p>
+                {it.image && (
+                  <div className={s.cardImageFrame}>
+                    <Image
+                      src={it.image}
+                      alt={it.alt || `${it.name} architecture schematic`}
+                      width={1200}
+                      height={670}
+                      sizes="(max-width: 768px) 100vw, 420px"
+                      className={s.cardImage}
+                    />
+                  </div>
+                )}
                 <div className={s.stackRow}>
                   {it.stack.map((tech) => (
                     <span key={tech} className={s.chip}>{tech}</span>

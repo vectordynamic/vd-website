@@ -4,8 +4,19 @@ import { site } from '@/content/site';
 export async function GET() {
   const robotsTxt = `User-agent: *
 Allow: /
-Disallow: /private/
 Disallow: /api/
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
 
 Sitemap: ${site.url}/sitemap.xml
 `;

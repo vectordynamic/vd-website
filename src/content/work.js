@@ -11,6 +11,8 @@ export const workItems = [
     clientType: 'Internal Product · Live in Production',
     status: 'Live in production',
     isLive: true,
+    image: '/images/work/syncdaily.webp',
+    alt: 'SyncDaily automated data pipeline and digest architecture schematic',
     headline: 'An autonomous ingestion, AI curation, and SEO publishing pipeline running continuously in production.',
     summary:
       'SyncDaily ingests high-volume technical sources, deduplicates stories, runs multi-stage LLM summarization with schema validation, and serves low-latency REST and sitemap feeds.',
@@ -43,6 +45,8 @@ export const workItems = [
     clientType: 'Internal Platform · Architecture Case Study',
     status: 'Internal platform',
     isLive: false,
+    image: '/images/work/okebase.webp',
+    alt: 'Okebase modular business operating system architecture schematic',
     headline: 'Modular business operating system unifying sales, multi-location inventory, suppliers, staff, and live profit-and-loss.',
     summary:
       'Designed for growing wholesale, distribution, and multi-branch B2B operators outgrowing disconnected spreadsheets without needing a bloated six-figure legacy ERP.',
@@ -75,6 +79,8 @@ export const workItems = [
     clientType: 'Internal Platform · Architecture Case Study',
     status: 'Internal platform',
     isLive: false,
+    image: '/images/work/opsera.webp',
+    alt: 'Opsera real-time dispatch and operations engine schematic',
     headline: 'Multi-workspace project orchestration connecting tasks, SLA alerts, and engineering tools in one operational view.',
     summary:
       'A multi-tenant B2B SaaS platform demonstrating clean workspace isolation, real-time deadline risk detection, and two-way webhook synchronization across Slack, GitHub, and Jira.',
@@ -107,6 +113,8 @@ export const workItems = [
     clientType: 'Internal Platform · Architecture Case Study',
     status: 'Internal platform',
     isLive: false,
+    image: '/images/work/advantage-ai.webp',
+    alt: 'AdVantage AI multi-touch attribution and creative variation matrix schematic',
     headline: 'Closed-loop campaign automation pairing AI creative workflows with live ad-spend guardrails.',
     summary:
       'Automates campaign preparation, Meta Marketing API dispatch, performance ingestion, and rule-governed budget alerts with mandatory human approval gates.',
@@ -139,6 +147,8 @@ export const workItems = [
     clientType: 'Internal System · Pilot Ready',
     status: 'Pilot ready',
     isLive: false,
+    image: '/images/work/ai-receptionist.webp',
+    alt: 'AI Receptionist voice intake assistant architecture schematic',
     headline: 'Low-latency voice intake assistant that answers calls, qualifies leads, books calendar slots, and syncs CRM.',
     summary:
       'Built for service businesses, clinics, and operations teams that miss high-intent inbound phone calls after hours or during peak dispatch windows.',

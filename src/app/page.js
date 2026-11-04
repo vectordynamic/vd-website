@@ -1,15 +1,25 @@
 import { home } from '@/content/home';
 import { site } from '@/content/site';
 import { jsonLd } from '@/lib/jsonld';
-import { Hero, Problem, Practices, AiBand, Portfolio, Ladder, Process, Engineering, Commitments, Fit, Leadership, Faq, Closing } from '@/components/home/HomeSections';
+import { Hero, Problem, Guide, Practices, FeaturedWork, Plan, Faq, Closing } from '@/components/home/HomeSections';
+import StickyCta from '@/components/ui/StickyCta';
 
 export const metadata = {
-  title: { absolute: 'Vector Dynamic | Custom Software, ERP and AI, Built to Scale' },
+  title: { absolute: 'Vector Dynamic | Custom Software and AI That Runs Your Operations' },
   description: home.hero.lede,
   alternates: { canonical: '/' },
 };
 
 const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: site.name,
+    description: home.hero.lede,
+    url: site.url,
+    areaServed: 'Worldwide',
+    priceRange: '$$$$',
+  },
   ...home.practices.map((p) => ({
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -35,17 +45,13 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }} />
       <Hero />
       <Problem />
+      <Guide />
       <Practices />
-      <AiBand />
-      <Portfolio />
-      <Ladder />
-      <Process />
-      <Engineering />
-      <Commitments />
-      <Fit />
-      <Leadership />
+      <FeaturedWork />
+      <Plan />
       <Faq />
       <Closing />
+      <StickyCta />
     </>
   );
 }

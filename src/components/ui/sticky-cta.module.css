@@ -1,0 +1,104 @@
+.bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 150;
+  padding: 0.6rem var(--vd-gutter);
+  padding-bottom: calc(0.6rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(246, 243, 236, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--vd-rule);
+  box-shadow: 0 -4px 20px rgba(16, 20, 24, 0.06);
+  animation: slideUp 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.inner {
+  max-width: var(--vd-max);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-family: var(--vd-font-serif), serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--vd-ink);
+  line-height: 1.2;
+}
+
+.sub {
+  font-family: var(--vd-font-mono), monospace;
+  font-size: 0.72rem;
+  color: var(--vd-muted);
+  letter-spacing: 0.02em;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.auditLink {
+  font-family: var(--vd-font-mono), monospace;
+  font-size: 0.8rem;
+  color: var(--vd-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--vd-rule);
+  padding-bottom: 0.15rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.auditLink:hover {
+  color: var(--vd-signal);
+  border-color: var(--vd-signal);
+}
+
+.bookBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--vd-signal);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 0.95rem;
+  border-radius: 4px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.bookBtn:hover {
+  background: var(--vd-signal-hover);
+}
+
+@media (min-width: 900px) {
+  /* On desktop, the main header navigation already stays sticky and clear, keep floating bar for mobile/tablets */
+  .bar {
+    display: none;
+  }
+}
+

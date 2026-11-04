@@ -54,6 +54,8 @@ export default function Footer() {
               ))}
               <li>
                 <Link className={s.footA} href="/llms.txt">llms.txt</Link>
+                {' · '}
+                <Link className={s.footA} href="/llms-full.txt">llms-full.txt</Link>
               </li>
             </ul>
           </div>

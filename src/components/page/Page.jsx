@@ -119,10 +119,12 @@ export function PracticeRows({ practices }) {
           <div>
             <h3 className={s.practiceTitle}><Link href={`/services/${p.id}`}>{p.title}</Link></h3>
             <p className={s.rowText}>{p.summary}</p>
-            <p className={s.trigger}>“{p.trigger}”</p>
+            {p.trigger && <p className={s.trigger}>“{p.trigger}”</p>}
             <LinkButton href={`/services/${p.id}`} variant="quiet">Explore {p.title}</LinkButton>
           </div>
-          <ul className={s.covers}>{p.covers.map((c) => <li key={c}>{c}</li>)}</ul>
+          {p.covers && p.covers.length > 0 && (
+            <ul className={s.covers}>{p.covers.map((c) => <li key={c}>{c}</li>)}</ul>
+          )}
         </div>
       ))}
     </Reveal>

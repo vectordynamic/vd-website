@@ -14,7 +14,11 @@
 
   --vd-max: 1200px;
   --vd-gutter: clamp(20px, 4vw, 40px);
-  --vd-section: clamp(72px, 10vw, 128px);
+  --vd-section: clamp(64px, 8vw, 112px);
+  --vd-radius: 8px;
+  --vd-radius-lg: 12px;
+  --vd-shadow: 0 4px 20px -4px rgba(16, 20, 24, 0.05);
+  --vd-shadow-hover: 0 12px 32px -6px rgba(16, 20, 24, 0.1);
 
   --font-inter: var(--vd-font-sans);
   --font-space-grotesk: var(--vd-font-serif);

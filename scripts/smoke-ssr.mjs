@@ -25,6 +25,7 @@ const HTML_ROUTES = [
   '/partners',
   '/about',
   '/contact',
+  '/faq',
   '/for/logistics',
   '/for/ecommerce-operations',
   '/for/healthcare-operations',
@@ -137,6 +138,13 @@ async function runChecks() {
     fail('/llms.txt missing expected B2B sections');
   } else {
     pass('GET /llms.txt -> includes practice areas, case studies, industries & partnerships');
+  }
+
+  const llmsFull = await fetch(`${BASE}/llms-full.txt`).then((r) => r.text());
+  if (!llmsFull.includes('Full Technical & Operational Documentation') || !llmsFull.includes('Engagement Ladder')) {
+    fail('/llms-full.txt missing expected full technical sections');
+  } else {
+    pass('GET /llms-full.txt -> serves full markdown architecture, pricing & FAQ documentation');
   }
 
   // Check redirects

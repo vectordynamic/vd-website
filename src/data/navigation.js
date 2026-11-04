@@ -29,6 +29,7 @@ export const navigation = {
       { name: 'Strategic Partners', href: '/partners' },
       { name: 'Insights', href: '/insights' },
       { name: 'About', href: '/about' },
+      { name: 'FAQ', href: '/faq' },
       { name: 'Book a 30-Min Call', href: '/book' },
       { name: 'Contact', href: '/contact' },
     ],

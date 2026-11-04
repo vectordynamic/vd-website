@@ -24,6 +24,8 @@ export function GET() {
     `- [Book a 30-Minute Discovery Call](${site.url}/book): Speak directly with a senior engineer (${site.overlapWindow}).`,
     `- [Free Written Systems Review](${site.url}/audit): 2–4 page written engineering review of one workflow with 3 quick wins and a fixed-price build estimate.`,
     `- [How We Work & Dedicated Pods](${site.url}/how-we-work): Weekly live demos, Friday written updates, 100% custom IP ownership, and senior engineering pods.`,
+    `- [Frequently Asked Questions](${site.url}/faq): Time zone overlap, IP ownership, pricing, data security, and communication.`,
+    `- [Full Documentation for LLMs](${site.url}/llms-full.txt): Complete operational and architectural brief.`,
     `- [Strategic Partnerships](${site.url}/partners): Win-win referral revenue share, white-label agency delivery, and 1-week trial tasks.`,
     `- [Contact](${site.url}/contact): ${site.email}`,
     '',

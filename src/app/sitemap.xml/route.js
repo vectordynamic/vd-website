@@ -19,6 +19,7 @@ export function GET() {
     '/work',
     ...workItems.map((w) => `/work/${w.slug}`),
     '/how-we-work',
+    '/faq',
     '/audit',
     '/book',
     '/partners',
