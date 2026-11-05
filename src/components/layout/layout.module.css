@@ -19,121 +19,73 @@
   .mobileActions :global(.vd-btn) { width: 100%; justify-content: center; }
 }
 
-/* Footer — 3-Tier Architectural Directory */
+/* Footer — Symmetric 3-Tier Architectural Directory */
 .footer {
   background: var(--vd-ink);
   color: var(--vd-ink-muted);
-  padding: clamp(3.5rem, 6vw, 5.5rem) 0 2.5rem;
+  padding: clamp(3.5rem, 5.5vw, 5rem) 0 2.25rem;
   margin-top: 0;
   border-top: 1px solid #232930;
 }
 
+/* Tier 1: Balanced 2-Column Top Identity & Action Bar */
 .footIdentityBar {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: 1.25fr 1fr;
   gap: clamp(2rem, 4vw, 4rem);
   padding-bottom: 2.75rem;
   border-bottom: 1px solid #262c34;
-  align-items: end;
+  align-items: stretch;
 }
 
 .footBrandCol {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
 }
 
 .footBrand {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.65rem;
   color: #fff;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.18rem;
   text-decoration: none;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
 }
 
 .footTag {
-  max-width: 44ch;
-  font-size: 1.02rem;
+  max-width: 52ch;
+  font-size: 1rem;
   line-height: 1.5;
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.5rem;
   color: #e4e7eb;
 }
 
 .footOverlap {
-  max-width: 54ch;
-  font-size: 0.85rem;
-  margin: 0;
+  max-width: 58ch;
+  font-size: 0.84rem;
+  margin: 0 0 1.25rem;
   color: var(--vd-ink-muted);
   line-height: 1.55;
 }
 
-.footConnectCol {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 1.25rem;
-}
-
-.footQuickCtas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: flex-end;
-}
-
-.footPrimaryAction {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: #fff;
-  background: var(--vd-signal);
-  padding: 0.65rem 1.1rem;
-  border-radius: 2px;
-  text-decoration: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.footPrimaryAction:hover {
-  opacity: 0.92;
-  transform: translateY(-1px);
-}
-
-.footSecondaryAction {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.86rem;
-  font-weight: 500;
-  color: #e4e7eb;
-  border: 1px solid #343c46;
-  padding: 0.65rem 1.05rem;
-  border-radius: 2px;
-  text-decoration: none;
-  transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-.footSecondaryAction:hover {
-  border-color: #fff;
-  color: #fff;
-}
-
-.footContactMeta {
+.footContactStrip {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
-  justify-content: flex-end;
+  gap: 0.75rem 1.25rem;
+  padding-top: 0.25rem;
 }
 
 .footEmail {
   color: #fff;
   font-family: var(--vd-font-mono), monospace;
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
   padding-bottom: 0.15rem;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
@@ -144,19 +96,20 @@
 }
 
 .footSocialRow {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.45rem;
 }
 
 .footSocialLink {
   font-family: var(--vd-font-mono), monospace;
-  font-size: 0.74rem;
+  font-size: 0.73rem;
   letter-spacing: 0.04em;
   color: #d5d9dd;
   text-decoration: none;
   border: 1px solid #2e3640;
-  padding: 0.32rem 0.65rem;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0.28rem 0.6rem;
   border-radius: 2px;
   transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
@@ -164,17 +117,87 @@
 .footSocialLink:hover {
   border-color: var(--vd-signal-on-ink);
   color: #fff;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.06);
 }
 
-/* Tier 2: 5-Column Directory Grid */
+/* Right-side structured CTA box in Tier 1 */
+.footCtaPanel {
+  background: #151a20;
+  border: 1px solid #262c34;
+  padding: 1.5rem 1.75rem;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footCtaEyebrow {
+  font-family: var(--vd-font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vd-signal-on-ink);
+  margin: 0 0 0.45rem;
+}
+
+.footCtaCopy {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #d5d9dd;
+  margin: 0 0 1.15rem;
+}
+
+.footQuickCtas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.footPrimaryAction,
+.footSecondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6rem 0.95rem;
+  border-radius: 2px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.footPrimaryAction {
+  color: #fff;
+  background: var(--vd-signal);
+  border: 1px solid var(--vd-signal);
+}
+
+.footPrimaryAction:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.footSecondaryAction {
+  color: #e4e7eb;
+  background: transparent;
+  border: 1px solid #38414c;
+}
+
+.footSecondaryAction:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+/* Tier 2: Symmetric 5-Column Directory Grid */
 .footDirectory {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 2.25rem;
-  padding-block: 3rem;
+  gap: 2rem;
+  padding-block: 2.75rem;
   border-bottom: 1px solid #262c34;
-  align-items: start;
+  align-items: stretch;
 }
 
 .footCol {
@@ -185,8 +208,8 @@
 .footColHead {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1.15rem;
+  gap: 0.45rem;
+  margin-bottom: 1.1rem;
   padding-bottom: 0.65rem;
   border-bottom: 1px solid #232930;
 }
@@ -200,8 +223,8 @@
 
 .footH {
   font-family: var(--vd-font-mono), monospace;
-  font-size: 0.74rem;
-  letter-spacing: 0.09em;
+  font-size: 0.73rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
   margin: 0;
@@ -211,22 +234,39 @@
 .footList {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 1rem;
   display: grid;
-  gap: 0.62rem;
+  gap: 0.6rem;
 }
 
 .footA {
   color: var(--vd-ink-muted);
   text-decoration: none;
   font-size: 0.88rem;
-  line-height: 1.42;
+  line-height: 1.4;
   transition: color 0.2s ease, transform 0.25s ease;
   display: inline-block;
 }
 
 .footA:hover {
+  color: #fff;
+  transform: translateX(3px);
+}
+
+.footMoreLink {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  font-family: var(--vd-font-mono), monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.03em;
   color: var(--vd-signal-on-ink);
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.2s ease, transform 0.25s ease;
+}
+
+.footMoreLink:hover {
+  color: #fff;
   transform: translateX(3px);
 }
 
@@ -242,7 +282,7 @@
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  padding-top: 1.75rem;
+  padding-top: 1.5rem;
   font-size: 0.84rem;
 }
 
@@ -256,14 +296,7 @@
 @media (max-width: 1120px) {
   .footIdentityBar {
     grid-template-columns: 1fr;
-    align-items: flex-start;
-  }
-  .footConnectCol {
-    align-items: flex-start;
-  }
-  .footQuickCtas,
-  .footContactMeta {
-    justify-content: flex-start;
+    gap: 1.75rem;
   }
   .footDirectory {
     grid-template-columns: repeat(3, 1fr);
@@ -276,20 +309,14 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1.5rem;
   }
+  .footQuickCtas {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
   .footDirectory {
     grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  .footQuickCtas {
-    width: 100%;
-    flex-direction: column;
-  }
-  .footPrimaryAction,
-  .footSecondaryAction {
-    width: 100%;
-    justify-content: center;
+    gap: 1.75rem;
   }
 }

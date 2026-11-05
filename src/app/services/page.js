@@ -38,7 +38,7 @@ export default function ServicesPage() {
         <Steps items={standard.items} />
       </Section>
 
-      <Section eyebrow="Vertical Playbooks" title="Systems tailored to high-friction operational industries">
+      <Section id="industries" eyebrow="Vertical Playbooks" title="Systems tailored to high-friction operational industries">
         <MoreLinks items={industries.map((ind) => ({ href: `/for/${ind.slug}`, label: ind.name }))} />
       </Section>
 

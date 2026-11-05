@@ -10,9 +10,9 @@ export const site = {
   foundedYear: null,
   location: null,
   overlapWindow:
-    '24/7 dedicated client support · Daily live engineering overlap + shift-aligned teams for US, UK, EU, Gulf & APAC',
+    '24/7 dedicated client support · Daily live engineering overlap & shift-aligned teams for US, UK, EU, Gulf & APAC',
   responseSla: '24/7 client desk with direct senior engineer response',
-  tagline: 'Custom software, ERP, AI, and enterprise integrations—built to scale and kept running.',
+  tagline: 'Custom software, ERP, AI, and enterprise integrations built to scale and kept running.',
   description:
     'Vector Dynamic is a senior engineering team that builds, integrates, and maintains custom software, ERP and business systems, AI-powered products, and workflow automation for growing B2B companies.',
   social: {

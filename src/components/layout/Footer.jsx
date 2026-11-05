@@ -10,19 +10,24 @@ const SOCIAL_LABELS = {
   facebook: 'Facebook',
 };
 
-const Col = ({ num, title, links }) => (
+const Col = ({ num, title, group }) => (
   <div className={s.footCol}>
     <div className={s.footColHead}>
       <span className={s.footColNum}>{num}</span>
       <h2 className={s.footH}>{title}</h2>
     </div>
     <ul className={s.footList}>
-      {links.map((l) => (
+      {group.items.map((l) => (
         <li key={l.name}>
           <Link href={l.href} className={s.footA}>{l.name}</Link>
         </li>
       ))}
     </ul>
+    {group.more && (
+      <Link href={group.more.href} className={s.footMoreLink}>
+        {group.more.name}
+      </Link>
+    )}
   </div>
 );
 
@@ -31,27 +36,17 @@ export default function Footer() {
   return (
     <footer className={s.footer}>
       <div className="vd-container">
-        {/* Tier 1: Brand Identity, 24/7 Coverage & Direct Contact Strip */}
+        {/* Tier 1: Symmetric Brand Identity (Left) + Aligned CTA Panel (Right) */}
         <div className={s.footIdentityBar}>
           <div className={s.footBrandCol}>
             <Link href="/" className={s.footBrand} aria-label="Vector Dynamic home">
-              <Logo size={32} title="" />
+              <Logo size={30} title="" />
               Vector Dynamic
             </Link>
             <p className={s.footTag}>{site.tagline}</p>
             <p className={s.footOverlap}>{site.overlapWindow}.</p>
-          </div>
 
-          <div className={s.footConnectCol}>
-            <div className={s.footQuickCtas}>
-              <Link href={bookHref} className={s.footPrimaryAction}>
-                Book a 30-minute discovery call →
-              </Link>
-              <Link href={auditHref} className={s.footSecondaryAction}>
-                Request free written systems review →
-              </Link>
-            </div>
-            <div className={s.footContactMeta}>
+            <div className={s.footContactStrip}>
               <a className={s.footEmail} href={`mailto:${site.email}`}>
                 {site.email}
               </a>
@@ -72,15 +67,30 @@ export default function Footer() {
               )}
             </div>
           </div>
+
+          <div className={s.footCtaPanel}>
+            <p className={s.footCtaEyebrow}>Start a technical conversation</p>
+            <p className={s.footCtaCopy}>
+              Walk through your workflow, codebase, or integration bottleneck directly with a senior engineer.
+            </p>
+            <div className={s.footQuickCtas}>
+              <Link href={bookHref} className={s.footPrimaryAction}>
+                Book a 30-min call →
+              </Link>
+              <Link href={auditHref} className={s.footSecondaryAction}>
+                Free systems review →
+              </Link>
+            </div>
+          </div>
         </div>
 
-        {/* Tier 2: 5-Group Structured Site Directory */}
+        {/* Tier 2: Symmetric 5-Column Directory (5 items + 1 "View more" link per column) */}
         <div className={s.footDirectory}>
-          <Col num="01" title="Practice Areas" links={navigation.footer.services} />
-          <Col num="02" title="Case Studies" links={navigation.footer.work} />
-          <Col num="03" title="Industries We Serve" links={navigation.footer.industries} />
-          <Col num="04" title="Engineering Guides" links={navigation.footer.insights} />
-          <Col num="05" title="Company & Commercial" links={navigation.footer.company} />
+          <Col num="01" title="Practice Areas" group={navigation.footer.services} />
+          <Col num="02" title="Case Studies" group={navigation.footer.work} />
+          <Col num="03" title="Industries" group={navigation.footer.industries} />
+          <Col num="04" title="Engineering Guides" group={navigation.footer.insights} />
+          <Col num="05" title="Company" group={navigation.footer.company} />
         </div>
 
         {/* Tier 3: Legal, Copyright & Sitemap */}
