@@ -289,8 +289,8 @@ export function FeaturedWork() {
             <div className={s.workContent}>
               <div className={s.workMeta}>
                 <span className={s.workCategory}>{it.category}</span>
-                <span className={`${s.pill} ${it.status.includes('Live') ? s.pillLive : ''}`}>
-                  {it.status}
+                <span className={s.pill}>
+                  {it.domainBadge}
                 </span>
               </div>
               <h3 className={s.workName}>{it.name}</h3>

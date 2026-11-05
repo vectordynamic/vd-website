@@ -1,181 +1,733 @@
-// Portfolio & Engineering Case Studies (/work and /work/[slug]).
-// Honest labels: internal products and architectures built by Vector Dynamic.
-// To add your first client case study (Course Week 4 / Week 12), prepend an entry with `clientType: 'Client Engagement'`.
+/**
+ * Engineering Case Studies — single source of truth for /work, /work/[slug],
+ * Homepage FeaturedWork, service/industry cross-links, and llms.txt routes.
+ */
 
 export const workItems = [
   {
-    slug: 'syncdaily',
-    name: 'SyncDaily',
-    practice: 'ai',
-    practiceLabel: 'AI-Powered Software and Agents',
-    clientType: 'Internal Product · Live in Production',
-    status: 'Live in production',
-    isLive: true,
-    image: '/images/work/syncdaily.webp',
-    alt: 'SyncDaily automated data pipeline and digest architecture schematic',
-    headline: 'An autonomous ingestion, AI curation, and SEO publishing pipeline running continuously in production.',
-    summary:
-      'SyncDaily ingests high-volume technical sources, deduplicates stories, runs multi-stage LLM summarization with schema validation, and serves low-latency REST and sitemap feeds.',
-    problem: [
-      'Most AI content and research pipelines work on five hand-picked examples in a notebook, then break within 48 hours of unattended operation: upstream RSS/HTML layouts change, duplicate stories flood the queue, LLM outputs drift from the required schema, and unthrottled API calls spike monthly token spend.',
-      'We built SyncDaily as an unattended production system to solve those exact failure modes: ingesting external feeds around the clock, clustering related coverage, generating structured briefings under strict validation rules, and exposing fast, cacheable API endpoints.',
-    ],
-    architecture: [
-      { stage: '01 · Ingestion & Deduplication', detail: 'Scheduled workers fetch upstream sources, normalize text, and cluster duplicate coverage before spending LLM tokens.' },
-      { stage: '02 · Guardrailed LLM Curation', detail: 'Structured prompts extract key facts, categories, and reading metadata with strict JSON schema validation and retry caps.' },
-      { stage: '03 · Editorial & Quality Gate', detail: 'Automated checks verify completeness, length bounds, slug uniqueness, and metadata integrity prior to publication.' },
-      { stage: '04 · Edge-Cached API & Sitemaps', detail: 'Fast Python/REST service delivers cursor-paginated feeds, slug lookups, and chunked XML sitemaps with stale-while-revalidate caching.' },
-    ],
-    capabilities: [
-      { name: 'Idempotent ingestion queues', text: 'Upstream timeouts, malformed feeds, and duplicate URLs are caught and retried cleanly without corrupting downstream tables.' },
-      { name: 'Token-budgeted LLM pipeline', text: 'Pre-filtering and deterministic clustering ensure model calls run only on net-new items, keeping daily inference costs predictable.' },
-      { name: 'Cursor pagination & SEO endpoints', text: 'Dedicated REST endpoints power instant article lookups, cursor-based feeds, and automated search-engine sitemap generation.' },
-    ],
-    stack: ['Python Backend API', 'Structured LLM Extraction', 'PostgreSQL', 'Automated Worker Queues', 'Next.js App Router', 'REST & Sitemap Endpoints'],
-    lessons: [
-      'Never call an LLM before deterministic deduplication and input cleaning—pre-filtering cut wasted model calls dramatically.',
-      'Treat every model output as untrusted external input: validate against a strict schema and quarantine failures instead of publishing broken records.',
-    ],
-  },
-  {
     slug: 'okebase',
     name: 'Okebase',
+    domainBadge: 'Multi-Entity ERP & Operations Ledger',
     practice: 'erp',
-    practiceLabel: 'Business Systems and ERP',
-    clientType: 'Internal Platform · Architecture Case Study',
-    status: 'Internal platform',
-    isLive: false,
+    practiceLabel: 'Business Systems & ERP',
     image: '/images/work/okebase.webp',
-    alt: 'Okebase modular business operating system architecture schematic',
-    headline: 'Modular business operating system unifying sales, multi-location inventory, suppliers, staff, and live profit-and-loss.',
+    alt: 'Okebase multi-entity ERP architecture showing holding group tenant hierarchy, metadata-driven custom schema engine, and consolidated double-entry ledger.',
+    headline:
+      'One high-performance ERP for multi-company and multi-branch operations—adaptable to each entity without per-seat licensing bloat.',
     summary:
-      'Designed for growing wholesale, distribution, and multi-branch B2B operators outgrowing disconnected spreadsheets without needing a bloated six-figure legacy ERP.',
+      'A multi-organization ERP engineered for holding groups, multi-branch operators, and regional distributors. Enforces strict database-level tenant isolation, metadata-driven custom fields and approval chains, and sub-50ms query performance across millions of ledger rows.',
     problem: [
-      'Growing 10-to-150 person distributors and operational businesses hit a painful ceiling: orders sit in WhatsApp or a basic storefront, stock counts live in shared spreadsheets, purchasing happens over email, and owners wait until month-end to discover whether margins actually held.',
-      'Enterprise ERPs force rigid 12-month implementations full of unused complexity, while lightweight accounting apps lack real warehouse, supplier, and multi-step operational controls. Okebase bridges that gap with clean, modular business building blocks.',
+      'Operators running multiple legal entities, sister companies, or regional branches are forced into an expensive compromise. Off-the-shelf cloud ERPs charge punitive per-seat fees, hardcode rigid approval workflows that do not match actual floor operations, and require separate logins or brittle sync scripts between sister companies. Meanwhile, legacy on-premise ERPs degrade to multi-second page loads once inventory and journal tables cross a few million rows.',
+      'Finance and operations leaders end up exporting CSVs from five disconnected systems every Friday just to reconcile inter-company stock transfers, branch-level margins, and consolidated cash positions. According to Panorama Consulting ERP benchmarks, 64% of mid-market ERP rollouts exceed budget or stall because rigid software forces businesses to rewrite their core operating procedures.'
+    ],
+    businessNeeds: [
+      'Run multiple legal entities, tax jurisdictions, and physical branches inside one unified platform with strict tenant isolation and real-time group consolidation.',
+      'Adapt data schemas, custom fields, document templates, and multi-stage approval rules per subsidiary without waiting on engineering redeployments.',
+      'Maintain sub-50ms search, filter, and ledger rollup performance across 10M+ inventory movements and accounting journal entries.',
+      'Eliminate per-seat SaaS tax with full source-code and database ownership.'
+    ],
+    features: [
+      {
+        name: 'Multi-organization & branch hierarchy',
+        text: 'Manage parent holding companies, operating subsidiaries, and regional warehouses under a single identity provider. Supports entity-specific base currencies, tax schedules, chart of accounts, and automated inter-company elimination journals.'
+      },
+      {
+        name: 'Metadata-driven custom schema & workflow engine',
+        text: 'Operations admins define custom attributes, document states, and conditional DAG approval chains (such as requiring regional director sign-off when a purchase order exceeds $25,000 or margin drops below 18%) directly at runtime.'
+      },
+      {
+        name: 'Double-entry inventory & warehouse ledger',
+        text: 'Every stock receipt, bin transfer, assembly build, and shipment is recorded as an immutable double-entry movement. Supports batch/lot traceability, FIFO and weighted-average costing, and automated reorder threshold alerts.'
+      },
+      {
+        name: 'Real-time executive consolidation & audit trail',
+        text: 'Drill down from group-wide P&L, balance sheet, and working-capital views into individual branch vouchers and cryptographically signed field-level change logs.'
+      }
     ],
     architecture: [
-      { stage: '01 · Order & Quoting Core', detail: 'Captures quotes, customer price tiers, approvals, and confirmed sales orders with instant stock reservation.' },
-      { stage: '02 · Inventory & Purchasing Ledger', detail: 'Event-sourced stock movements across locations, low-stock alerts, supplier PO generation, and goods-received reconciliation.' },
-      { stage: '03 · Staff & Role Permissions', detail: 'Granular role access separating warehouse staff, sales reps, branch managers, and finance approvers.' },
-      { stage: '04 · Live Margin & Cash Rollup', detail: 'Real-time revenue, COGS, supplier payables, and operating expense rollups so leadership sees true daily profit and loss.' },
+      {
+        stage: 'Tenant Context & Access Gateway',
+        detail:
+          'Session tokens bind every request to an explicit organization, branch, and role scope before any query reaches the database pool.'
+      },
+      {
+        stage: 'Runtime Metadata & Rules Engine',
+        detail:
+          'Validates custom entity fields against JSON Schema definitions and evaluates multi-step approval state machines in memory.'
+      },
+      {
+        stage: 'Partitioned Transactional Core',
+        detail:
+          'PostgreSQL with Row-Level Security (RLS) policies, range-partitioned journal tables, and GIN-indexed JSONB columns for custom attributes.'
+      },
+      {
+        stage: 'Incremental Rollup & Event Bus',
+        detail:
+          'Materialized views and asynchronous workers compute real-time stock valuations, aging buckets, and consolidated group statements.'
+      }
     ],
-    capabilities: [
-      { name: 'Double-checked stock ledger', text: 'Every stock adjustment records who, when, why, and the linked order or purchase receipt—eliminating mystery inventory drift.' },
-      { name: 'Module-by-module adoption', text: 'Teams can start with Inventory + Orders alone, then enable Purchasing, HR/Attendance, or Financial Dashboards without re-implementing.' },
-      { name: 'Spreadsheet import & reconciliation', text: 'Guided CSV/XLSX mappers validate SKUs, opening balances, and supplier records before live cutover.' },
+    complexities: [
+      {
+        name: 'Zero-leakage multi-tenancy with cross-entity consolidation',
+        text: 'Enforced PostgreSQL Row-Level Security (RLS) tied to session context variables so branch staff can never query sibling entities, paired with scoped security-definer rollup views for group CFO reporting.'
+      },
+      {
+        name: 'High-speed custom fields without EAV query collapse',
+        text: 'Replaced traditional Entity-Attribute-Value join tables with hybrid relational columns and GIN-indexed JSONB attributes, preserving sub-50ms P95 filtering across millions of custom records.'
+      },
+      {
+        name: 'Concurrency-safe inventory & financial posting',
+        text: 'Implemented append-only double-entry ledger semantics with optimistic concurrency control and advisory locks on high-velocity SKUs, eliminating negative-stock race conditions during peak order bursts.'
+      }
     ],
-    stack: ['Modular Monolith Architecture', 'PostgreSQL Relational Ledger', 'Role-Based Access Control (RBAC)', 'REST APIs', 'Real-Time Reporting Views'],
+    stack: [
+      'PostgreSQL (RLS + Partitioning + JSONB)',
+      'Node.js / TypeScript',
+      'Next.js App Router',
+      'Redis',
+      'Docker'
+    ],
     lessons: [
-      'In ERP engineering, auditability beats cleverness: append-only stock and financial ledgers prevent silent reconciliation nightmares months later.',
-      'Operators adopt fast keyboard-friendly tables and clear exception flags far faster than decorative chart dashboards.',
+      'Multi-entity ERPs fail when tenant isolation is handled only in application `WHERE` clauses; database-enforced RLS makes cross-entity leakage structurally impossible.',
+      'Inventory and accounting must share the same immutable append-only ledger model—mutable balance columns always drift under concurrent warehouse activity.'
+    ]
+  },
+  {
+    slug: 'voxflow',
+    name: 'VoxFlow',
+    domainBadge: 'Autonomous Voice & Lead Dispatch Engine',
+    practice: 'ai',
+    practiceLabel: 'Applied AI',
+    image: '/images/work/voxflow.webp',
+    alt: 'VoxFlow autonomous voice and lead dispatch schematic showing SIP WebRTC voice streaming, sub-second barge-in detection, atomic calendar slot locking, and CRM writeback.',
+    headline:
+      'Answers every inbound call on the first ring, dials new web leads within 45 seconds, qualifies intent, and books the calendar.',
+    summary:
+      'A dedicated, single-tenant voice operations system engineered for high-inbound service businesses, clinics, and commercial sales teams. Handles 24/7 inbound reception and automated outbound follow-up calls with sub-500ms conversational latency, live calendar locking, and structured CRM writeback.',
+    problem: [
+      'High-intent buyers call when they have an immediate problem, or submit a web form expecting a call back within minutes. When calls hit voicemail during peak hours, evenings, or weekends—or when sales reps take four hours to dial a new inquiry—up to 60% of qualified revenue walks to the next provider who answers.',
+      'Hiring 24/7 front-desk staff is expensive, turnover-prone, and still bottlenecks when three calls arrive at once. Meanwhile, generic IVR phone trees frustrate callers, and off-the-shelf voice bots suffer from awkward two-second pauses, talk over the customer, or hallucinate pricing and appointment availability.'
     ],
+    businessNeeds: [
+      'Pick up 100% of inbound calls on the first ring 24/7/365 with concurrent line bursting so no caller ever hears a busy signal or voicemail.',
+      'Trigger instant outbound speed-to-lead calls within 45 seconds of a web form submission, ad lead, or missed call—plus scheduled follow-up cadences.',
+      'Qualify callers against custom business criteria, book confirmed appointments directly into staff calendars, and execute warm transfers to human specialists when required.',
+      'Write structured call summaries, qualification scores, transcripts, and recordings directly into the CRM.'
+    ],
+    features: [
+      {
+        name: '24/7 inbound reception & instant outbound speed-to-lead',
+        text: 'Handles unlimited simultaneous inbound calls and automatically initiates outbound qualification or appointment-reminder calls triggered by CRM webhooks, web forms, or lead ads.'
+      },
+      {
+        name: 'Sub-500ms full-duplex conversational voice engine',
+        text: 'Streams raw telephony audio over WebSockets with Voice Activity Detection (VAD) and instant barge-in handling—stopping speech synthesis within 80ms the moment a caller interrupts.'
+      },
+      {
+        name: 'Transactional calendar booking & conflict resolution',
+        text: 'Queries real-time staff availability across Google Workspace, Microsoft 365, or industry scheduling software, negotiates time slots naturally, locks the booking, and sends SMS/email confirmations while on the call.'
+      },
+      {
+        name: 'Warm human handoff & structured CRM dispatch',
+        text: 'Transfers high-priority or emergency callers directly to on-call staff with a whispered context briefing, and logs structured JSON call outcomes, sentiment, and audio links into HubSpot, Salesforce, or custom ERPs.'
+      }
+    ],
+    architecture: [
+      {
+        stage: 'SIP / WebRTC Telephony Edge',
+        detail:
+          'Twilio Elastic SIP Trunking streams bidirectional 8kHz mulaw audio over persistent WebSockets with sub-20ms jitter buffering.'
+      },
+      {
+        stage: 'Streaming ASR & Barge-In Controller',
+        detail:
+          'Deepgram Nova-2 streaming transcription paired with acoustic VAD detects caller speech onset in under 80ms to cancel active TTS output.'
+      },
+      {
+        stage: 'Guardrailed Conversation State Machine',
+        detail:
+          'Low-latency LLM orchestration constrained by deterministic state transitions (Greeting → Qualification → Slot Lock → Confirmation / Escalation).'
+      },
+      {
+        stage: 'Transactional Tool & CRM Sync Worker',
+        detail:
+          'Executes atomic Redis-locked calendar reservations, dispatches SMS confirmations, and writes structured call payloads to the CRM.'
+      }
+    ],
+    complexities: [
+      {
+        name: 'Eliminating the "awkward robot pause" (<500ms turn latency)',
+        text: 'Co-located telephony media servers, streaming ASR, speculative tool prefetching, and chunked PCM voice synthesis so conversational turn-taking matches human phone cadence.'
+      },
+      {
+        name: 'Zero hallucinated policies, prices, or time slots',
+        text: 'Restricted the voice agent from quoting availability or pricing from memory; every figure and calendar slot must be returned by a deterministic tool call validated against strict JSON schemas.'
+      },
+      {
+        name: 'Race-condition-free concurrent appointment booking',
+        text: 'Implemented short-lived Redis slot holds while the caller confirms a proposed time on the phone, preventing double-bookings when multiple inbound calls negotiate the same calendar window.'
+      }
+    ],
+    stack: [
+      'Twilio SIP / WebRTC',
+      'Deepgram Streaming ASR',
+      'ElevenLabs Turbo / Cartesia TTS',
+      'Node.js / Fastify WebSockets',
+      'Redis',
+      'PostgreSQL'
+    ],
+    lessons: [
+      'Phone callers judge competence in the first four seconds; speculative greeting pre-synthesis and instant barge-in cancellation matter more than raw model size.',
+      'Voice agents must never write directly to a production calendar without a short-lived reservation lock while the human verbally confirms the slot.'
+    ]
+  },
+  {
+    slug: 'advantage-ai',
+    name: 'AdVantage',
+    domainBadge: 'Omnichannel AI Sales & Campaign Engine',
+    practice: 'automation',
+    practiceLabel: 'Automation',
+    image: '/images/work/advantage-ai.webp',
+    alt: 'AdVantage omnichannel AI sales and campaign architecture showing unified WhatsApp, Instagram, and Messenger inbox, catalog-grounded AI sales closer, and Meta ad spend circuit breaker.',
+    headline:
+      'Facebook, WhatsApp, and Instagram in one unified inbox—with a catalog-grounded AI sales closer and automated ad campaign planner.',
+    summary:
+      'An omnichannel revenue and marketing automation platform that unifies Meta social messaging (WhatsApp Business, Instagram DMs, Facebook Messenger, and ad comments) with a catalog-grounded AI sales representative and a closed-loop ad planner enforced by hard budget circuit breakers.',
+    problem: [
+      'Commercial brands running paid social campaigns lose a massive share of conversions inside the inbox. Paid ads drive thousands of comments and DMs across Facebook, Instagram, and WhatsApp asking about sizing, stock availability, bulk pricing, or shipping timelines. Because human reps cannot answer across three separate apps at 11 PM, leads go cold and paid ad spend is wasted.',
+      'At the same time, media buyers plan ad budgets in spreadsheets disconnected from which conversations actually closed into paid orders. Without closed-loop attribution from ad click to DM conversation to checkout, teams overspend on high-click, low-margin campaigns.'
+    ],
+    businessNeeds: [
+      'Consolidate Facebook Messenger, Instagram DMs, WhatsApp Business threads, and public ad comments into one real-time workspace.',
+      'Deploy an AI sales closer that answers product, inventory, and shipping questions from live catalog data, recommends bundles, and sends checkout links in under two seconds.',
+      'Automate multi-day follow-up sequences and comment-to-DM triggers while escalating complex or VIP negotiations to human reps with full context.',
+      'Plan, launch, and rebalance ad campaigns using actual DM-to-order revenue data, protected by hard code-level spend caps.'
+    ],
+    features: [
+      {
+        name: 'Unified Meta & WhatsApp omnichannel inbox',
+        text: 'Single-pane thread management for WhatsApp Business API, Instagram Direct, Facebook Messenger, and ad comment triggers—complete with customer order history, ad source attribution, and instant human takeover.'
+      },
+      {
+        name: 'Catalog-grounded AI sales representative',
+        text: 'Queries live SKU inventory, variant pricing, technical specifications, and active promo rules before drafting replies—guiding buyers from initial question to an embedded Stripe or Shopify checkout link.'
+      },
+      {
+        name: 'Automated follow-up & abandoned-thread recovery',
+        text: 'Tracks buyer intent stage across channels and triggers personalized, policy-compliant re-engagement messages within Meta’s 24-hour messaging windows.'
+      },
+      {
+        name: 'Closed-loop ad planner & budget circuit breaker',
+        text: 'Links closed inbox orders back to specific ad creatives via Meta Conversions API (CAPI), generates data-backed campaign briefs, and enforces hard daily/lifetime spend ceilings in application code.'
+      }
+    ],
+    architecture: [
+      {
+        stage: 'Omnichannel Webhook Gateway',
+        detail:
+          'Ingests high-throughput Meta Graph API and WhatsApp Cloud API webhooks with cryptographic signature verification and idempotency keys.'
+      },
+      {
+        stage: 'Catalog RAG & Policy Guardrail Engine',
+        detail:
+          'Retrieves real-time SKU stock, pricing tiers, and shipping rules from PostgreSQL/pgvector; blocks any unverified price or discount claim.'
+      },
+      {
+        stage: 'Conversational Sales & Handoff Router',
+        detail:
+          'Scores buyer intent, generates channel-formatted responses or checkout links, and routes high-value escalations to human reps.'
+      },
+      {
+        stage: 'CAPI Attribution & Spend Enforcer',
+        detail:
+          'Streams server-side purchase events back to Meta Ads Manager and runs scheduled budget-cap checks with automatic campaign pause triggers.'
+      }
+    ],
+    complexities: [
+      {
+        name: 'Zero fabricated prices, stock counts, or discount promises',
+        text: 'Built a deterministic post-generation verification filter that cross-checks every currency figure, SKU code, and promo code in the AI draft against the live product database before transmission.'
+      },
+      {
+        name: 'Meta 24-hour messaging window & template compliance',
+        text: 'Engineered a state-aware policy scheduler that tracks the exact last-user-interaction timestamp per channel, automatically switching from free-form replies to pre-approved WhatsApp utility/marketing templates when windows expire.'
+      },
+      {
+        name: 'Hard budget caps enforced in code, never prompts',
+        text: 'Isolated all Meta Marketing API budget mutations behind a deterministic transaction service with hourly spend velocity circuit breakers and mandatory human sign-off above configurable thresholds.'
+      }
+    ],
+    stack: [
+      'Meta Graph & Marketing API',
+      'WhatsApp Cloud API',
+      'Next.js',
+      'Node.js / BullMQ',
+      'PostgreSQL + pgvector',
+      'Redis'
+    ],
+    lessons: [
+      'Social commerce speed-to-reply directly governs ROAS: answering an Instagram ad comment or WhatsApp inquiry in 2 seconds with a live checkout link converts 3x better than sending traffic to a static landing page.',
+      'Never let an LLM call an ad-spend mutation API directly; financial guardrails belong in deterministic application middleware.'
+    ]
   },
   {
     slug: 'opsera',
     name: 'Opsera',
+    domainBadge: 'Slack-Native Company Operations OS',
     practice: 'custom-software',
-    practiceLabel: 'Custom Software and Platforms',
-    clientType: 'Internal Platform · Architecture Case Study',
-    status: 'Internal platform',
-    isLive: false,
+    practiceLabel: 'Custom Software',
     image: '/images/work/opsera.webp',
-    alt: 'Opsera real-time dispatch and operations engine schematic',
-    headline: 'Multi-workspace project orchestration connecting tasks, SLA alerts, and engineering tools in one operational view.',
+    alt: 'Opsera Slack-native company operations OS schematic showing slash commands for standups and leave management, AI thread-to-task structuring, role-based access control, and unified web command center.',
+    headline:
+      'Run the entire company inside Slack—daily standups, leave management, RBAC task tracking, AI message structuring, and a unified web command center.',
     summary:
-      'A multi-tenant B2B SaaS platform demonstrating clean workspace isolation, real-time deadline risk detection, and two-way webhook synchronization across Slack, GitHub, and Jira.',
+      'A Slack-native company operations and project management operating system paired with an executive web dashboard. Teams run daily standups, PTO and leave approvals, sprint task assignment, backlog updates, and automated follow-ups via slash commands and AI message structuring without leaving Slack.',
     problem: [
-      'Delivery teams lose hours every week reconciling status across GitHub pull requests, Jira tickets, Slack threads, and client milestone sheets. Managers only spot a slipping milestone after the deadline has already passed.',
-      'Opsera brings cross-tool activity into one multi-tenant workspace: linking code commits and ticket transitions directly to client deliverables and raising early alerts when dependencies stall.',
+      'Engineering and operations teams live in Slack, but company administration is scattered across four separate tools: Jira or Linear for tasks, an HR portal for leave requests, status meetings for daily standups, and spreadsheets for executive visibility. Because engineers hate context-switching into heavy web forms, task boards fall days behind reality.',
+      'Project managers end up spending 6 to 8 hours every week chasing people in Slack threads asking for status updates, manually copying decisions from chat into tickets, and cross-checking who is on leave before assigning urgent deliverables.'
+    ],
+    businessNeeds: [
+      'Run daily standups, leave requests, task creation, backlog grooming, and status follow-ups entirely inside Slack using fast slash commands and interactive modals.',
+      'Convert messy multi-person Slack discussions and client briefs into structured epics, tasks, owners, and deadlines using AI.',
+      'Enforce project-scoped Role-Based Access Control (RBAC) so Admins, Project Leads, Contributors, and External Observers only execute authorized actions.',
+      'Provide leadership with a real-time, two-way synced web dashboard showing company-wide sprint velocity, blockers, workload balance, and team availability.'
+    ],
+    features: [
+      {
+        name: 'Slash-command workspace execution (`/standup`, `/leave`, `/task`)',
+        text: 'Submit asynchronous daily standups linked to active tickets, request and approve PTO with automatic sprint-capacity checks, assign tasks, and update backlog states in seconds without leaving Slack.'
+      },
+      {
+        name: 'AI message & thread-to-task structuring engine',
+        text: 'Trigger the bot on any Slack message or chaotic 20-reply thread to extract structured task titles, technical acceptance criteria, priority levels, and suggested assignees—presented as an interactive card for one-click human approval.'
+      },
+      {
+        name: 'Project-scoped RBAC & automated follow-up engine',
+        text: 'Granular role permissions govern who can approve leave, reprioritize backlogs, assign work, or view private client channels, while scheduled workers nudge owners on stalled or overdue tasks before deadlines slip.'
+      },
+      {
+        name: 'Unified executive web command center',
+        text: 'A real-time web cockpit synced bidirectionally with Slack—giving founders and delivery leads instant visibility into cross-project burndown, standup compliance, blocker heatmaps, and leave calendars.'
+      }
     ],
     architecture: [
-      { stage: '01 · Multi-Tenant Workspace Core', detail: 'Strict tenant-scoped data isolation, organization roles, project templates, and milestone dependency graphs.' },
-      { stage: '02 · Bi-Directional Webhook Engine', detail: 'Idempotent webhook consumers and outbound dispatchers syncing GitHub PRs, Jira issues, and Slack notifications.' },
-      { stage: '03 · SLA & Bottleneck Monitor', detail: 'Scheduled background workers score blocked tasks, unreviewed PRs, and approaching milestone dates.' },
-      { stage: '04 · Executive & Client Views', detail: 'Clean delivery digests summarizing shipped work, upcoming milestones, and risk items without manual status meetings.' },
+      {
+        stage: 'Slack Bolt Gateway & <250ms Ack Edge',
+        detail:
+          'Verifies Slack cryptographic signatures, parses slash commands and Block Kit modal payloads, and acknowledges requests in under 250ms.'
+      },
+      {
+        stage: 'RBAC Policy & AI Structuring Pipeline',
+        detail:
+          'Validates project role permissions (`Admin`, `Lead`, `Contributor`, `Observer`) and runs schema-constrained LLM extraction on Slack threads.'
+      },
+      {
+        stage: 'Transactional Operations Core & Scheduler',
+        detail:
+          'PostgreSQL state machine + BullMQ cron workers managing tasks, standup logs, leave balances, capacity adjustments, and overdue follow-up nudges.'
+      },
+      {
+        stage: 'Real-Time Web Dashboard Sync',
+        detail:
+          'WebSocket event broadcaster keeps the Next.js executive dashboard and Slack channel threads in lockstep with zero state drift.'
+      }
     ],
-    capabilities: [
-      { name: 'Tenant-safe SaaS foundation', text: 'Row-level workspace isolation, invite flows, audit trails, and role permissions engineered from day one.' },
-      { name: 'Resilient webhook ingestion', text: 'Signature verification, deduplication keys, and dead-letter retry queues ensure zero missed external events.' },
-      { name: 'Actionable Slack digests', text: 'Targeted morning summaries notify owners only when a deliverable needs attention—avoiding notification fatigue.' },
+    complexities: [
+      {
+        name: 'Sub-3-second Slack interaction limits under heavy load',
+        text: 'Decoupled Slack HTTP ingress from AI structuring and database writes using an immediate acknowledgment queue and asynchronous Block Kit `response_url` updates, guaranteeing zero Slack timeout errors.'
+      },
+      {
+        name: 'Enforcing multi-role project RBAC inside shared Slack channels',
+        text: 'Mapped Slack user IDs to a hierarchical RBAC policy engine so slash commands dynamically render role-appropriate modals and reject unauthorized backlog or leave approvals inside public channels.'
+      },
+      {
+        name: 'High-signal follow-ups without notification fatigue',
+        text: 'Replaced naive hourly reminder spam with an intelligent digest scheduler that batches non-urgent nudges into each team member’s morning standup prompt and only escalates true critical-path blockers.'
+      }
     ],
-    stack: ['Next.js & React', 'Node / Python API Services', 'PostgreSQL', 'Webhook & Queue Workers', 'Slack, GitHub & Jira APIs'],
+    stack: [
+      'Slack Bolt SDK & Block Kit',
+      'Next.js',
+      'Node.js / TypeScript',
+      'PostgreSQL',
+      'Redis + BullMQ',
+      'Structured LLM Extraction'
+    ],
     lessons: [
-      'Third-party webhooks always arrive out of order or twice eventually—designing every integration around idempotency keys saves weeks of production firefighting.',
-      'Multi-tenant permissions belong in the data-access layer, never scattered across UI conditionals.',
-    ],
+      'Internal operations tools succeed or fail on friction: when updating a task or logging leave takes a 4-second slash command in Slack, adoption hits 98%+ without management policing.',
+      'AI task extraction from chat must always present an editable preview card before writing to the backlog—human confirmation keeps the backlog clean.'
+    ]
   },
   {
-    slug: 'advantage-ai',
-    name: 'AdVantage AI',
-    practice: 'automation',
-    practiceLabel: 'Workflow Automation and Integration',
-    clientType: 'Internal Platform · Architecture Case Study',
-    status: 'Internal platform',
-    isLive: false,
-    image: '/images/work/advantage-ai.webp',
-    alt: 'AdVantage AI multi-touch attribution and creative variation matrix schematic',
-    headline: 'Closed-loop campaign automation pairing AI creative workflows with live ad-spend guardrails.',
+    slug: 'syncdaily',
+    name: 'SyncDaily',
+    domainBadge: 'Personalized AI Intelligence Platform',
+    practice: 'ai',
+    practiceLabel: 'Applied AI',
+    image: '/images/work/syncdaily.webp',
+    alt: 'SyncDaily personalized AI intelligence platform architecture showing multi-source arXiv and Big Tech ingestion, pgvector semantic deduplication, and role-tailored briefings for business leaders, engineers, and students.',
+    headline:
+      'Cuts through global AI, ML, and Big Tech noise—delivering role-specific impact analysis and concrete opportunities for leaders, engineers, and students.',
     summary:
-      'Automates campaign preparation, Meta Marketing API dispatch, performance ingestion, and rule-governed budget alerts with mandatory human approval gates.',
+      'An AI-native market and technical intelligence platform that continuously ingests global AI research, model releases, Big Tech moves, and venture activity—deduplicating coverage into canonical events and synthesizing tailored "what this means for you and what to do next" briefings by role and interest graph.',
     problem: [
-      'Growth teams and boutique agencies spend hours manually formatting ad variations, uploading campaign structures, pulling daily spend CSVs, and catching underperforming ad sets too late.',
-      'Unchecked "autonomous marketing agents" are dangerous when connected to real ad budgets. AdVantage AI pairs fast AI creative drafting with deterministic spend ceilings and human sign-off before a dollar moves.',
+      'Every week brings hundreds of new AI papers, open-weight model checkpoints, framework updates, regulatory shifts, and Big Tech product launches. Decision-makers, engineers, and ambitious students drown in generic newsletters and social hype that repeat the same surface-level headlines without explaining the underlying technical or commercial reality.',
+      'Crucially, the same breakthrough means something completely different depending on who you are: a founder needs to know how a new model shifts unit economics or defensibility; a staff engineer needs benchmark trade-offs, VRAM requirements, and migration paths; a student needs to know which foundational concepts and portfolio opportunities just opened up.'
+    ],
+    businessNeeds: [
+      'Ingest and deduplicate thousands of daily items across arXiv, GitHub, engineering blogs, Big Tech announcements, and venture filings into single canonical stories.',
+      'Synthesize role-specific impact analysis tailored to the reader’s persona (Business Leader, Software/ML Engineer, or Student/Researcher) and personal topic graph.',
+      'Translate every major development into concrete, actionable next steps: what to pilot, refactor, study, or build right now.',
+      'Keep LLM inference costs sub-linear as subscriber volume scales from hundreds to tens of thousands of daily readers.'
+    ],
+    features: [
+      {
+        name: 'Multi-source ingestion & semantic event clustering',
+        text: 'Continuously crawls research preprints, code repositories, release notes, and tech press—using dense vector embeddings to collapse 40+ repetitive articles about the same launch into one verified event node.'
+      },
+      {
+        name: 'Role-adaptive impact synthesis (Executive / Engineer / Student)',
+        text: 'Generates distinct analytical lenses for each canonical event: commercial ROI and strategic risk for executives; architecture, latency, and implementation patterns for engineers; learning roadmaps and project ideas for students.'
+      },
+      {
+        name: 'Actionable opportunity & playbook generator',
+        text: 'Pairs every briefing with concrete "What to do in this situation" playbooks—linking directly to primary benchmarks, repositories, migration guides, or market gaps.'
+      },
+      {
+        name: 'Personal interest graph & multi-channel delivery',
+        text: 'Learns from explicit topic weights (such as Agentic Workflows, Rust Systems, Computer Vision, or FinTech) and engagement signals to deliver a ranked daily web feed and morning briefing.'
+      }
     ],
     architecture: [
-      { stage: '01 · Brief & Brand Rules Intake', detail: 'Captures product offer, target audience, historical winners, and strict compliance/brand tone rules.' },
-      { stage: '02 · AI Variant Generation & Review', detail: 'Generates structured copy and angle variants into a side-by-side approval queue for one-click human sign-off.' },
-      { stage: '03 · Meta API Campaign Dispatch', detail: 'Pushes approved campaign, ad-set, and creative payloads via API with hard daily spend caps enforced in code.' },
-      { stage: '04 · ROAS Ingestion & Alert Loop', detail: 'Pulls hourly spend, CPA, and conversion metrics—pausing anomalies and proposing budget shifts within preset guardrails.' },
+      {
+        stage: 'Distributed Source Harvesters',
+        detail:
+          'Scheduled scrapers and RSS/API workers ingest arXiv, GitHub, Hacker News, lab blogs, and SEC/funding feeds into a normalized raw store.'
+      },
+      {
+        stage: 'Vector Deduplication & Entity Graph',
+        detail:
+          'Computes embeddings in pgvector, merges duplicate coverage via cosine similarity thresholds, and extracts primary source citations.'
+      },
+      {
+        stage: 'Two-Tier "Analyze Once, Tailor Cheaply" Engine',
+        detail:
+          'Runs deep multi-document synthesis once per canonical cluster, then generates persona-specific framing nodes cached by role and domain.'
+      },
+      {
+        stage: 'Personalized Ranking & Dispatch Pipeline',
+        detail:
+          'Matches user interest vectors against canonical persona nodes to assemble individualized web feeds and scheduled email briefings.'
+      }
     ],
-    capabilities: [
-      { name: 'Hard financial guardrails', text: 'Deterministic rule checks enforce maximum daily and campaign-level spend ceilings that no LLM prompt can override.' },
-      { name: 'Human-in-the-loop publishing', text: 'Drafts and budget reallocations require explicit one-click operator approval with a complete audit trail.' },
-      { name: 'Live attribution reporting', text: 'Consolidates ad platform metrics with downstream lead and conversion events into plain daily summaries.' },
+    complexities: [
+      {
+        name: 'Decoupling LLM inference cost from subscriber growth',
+        text: 'Engineered a two-stage "analyze once per story cluster, project across persona axes" pipeline so computational cost scales with daily world events rather than multiplying per subscriber.'
+      },
+      {
+        name: 'Eliminating hype and enforcing primary-source grounding',
+        text: 'Built a citation verifier that strips secondary commentary and forces every technical claim, benchmark score, or funding figure to link directly to the underlying arXiv paper, GitHub commit, or official filing.'
+      },
+      {
+        name: 'Cross-day storyline deduplication',
+        text: 'Implemented sliding-window semantic clustering with temporal decay so ongoing multi-day stories only trigger a new briefing when substantive new technical or commercial facts emerge.'
+      }
     ],
-    stack: ['Workflow Orchestration Engine', 'Meta Marketing API', 'LLM Structured Drafting', 'PostgreSQL', 'Automated Alerting'],
+    stack: [
+      'Python',
+      'PostgreSQL + pgvector',
+      'Next.js',
+      'Redis + BullMQ',
+      'Structured LLM Pipelines',
+      'Resend'
+    ],
     lessons: [
-      'Any automation touching real money must separate AI suggestion from deterministic execution—hard-coded spend limits are mandatory.',
-      'Side-by-side batch review cuts human approval time from 45 minutes to 3 minutes while keeping 100% editorial control.',
-    ],
+      'Personalized AI media cannot call an LLM per user per article at delivery time; pre-computing canonical persona facets turns an O(Users × Stories) cost problem into O(Stories).',
+      'Readers trust automated intelligence only when every claim is anchored to a clickable primary source rather than a summarized opinion.'
+    ]
   },
   {
-    slug: 'ai-receptionist',
-    name: 'AI Receptionist',
+    slug: 'ledgerflow',
+    name: 'LedgerFlow',
+    domainBadge: 'Autonomous AP & 3-Way Match Pipeline',
     practice: 'automation',
-    practiceLabel: 'Workflow Automation and Integration',
-    clientType: 'Internal System · Pilot Ready',
-    status: 'Pilot ready',
-    isLive: false,
-    image: '/images/work/ai-receptionist.webp',
-    alt: 'AI Receptionist voice intake assistant architecture schematic',
-    headline: 'Low-latency voice intake assistant that answers calls, qualifies leads, books calendar slots, and syncs CRM.',
+    practiceLabel: 'Automation',
+    image: '/images/work/ledgerflow.webp',
+    alt: 'LedgerFlow autonomous accounts payable and 3-way match pipeline schematic showing multi-format PDF invoice extraction, deterministic math verification, PO/GRN matching, and ERP sync.',
+    headline:
+      'Turns vendor PDFs, purchase orders, and delivery receipts into reconciled, 3-way matched accounting entries—without manual typing.',
     summary:
-      'Built for service businesses, clinics, and operations teams that miss high-intent inbound phone calls after hours or during peak dispatch windows.',
+      'An end-to-end accounts payable and document operations pipeline that ingests unstructured vendor invoices across email and portals, extracts line-item tables with deterministic arithmetic verification, performs automated 3-way matching against Purchase Orders and Goods Received Notes, and syncs approved vouchers directly to the ERP.',
     problem: [
-      'Service companies, clinics, property managers, and logistics desks lose high-value bookings every week when inbound callers hit voicemail during busy hours or evenings.',
-      'Traditional IVR phone trees frustrate callers, while unscripted voice bots ramble or book invalid slots. AI Receptionist uses bounded conversation states connected directly to live calendar availability and CRM records.',
+      'Finance and operations teams processing hundreds or thousands of monthly vendor invoices spend 15+ hours a week keying PDF line items into QuickBooks, Xero, NetSuite, or their ERP, hunting down warehouse receiving slips in email threads, and fixing SKU unit-of-measure mismatches by hand.',
+      'According to Ardent Partners Accounts Payable benchmarks, manual processing costs $12 to $30 per invoice, takes an average of 10.9 days to approve, and exposes the business to duplicate billings, unnoticed supplier price creep, and missed early-payment discounts.'
+    ],
+    businessNeeds: [
+      'Ingest multi-page PDFs, scanned delivery tickets, and international invoices automatically from shared AP inboxes, supplier portals, and mobile uploads.',
+      'Verify every extracted line item against deterministic mathematical rules (`Qty × Unit Price + Tax - Discount == Total`) before any data touches the general ledger.',
+      'Automatically reconcile invoices against open Purchase Orders (PO) and warehouse Goods Received Notes (GRN), routing only genuine price or quantity variances to human reviewers.',
+      'Post approved, GL-coded vouchers idempotently into the accounting ledger with the source PDF permanently attached.'
+    ],
+    features: [
+      {
+        name: 'Multi-channel document intake & layout-aware extraction',
+        text: 'Monitors dedicated AP email inboxes, EDI feeds, and mobile warehouse uploads—extracting complex multi-page tables, tax breakdowns, freight charges, and vendor metadata regardless of template layout.'
+      },
+      {
+        name: 'Deterministic math, tax & fuzzy duplicate guard',
+        text: 'Cross-checks line-item arithmetic in code and screens every incoming bill against historical invoices using SHA-256 file hashes plus fuzzy matching on `(Vendor Tax ID + Invoice Number + Amount + ±5-day window)`.'
+      },
+      {
+        name: 'Automated 3-Way Match (PO ↔ GRN ↔ Invoice)',
+        text: 'Links vendor line descriptions to internal master SKUs, converts packaging units (such as cases of 24 to individual units), and verifies that billed quantities and prices fall within contract tolerance thresholds.'
+      },
+      {
+        name: 'Side-by-side exception workbench & ERP sync',
+        text: 'Auto-posts clean invoices straight through to QuickBooks, Xero, NetSuite, or Okebase, while presenting flagged variances in a split-screen UI that highlights the exact bounding box on the source PDF.'
+      }
     ],
     architecture: [
-      { stage: '01 · Telephony & Real-Time Voice Stream', detail: 'Answers inbound PSTN/SIP calls in under a second with natural turn-taking and barge-in handling.' },
-      { stage: '02 · Bounded Intent & Policy Engine', detail: 'Follows approved qualification questions, pricing/FAQ boundaries, and urgent-call escalation rules.' },
-      { stage: '03 · Live Calendar & Slot Locking', detail: 'Queries real-time calendar availability, confirms time zones, books slots, and sends SMS/email confirmations.' },
-      { stage: '04 · Structured CRM & Transcript Sync', detail: 'Writes call summary, caller intent, audio/transcript link, and follow-up tasks directly into the client CRM.' },
+      {
+        stage: 'Document Ingestion & Pre-Processing',
+        detail:
+          'IMAP/Webhook listeners ingest PDFs and scans, deskew pages, and compute cryptographic hashes for instant duplicate rejection.'
+      },
+      {
+        stage: 'Vision-LLM Extraction & Math Verifier',
+        detail:
+          'Layout-aware multimodal extraction outputs strict JSON schemas validated by a deterministic Python arithmetic and tax-rate engine.'
+      },
+      {
+        stage: '3-Way Match & GL Coding Engine',
+        detail:
+          'Matches invoice lines against ERP Purchase Orders and warehouse GRNs using hybrid vector + fuzzy SKU resolution and historical GL account mapping.'
+      },
+      {
+        stage: 'Exception Workbench & Ledger Connector',
+        detail:
+          'Routes out-of-tolerance bills to human approvers and writes approved vouchers idempotently to the ERP/accounting API.'
+      }
     ],
-    capabilities: [
-      { name: 'Warm human transfer for edge cases', text: 'Urgent callers or out-of-scope questions transfer immediately to an on-call staff member with a brief summary.' },
-      { name: 'Zero double-booked appointments', text: 'Calendar checks and slot reservations run through transactional API calls rather than conversational guesswork.' },
-      { name: 'Instant CRM enrichment', text: 'Sales and ops teams see clean structured fields—caller name, need, urgency, booked slot—seconds after hang-up.' },
+    complexities: [
+      {
+        name: 'Zero tolerance for hallucinated numbers in financial ledgers',
+        text: 'Never trusted raw model output for accounting totals: every invoice must pass a deterministic cross-footing equation (`sum(line_items) + tax + shipping - discount == header_total`); any 1-cent discrepancy triggers targeted re-OCR and highlights the exact cell.'
+      },
+      {
+        name: 'Cross-unit SKU reconciliation across messy vendor catalogs',
+        text: 'Built a self-improving vendor alias and unit-of-measure conversion table so when a supplier bills "2 Pallets (48 ct)" against a PO written for "96 Units", the 3-way match engine reconciles the math automatically.'
+      },
+      {
+        name: 'Catching subtle double-billing across channels',
+        text: 'Combined exact document hashing with fuzzy composite keys to block duplicate payment when a vendor emails a PDF invoice and later mails or uploads a re-scanned copy of the same bill.'
+      }
     ],
-    stack: ['Streaming Voice Pipeline', 'Telephony / SIP Webhooks', 'Function-Calling LLM', 'Cal.com / Google Calendar API', 'CRM Webhook Sync'],
+    stack: [
+      'Python / FastAPI',
+      'Multimodal Document Vision',
+      'PostgreSQL',
+      'Next.js Exception Workbench',
+      'QuickBooks / Xero / ERP APIs',
+      'Redis'
+    ],
     lessons: [
-      'Voice latency budgets are unforgiving: concise prompts, streaming audio, and fast local tool lookups determine whether callers stay on the line.',
-      'Giving the voice agent a clear "I will connect you with our team right now" fallback builds far more caller trust than bluffing.',
-    ],
+      'In financial document automation, AI should do the reading, but deterministic code must do the math and enforce tolerance gates.',
+      'Designing the 12% exception review screen with bounding-box PDF highlights is what wins daily trust from controllers and bookkeepers.'
+    ]
   },
+  {
+    slug: 'runwayiq',
+    name: 'RunwayIQ',
+    domainBadge: '13-Week Treasury, BI & Demand Forecaster',
+    practice: 'erp',
+    practiceLabel: 'Business Systems & ERP',
+    image: '/images/work/runwayiq.webp',
+    alt: 'RunwayIQ 13-week treasury, BI, and demand forecaster schematic showing cross-stack ETL, SKU stockout radar, interactive what-if scenario simulator, and backtested P10/P50/P90 cash runway bands.',
+    headline:
+      'Unifies accounting, commerce, and inventory data to forecast 13-week cash runway and SKU stockouts before they happen.',
+    summary:
+      'An executive intelligence and quantitative forecasting platform that consolidates fragmented data across ERP/accounting, Shopify/Stripe, CRM, and warehouse systems—delivering backtested 13-week probabilistic cash-flow projections, lead-time-aware inventory reorder alerts, interactive "What-If" scenario modeling, and automated Monday morning anomaly briefings.',
+    problem: [
+      'Founders, COOs, and CFOs of growing companies rarely suffer from a lack of raw data—they suffer from data scattered across six SaaS silos. Revenue lives in Shopify or Stripe, bills and payroll live in QuickBooks or Xero, pipeline lives in HubSpot, and stock counts live in a WMS. By the time finance stitches together a monthly spreadsheet, the numbers are two weeks stale.',
+      'Worse, backward-looking dashboards only tell leadership what happened last month. They fail to warn when three large enterprise customers slow-pay their invoices at the exact same week a $120,000 inventory container deposit comes due—or when a top-selling SKU is 18 days from stocking out against a 21-day supplier lead time.'
+    ],
+    businessNeeds: [
+      'Consolidate accounting, commerce, banking, CRM pipeline, and inventory data into one reconciled warehouse with automated daily schema and freshness checks.',
+      'Project 13-week rolling cash inflows, outflows, and net runway with calibrated P10 / P50 / P90 confidence bands grounded in actual customer payment behavior.',
+      'Forecast SKU-level demand against supplier lead times and safety stock buffers to flag stockout dates and exact cash required for purchase orders.',
+      'Give leadership an interactive "What-If" simulator and a proactive Monday 7:00 AM executive briefing that highlights anomalies and required decisions.'
+    ],
+    features: [
+      {
+        name: 'Cross-stack ETL & reconciled executive warehouse',
+        text: 'Automated connectors ingest and normalize transactions from Stripe, Shopify, QuickBooks/Xero, Plaid bank feeds, HubSpot, and ERP inventory tables into a single audited semantic layer.'
+      },
+      {
+        name: '13-week probabilistic cash-flow & AR collection engine',
+        text: 'Models accounts receivable collection curves per customer cohort (factoring in historical days-to-pay drift) alongside scheduled payroll, debt covenants, tax obligations, and supplier payables.'
+      },
+      {
+        name: 'Lead-time-aware SKU stockout & purchasing radar',
+        text: 'Combines seasonal time-series forecasting with supplier lead times and minimum order quantities (MOQs) to output exact reorder dates, recommended PO quantities, and their net cash impact.'
+      },
+      {
+        name: 'Interactive "What-If" simulator & Monday 7 AM briefing',
+        text: 'Allows executives to stress-test hiring plans, ad spend shifts, or delayed receivables in real time, and delivers a weekly narrative briefing every Monday morning flagging margin compression, AR slippage, and urgent POs.'
+      }
+    ],
+    architecture: [
+      {
+        stage: 'Idempotent Cross-Stack ETL Connectors',
+        detail:
+          'Incremental sync workers pull normalized ledgers from accounting, commerce, banking, and inventory APIs with strict reconciliation checks.'
+      },
+      {
+        stage: 'Semantic Warehouse & Metric Layer',
+        detail:
+          'PostgreSQL + dbt models enforce single-source-of-truth definitions for Net Cash, Gross Margin, Contribution Margin, and Available-to-Promise Stock.'
+      },
+      {
+        stage: 'Backtested Quantitative Forecast Engine',
+        detail:
+          'Python statistical and gradient-boosted models (`statsforecast` + `LightGBM`) compute P10/P50/P90 cash and demand trajectories benchmarked against naive baselines.'
+      },
+      {
+        stage: 'Scenario Simulator & Narrative Dispatch',
+        detail:
+          'Deterministic simulation API powers the Next.js executive cockpit and generates grounded Monday morning briefings via Slack and email.'
+      }
+    ],
+    complexities: [
+      {
+        name: 'Beating naive baselines on noisy, seasonal mid-market data',
+        text: 'Built an automated rolling-origin backtesting harness that evaluates candidate time-series models (`AutoETS`, `AutoARIMA`, `LightGBM`) per SKU and cash stream against a Seasonal Naive baseline (`WAPE` / `MASE`), deploying complex models only where they provably reduce forecast error.'
+      },
+      {
+        name: 'Separating deterministic financial math from narrative AI',
+        text: 'All forecasts, covenant checks, and "What-If" cash simulations execute in pure, reproducible Python/SQL models; the LLM layer is used strictly to translate natural-language scenario parameters and summarize pre-computed variance tables.'
+      },
+      {
+        name: 'Customer-specific AR payment drift modeling',
+        text: 'Instead of assuming net-30 invoices arrive on day 30, engineered survival-curve payment estimators per customer tier so the 13-week cash trough reflects real-world collection timing.'
+      }
+    ],
+    stack: [
+      'Python (statsforecast / LightGBM)',
+      'PostgreSQL + dbt',
+      'Next.js Executive Cockpit',
+      'FastAPI',
+      'Accounting & Commerce APIs',
+      'Slack / Email Dispatch'
+    ],
+    lessons: [
+      'A forecast without a backtested error metric against a naive baseline is just a guess; showing P10/P50/P90 confidence bands lets CFOs plan for the downside without freezing growth.',
+      'Connecting inventory reorder triggers directly to the 13-week cash model prevents operations from placing a purchase order that blindsides treasury.'
+    ]
+  },
+  {
+    slug: 'vaultrag',
+    name: 'VaultRAG',
+    domainBadge: 'Permission-Scoped Knowledge & Data Engine',
+    practice: 'ai',
+    practiceLabel: 'Applied AI',
+    image: '/images/work/vaultrag.webp',
+    alt: 'VaultRAG permission-scoped knowledge and data engine schematic showing Splink probabilistic deduplication, pre-retrieval ACL security gate, hybrid BM25 and vector search, and verified citations.',
+    headline:
+      'Cleans messy company data and answers operational questions from internal SOPs, contracts, and databases—with strict role permissions and exact citations.',
+    summary:
+      'An enterprise data hygiene and permission-scoped knowledge engine that resolves duplicate CRM/catalog records, indexes internal documents across Google Drive, SharePoint, Notion, and SQL databases, enforces source-level Access Control Lists (ACLs) prior to retrieval, and returns page-cited answers that abstain when evidence is missing.',
+    problem: [
+      'Every scaling company accumulates two compounding data liabilities: dirty structured records (duplicate customer profiles, conflicting vendor spreadsheets, inconsistent SKU attributes) and fragmented unstructured knowledge (SOPs, client contracts, engineering specs, and HR policies buried across Google Drive, SharePoint, Notion, and Slack).',
+      'Standard "chat with your docs" AI prototypes fail immediately in production for two reasons: they ingest duplicate or outdated v1 documents alongside current policies—causing the AI to cite deprecated rules—and they ignore file-level permissions, risking a junior employee or contractor retrieving confidential executive, legal, or payroll figures.'
+    ],
+    businessNeeds: [
+      'Audit, deduplicate, and standardize messy CRM, vendor, and catalog records before they pollute reporting or AI retrieval.',
+      'Unify search and question-answering across PDFs, Word docs, spreadsheets, wikis, and relational databases with sub-2-second latency.',
+      'Enforce strict, zero-leakage Access Control Lists (ACLs) so users only ever retrieve answers from documents their identity role is authorized to read.',
+      'Guarantee every answer includes clickable document/page citations, refuses to guess when confidence is low, and logs missing-documentation gaps for ops leaders.'
+    ],
+    features: [
+      {
+        name: 'Automated data hygiene & probabilistic entity deduplication',
+        text: 'Scans relational tables and spreadsheets to score data health, normalize phone/address/tax schemas, and merge duplicate customer or supplier entities using probabilistic record linkage (`Splink`) with human-in-the-loop review for borderline matches.'
+      },
+      {
+        name: 'Document version control & canonical SOP indexing',
+        text: 'Detects near-duplicate and superseded policy drafts across Drive and SharePoint, automatically archiving stale versions so retrieval only indexes the active, approved SOP or contract.'
+      },
+      {
+        name: 'Pre-retrieval ACL enforcement & hybrid search',
+        text: 'Mirrors source identity groups (Google Workspace, Entra ID / Active Directory, RBAC roles) onto every indexed chunk—filtering at the database layer before running hybrid BM25 keyword + dense vector search and cross-encoder reranking.'
+      },
+      {
+        name: 'Inline page citations, strict abstention & gap telemetry',
+        text: 'Every generated response links directly to the exact document, page number, and highlighted passage. When retrieval confidence falls below the verification threshold, the system abstains and logs the unanswered question to an Operations Knowledge Gap dashboard.'
+      }
+    ],
+    architecture: [
+      {
+        stage: 'Data Hygiene & Entity Resolution Stage',
+        detail:
+          'Runs schema validation, deterministic normalization, and Splink Fellegi-Sunter probabilistic deduplication across structured records and document metadata.'
+      },
+      {
+        stage: 'ACL-Mirrored Connector & Chunking Pipeline',
+        detail:
+          'Incremental connectors ingest Drive, SharePoint, Notion, and SQL sources, preserving layout hierarchy and attaching explicit role/group ACL bitmasks to every chunk.'
+      },
+      {
+        stage: 'Security-Trimmed Hybrid Retrieval + Reranker',
+        detail:
+          'Applies mandatory SQL `WHERE acl && user_roles` pre-filtering prior to Reciprocal Rank Fusion (BM25 + pgvector) and cross-encoder top-K reranking.'
+      },
+      {
+        stage: 'Grounded Synthesis & Abstention Gate',
+        detail:
+          'Generates answers constrained strictly to retrieved passages, verifies citation alignment, and routes low-confidence queries to the Knowledge Gap telemetry log.'
+      }
+    ],
+    complexities: [
+      {
+        name: 'Zero-leakage security trimming before vector similarity',
+        text: 'Never relied on post-retrieval filtering or prompt instructions for security; engineered composite PostgreSQL indexes combining GIN role arrays with HNSW vector graphs so restricted chunks are excluded before similarity scoring.'
+      },
+      {
+        name: 'Preventing "garbage-in" hallucinations from stale & duplicate files',
+        text: 'Built an ingestion pre-flight pipeline that resolves duplicate entities and flags conflicting document versions (such as `Refund_Policy_2024.pdf` vs `Refund_Policy_2026_FINAL.pdf`) before embeddings are committed.'
+      },
+      {
+        name: 'Calibrated abstention over confident fabrication',
+        text: 'Implemented a two-threshold reranker gate: when the top cross-encoder relevance score falls below `0.78`, the engine refuses to speculate, states exactly what policy is missing, and alerts the documentation owner.'
+      }
+    ],
+    stack: [
+      'Python (Splink + FastAPI)',
+      'PostgreSQL + pgvector + ParadeDB BM25',
+      'Cross-Encoder Reranker',
+      'Next.js',
+      'Google Workspace / Entra ID ACL Sync',
+      'Docker'
+    ],
+    lessons: [
+      'Enterprise RAG is a data hygiene and permissions engineering problem first; cleaning duplicate records and deprecated files improves answer accuracy more than swapping foundation models.',
+      'An internal assistant that knows when to say "That procedure is not documented in your authorized SOPs" is infinitely more valuable than one that guesses.'
+    ]
+  }
 ];
 
-export function getWorkBySlug(slug) {
-  return workItems.find((item) => item.slug === slug) || null;
+export const workPractices = [
+  { id: 'all', label: 'All Case Studies' },
+  { id: 'erp', label: 'Business Systems & ERP' },
+  { id: 'ai', label: 'Applied AI' },
+  { id: 'automation', label: 'Automation' },
+  { id: 'custom-software', label: 'Custom Software' }
+];
+
+export function getWork(slug) {
+  return workItems.find((w) => w.slug === slug) || null;
 }
+
+export const getWorkBySlug = getWork;
 

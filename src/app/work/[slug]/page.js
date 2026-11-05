@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
   const item = getWorkBySlug(slug);
   if (!item) return {};
   return {
-    title: `${item.name} — ${item.practiceLabel} Case Study`,
+    title: `${item.name} — ${item.domainBadge} Case Study`,
     description: item.summary,
     alternates: { canonical: `/work/${item.slug}` },
   };
@@ -62,7 +62,7 @@ export default async function WorkDetailPage({ params }) {
           { label: 'Work', href: '/work' },
           { label: item.name },
         ]}
-        eyebrow={item.clientType}
+        eyebrow={item.domainBadge}
         title={`${item.name}: ${item.headline}`}
         lede={item.summary}
       >
@@ -75,7 +75,7 @@ export default async function WorkDetailPage({ params }) {
       </PageHero>
 
       {item.image && (
-        <Section tone="surface" eyebrow="System Architecture">
+        <Section tone="surface" eyebrow="System Architecture Schematic">
           <Reveal>
             <div className={s.archImageCard}>
               <Image
@@ -93,7 +93,7 @@ export default async function WorkDetailPage({ params }) {
       )}
 
       {showDemoVideo && (
-        <Section tone="surface" eyebrow="2-Minute Engineering Walkthrough" title="See the live pipeline in action">
+        <Section tone="surface" eyebrow="2-Minute Engineering Walkthrough" title="See the pipeline in action">
           <div className={s.videoFrameWrap}>
             <iframe
               src={site.demoVideoUrl}
@@ -106,25 +106,43 @@ export default async function WorkDetailPage({ params }) {
         </Section>
       )}
 
-      <Section tone="surface" eyebrow="Operational Context">
+      <Section eyebrow="The Business Pain Point & Operational Requirements">
         <TwoCol>
-          <h2 style={{ fontSize: 'clamp(1.9rem, 3.6vw, 3rem)', lineHeight: 1.1, maxWidth: '17ch', fontWeight: 500, margin: 0 }}>
-            <Words text="Why off-the-shelf demos fail this workflow." />
-          </h2>
           <div>
+            <h2 style={{ fontSize: 'clamp(1.85rem, 3.4vw, 2.75rem)', lineHeight: 1.12, maxWidth: '18ch', fontWeight: 500, margin: '0 0 1.5rem' }}>
+              <Words text="Why off-the-shelf software breaks under this workflow." />
+            </h2>
             {item.problem.map((p) => (
-              <p key={p} style={{ margin: '0 0 1.25rem', color: 'var(--vd-graphite)', fontSize: '1.1rem', maxWidth: '60ch' }}>
+              <p key={p} style={{ margin: '0 0 1.25rem', color: 'var(--vd-graphite)', fontSize: '1.06rem', lineHeight: 1.68, maxWidth: '60ch' }}>
                 {p}
               </p>
             ))}
           </div>
+          {item.businessNeeds && item.businessNeeds.length > 0 && (
+            <div className={s.needsBox}>
+              <p className={s.needsLabel}>What the operation required</p>
+              <ul className={s.needsList}>
+                {item.businessNeeds.map((need, i) => (
+                  <li key={need} className={s.needsItem}>
+                    <span className={s.needsNum}>0{i + 1}</span>
+                    <span>{need}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </TwoCol>
       </Section>
 
-      <Section tone="ink" eyebrow="System Architecture" title="Four-stage production pipeline">
+      <Section tone="surface" eyebrow="In-Depth Features & Functional Modules" title="What the system does in production">
+        <Rows items={item.features} />
+      </Section>
+
+      <Section tone="ink" eyebrow="Technical Architecture" title="Four-stage production pipeline">
         <Reveal className={s.pipeline}>
-          {item.architecture.map((st) => (
+          {item.architecture.map((st, idx) => (
             <div key={st.stage} className={s.stageCard}>
+              <span className={s.stageStep}>STAGE 0{idx + 1}</span>
               <h3 className={s.stageTitle}>{st.stage}</h3>
               <p className={s.stageDetail}>{st.detail}</p>
             </div>
@@ -132,8 +150,8 @@ export default async function WorkDetailPage({ params }) {
         </Reveal>
       </Section>
 
-      <Section eyebrow="Key Capabilities & Stack" title="Engineered for reliability and clear handover">
-        <Rows items={item.capabilities} />
+      <Section eyebrow="Engineering Complexity & Stack" title="Hard technical problems solved under the hood">
+        <Rows items={item.complexities} />
         <Reveal className={s.stackBand}>
           {item.stack.map((tech) => (
             <span key={tech} className={s.stackChip}>{tech}</span>
@@ -141,24 +159,26 @@ export default async function WorkDetailPage({ params }) {
         </Reveal>
       </Section>
 
-      <Section tone="surface" eyebrow="Production Takeaways" title="Lessons we apply to client builds">
-        <Reveal className={s.lessons}>
-          {item.lessons.map((lesson, idx) => (
-            <div key={lesson} className={s.lessonCard}>
-              <p className={s.lessonNum}>Takeaway 0{idx + 1}</p>
-              <p className={s.lessonText}>{lesson}</p>
-            </div>
-          ))}
-        </Reveal>
-      </Section>
+      {item.lessons && item.lessons.length > 0 && (
+        <Section tone="surface" eyebrow="Architectural Takeaways" title="Principles we carry into every custom deployment">
+          <Reveal className={s.lessons}>
+            {item.lessons.map((lesson, idx) => (
+              <div key={lesson} className={s.lessonCard}>
+                <p className={s.lessonNum}>Principle 0{idx + 1}</p>
+                <p className={s.lessonText}>{lesson}</p>
+              </div>
+            ))}
+          </Reveal>
+        </Section>
+      )}
 
-      <Section eyebrow="More Built by Vector Dynamic" title="Other system architectures">
+      <Section eyebrow="Explore More Case Studies" title="Other systems we have architected">
         <WorkLinks items={others} />
       </Section>
 
       <CtaBand
-        title="Facing a similar architecture or workflow bottleneck?"
-        body="Request a free 2–4 page written review of your workflow, or talk directly with the engineers who built this system."
+        title="Dealing with a similar operational bottleneck?"
+        body="We architect and deploy custom systems like this tailored to your workflow—or send you a free 2–4 page written systems review within 48 hours."
         secondaryLabel="Or request a free written systems review"
         secondaryHref={auditHref}
       />

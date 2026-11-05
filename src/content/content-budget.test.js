@@ -63,14 +63,14 @@ describe('content budget & noise-reduction constraints', () => {
     expect(words).toBeLessThanOrEqual(450);
   });
 
-  it('work overview items honor concise summaries <= 500 words total', () => {
+  it('work overview items honor concise summaries <= 800 words total across 8 systems', () => {
     const summaries = workItems.map(w => ({
       name: w.name,
       headline: w.headline,
       summary: w.summary,
-      status: w.status,
+      domainBadge: w.domainBadge,
     }));
-    expect(countWords(summaries)).toBeLessThanOrEqual(500);
+    expect(countWords(summaries)).toBeLessThanOrEqual(800);
   });
 
   it('contains zero banned buzzwords across home and work', () => {
@@ -80,14 +80,17 @@ describe('content budget & noise-reduction constraints', () => {
     expect(workViolations).toEqual([]);
   });
 
-  it('all 6 project & hero WebP images exist in public/images/work/ and are under 150 KB', () => {
+  it('all 8 case study & hero WebP images exist in public/images/work/ and are under 150 KB', () => {
     const requiredImages = [
       'hero.webp',
       'okebase.webp',
-      'syncdaily.webp',
-      'opsera.webp',
+      'voxflow.webp',
       'advantage-ai.webp',
-      'ai-receptionist.webp',
+      'opsera.webp',
+      'syncdaily.webp',
+      'ledgerflow.webp',
+      'runwayiq.webp',
+      'vaultrag.webp',
     ];
     for (const img of requiredImages) {
       const p = path.join(process.cwd(), 'public/images/work', img);

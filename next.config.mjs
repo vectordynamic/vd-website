@@ -12,6 +12,7 @@ const nextConfig = {
       { source: '/services/custom-ai', destination: '/services/ai', permanent: true },
       { source: '/services/intelligent-automation', destination: '/services/automation', permanent: true },
       { source: '/services/consulting', destination: '/services', permanent: true },
+      { source: '/work/ai-receptionist', destination: '/work/voxflow', permanent: true },
     ];
   },
   images: {

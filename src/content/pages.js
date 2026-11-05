@@ -42,7 +42,7 @@ export const services = {
         { q: 'Do we own the source code and cloud infrastructure?', a: 'Yes. Code lives in your GitHub or GitLab organization from week one, deploys into cloud accounts you control, and 100% of custom IP transfers upon milestone payment.' },
         { q: 'Can you modernize an existing app without taking it offline?', a: 'Yes. We isolate the highest-pain workflow first, migrate data with dual-run verification, and retire legacy screens module by module.' },
       ],
-      work: ['opsera'],
+      work: ['opsera', 'vaultrag'],
       verticals: ['b2b-saas', 'logistics'],
     },
     erp: {
@@ -71,7 +71,7 @@ export const services = {
         { q: 'Should we build a custom ERP module or buy off-the-shelf?', a: 'Commodity functions like standard general-ledger accounting belong in established tools like QuickBooks, Xero, or Odoo. Custom ERP pays off when your quoting, fulfillment, routing, or operational workflow is unique and off-the-shelf workarounds cost you daily margin. We give you an honest verdict in the initial review.' },
         { q: 'How do you prevent disruption during data migration?', a: 'We write repeatable migration scripts, validate row counts and financial totals in staging, and run parallel checks before retiring any legacy sheet.' },
       ],
-      work: ['okebase'],
+      work: ['okebase', 'runwayiq'],
       verticals: ['ecommerce-operations', 'logistics'],
     },
     ai: {
@@ -99,7 +99,7 @@ export const services = {
         { q: 'Will OpenAI, Anthropic, or Google train on our private company data?', a: 'No. We deploy exclusively against commercial API tiers (or private cloud/open-weight endpoints) where customer inputs and outputs are contractually excluded from model training.' },
         { q: 'How do you stop hallucinations in financial or operational workflows?', a: 'We never let an LLM invent calculations or mutate critical records unchecked. Deterministic code handles math and validation, retrieval enforces source citations, and low-confidence cases route to a human review queue.' },
       ],
-      work: ['syncdaily', 'ai-receptionist'],
+      work: ['voxflow', 'syncdaily', 'vaultrag'],
       verticals: ['b2b-saas', 'healthcare-operations'],
     },
     automation: {
@@ -126,7 +126,7 @@ export const services = {
         { q: 'When do you use custom code versus tools like n8n, Make, or Zapier?', a: 'Low-volume internal notifications can live in n8n or Make. Once a workflow handles high volume, complex branching, strict error recovery, or sensitive data, version-controlled code with automated tests is cheaper and far more reliable.' },
         { q: 'What happens if a third-party API goes down mid-workflow?', a: 'Jobs sit safely in a durable retry queue, raise an alert if the outage persists, and resume cleanly without creating duplicate records.' },
       ],
-      work: ['advantage-ai', 'ai-receptionist'],
+      work: ['advantage-ai', 'ledgerflow', 'voxflow'],
       verticals: ['logistics', 'ecommerce-operations', 'healthcare-operations'],
     },
   },

@@ -167,7 +167,7 @@ export function WorkLinks({ items }) {
       {items.map((it) => (
         <Link key={it.slug || it.name} href={it.slug ? `/work/${it.slug}` : '/work'} className={s.workLink}>
           <h3 className={s.workName}>{it.name}</h3>
-          <span className={`${s.workStatus} ${it.isLive ? s.workLive : ''}`}>{it.status}</span>
+          <span className={s.workStatus}>{it.domainBadge || it.practiceLabel}</span>
           <p className={s.rowText}>{it.summary}</p>
         </Link>
       ))}

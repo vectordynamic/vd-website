@@ -40,7 +40,7 @@ ${home.practices
 
 ${workItems
   .map(
-    (w) => `### ${w.name} (${w.status}) — ${w.practiceLabel}
+    (w) => `### ${w.name} (${w.domainBadge}) — ${w.practiceLabel}
 - **Case Study URL:** ${site.url}/work/${w.slug}
 - **Headline:** ${w.headline}
 - **Architecture Overview:** ${w.summary}

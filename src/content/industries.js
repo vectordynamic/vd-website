@@ -29,7 +29,7 @@ export const industries = [
     ],
     auditOffer:
       'Send us one manual dispatch, document-entry, or inventory workflow. We will return a free 2–4 page engineering review showing where hours leak, 3 quick wins, and a fixed-price build estimate.',
-    relatedWork: ['okebase', 'syncdaily'],
+    relatedWork: ['okebase', 'ledgerflow'],
     relatedPractice: 'erp',
   },
   {
@@ -59,7 +59,7 @@ export const industries = [
     ],
     auditOffer:
       'Tell us where orders, stock counts, or financial reconciliations break today. We will map the bottleneck and send a free written Systems Review with 3 quick wins.',
-    relatedWork: ['okebase', 'advantage-ai'],
+    relatedWork: ['advantage-ai', 'runwayiq'],
     relatedPractice: 'automation',
   },
   {
@@ -89,7 +89,7 @@ export const industries = [
     ],
     auditOffer:
       'Share one front-desk scheduling, referral, or document-handling bottleneck. We will prepare a free written Systems Review detailing security considerations, 3 quick wins, and a milestone estimate.',
-    relatedWork: ['ai-receptionist', 'opsera'],
+    relatedWork: ['voxflow', 'vaultrag'],
     relatedPractice: 'ai',
   },
   {

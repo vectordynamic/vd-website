@@ -14,11 +14,14 @@ const HTML_ROUTES = [
   '/services/ai',
   '/services/automation',
   '/work',
-  '/work/syncdaily',
   '/work/okebase',
-  '/work/opsera',
+  '/work/voxflow',
   '/work/advantage-ai',
-  '/work/ai-receptionist',
+  '/work/opsera',
+  '/work/syncdaily',
+  '/work/ledgerflow',
+  '/work/runwayiq',
+  '/work/vaultrag',
   '/how-we-work',
   '/audit',
   '/book',
@@ -152,6 +155,7 @@ async function runChecks() {
     ['/products', '/work'],
     ['/solutions', '/services'],
     ['/services/custom-development', '/services/custom-software'],
+    ['/work/ai-receptionist', '/work/voxflow'],
   ]) {
     const r = await fetch(`${BASE}${from}`, { redirect: 'manual' });
     const loc = r.headers.get('location') || '';
