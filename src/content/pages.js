@@ -43,7 +43,7 @@ export const services = {
         { q: 'Can you modernize an existing app without taking it offline?', a: 'Yes. We isolate the highest-pain workflow first, migrate data with dual-run verification, and retire legacy screens module by module.' },
       ],
       work: ['opsera', 'vaultrag'],
-      verticals: ['b2b-saas', 'logistics'],
+      verticals: ['b2b-saas', 'logistics', 'real-estate-construction'],
     },
     erp: {
       headline: 'One source of truth for orders, inventory, finance, and staff.',
@@ -72,7 +72,7 @@ export const services = {
         { q: 'How do you prevent disruption during data migration?', a: 'We write repeatable migration scripts, validate row counts and financial totals in staging, and run parallel checks before retiring any legacy sheet.' },
       ],
       work: ['okebase', 'runwayiq'],
-      verticals: ['ecommerce-operations', 'logistics'],
+      verticals: ['manufacturing', 'real-estate-construction', 'ecommerce-operations', 'logistics'],
     },
     ai: {
       headline: 'AI that works inside your software—measured, grounded, and cost-capped.',
@@ -100,7 +100,7 @@ export const services = {
         { q: 'How do you stop hallucinations in financial or operational workflows?', a: 'We never let an LLM invent calculations or mutate critical records unchecked. Deterministic code handles math and validation, retrieval enforces source citations, and low-confidence cases route to a human review queue.' },
       ],
       work: ['voxflow', 'syncdaily', 'vaultrag'],
-      verticals: ['b2b-saas', 'healthcare-operations'],
+      verticals: ['field-services', 'healthcare-operations', 'finance-accounting', 'b2b-saas'],
     },
     automation: {
       headline: 'Remove repetitive manual work across your entire tool stack.',
@@ -127,7 +127,7 @@ export const services = {
         { q: 'What happens if a third-party API goes down mid-workflow?', a: 'Jobs sit safely in a durable retry queue, raise an alert if the outage persists, and resume cleanly without creating duplicate records.' },
       ],
       work: ['advantage-ai', 'ledgerflow', 'voxflow'],
-      verticals: ['logistics', 'ecommerce-operations', 'healthcare-operations'],
+      verticals: ['ecommerce-operations', 'finance-accounting', 'manufacturing', 'field-services'],
     },
     maintenance: {
       headline: 'Keep your existing software fast, stable, and connected to every API in your stack.',
@@ -155,7 +155,7 @@ export const services = {
         { q: 'Do we need a long-term retainer for API integration work?', a: 'No. Standalone API integrations or performance overhauls can be contracted as a fixed-scope milestone project, while ongoing product maintenance, monitoring, and backlog execution are available on flexible monthly retainers.' },
       ],
       work: ['opsera', 'ledgerflow', 'okebase'],
-      verticals: ['b2b-saas', 'ecommerce-operations', 'logistics'],
+      verticals: ['b2b-saas', 'finance-accounting', 'ecommerce-operations', 'logistics'],
     },
   },
 };
