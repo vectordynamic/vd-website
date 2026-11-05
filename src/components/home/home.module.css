@@ -75,19 +75,19 @@
 }
 
 .h1 {
-  font-size: clamp(2.35rem, 5vw, 4.1rem);
-  line-height: 1.05;
+  font-size: clamp(2.4rem, 5.2vw, 4.25rem);
+  line-height: 1.06;
   letter-spacing: -0.025em;
-  max-width: 14ch;
+  max-width: 16ch;
   margin: 0 0 1.25rem;
   font-weight: 400;
 }
 
 .lede {
-  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
   line-height: 1.55;
   color: var(--vd-graphite);
-  max-width: 48ch;
+  max-width: 46ch;
   margin: 0 0 2rem;
 }
 
@@ -96,31 +96,6 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 1.25rem;
-  margin-bottom: 2rem;
-}
-
-.proofStrip {
-  list-style: none;
-  padding: 1.25rem 0 0;
-  margin: 0;
-  border-top: 1px solid var(--vd-rule);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.85rem 1.5rem;
-}
-
-.proofItem {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--vd-font-mono), monospace;
-  font-size: 0.78rem;
-  color: var(--vd-graphite);
-}
-
-.proofCheck {
-  color: var(--vd-verdigris);
-  font-weight: bold;
 }
 
 /* ================= HERO DIAGRAM ================= */
@@ -243,9 +218,6 @@
   .h1 {
     max-width: 100%;
   }
-  .proofStrip {
-    grid-template-columns: 1fr 1fr;
-  }
   .diagramWrap {
     margin-inline: auto;
     max-width: 420px;
@@ -253,9 +225,6 @@
 }
 
 @media (max-width: 480px) {
-  .proofStrip {
-    grid-template-columns: 1fr;
-  }
   .diagramWrap {
     max-width: 320px;
   }

@@ -30,10 +30,10 @@ describe('content budget & noise-reduction constraints', () => {
     expect(totalHomeWords).toBeLessThanOrEqual(1150);
   });
 
-  it('homepage hero strictly honors word budget <= 110 words', () => {
+  it('homepage hero strictly honors word budget <= 45 words', () => {
     const { diagram, ...heroCopy } = home.hero;
     const heroWords = countWords(heroCopy);
-    expect(heroWords).toBeLessThanOrEqual(110);
+    expect(heroWords).toBeLessThanOrEqual(45);
   });
 
   it('services page intro & standard honors word budget <= 450 words', () => {

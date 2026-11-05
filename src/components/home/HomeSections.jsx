@@ -162,14 +162,6 @@ export function Hero() {
                 {h.secondary.label}
               </LinkButton>
             </div>
-            <ul className={s.proofStrip}>
-              {h.facts.map((item) => (
-                <li key={item} className={s.proofItem}>
-                  <span className={s.proofCheck} aria-hidden="true">✓</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
           </div>
           <Diagram items={h.diagram} />
         </div>

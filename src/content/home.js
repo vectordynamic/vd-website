@@ -1,17 +1,11 @@
 // All homepage and /audit copy lives here. Plain words, US spelling, no invented numbers, no fake client claims.
 export const home = {
   hero: {
-    eyebrow: 'Custom software · Business systems · Applied AI · Automation',
-    title: 'The software and AI your business runs on. Built to scale. Kept running.',
-    lede: 'Vector Dynamic is a senior engineering consultancy. We design, ship, and maintain custom platforms, ERP systems, production AI architectures, and workflow automation for growing B2B companies—with 100% custom code ownership in your repository.',
-    primary: { label: 'Book a 30-minute discovery call', href: '/book' },
-    secondary: { label: 'Or get a free written systems review', href: '/audit' },
-    facts: [
-      '100% custom code & IP ownership in your cloud',
-      'Fixed-price builds, billed by milestone',
-      'Weekly live demo & written Friday report',
-      'Direct line to senior engineers building it',
-    ],
+    eyebrow: 'Senior Engineering Consultancy',
+    title: 'The software and AI your business runs on.',
+    lede: 'We engineer custom platforms, business systems, and production AI for growing B2B companies—with 100% code ownership in your repository.',
+    primary: { label: 'Book a discovery call', href: '/book' },
+    secondary: { label: 'Free systems review', href: '/audit' },
     diagram: [
       { n: '01', label: 'Software', sub: 'Custom platforms, apps and APIs', href: '/services/custom-software' },
       { n: '02', label: 'Business Systems', sub: 'ERP, CRM and operations in one place', href: '/services/erp' },
