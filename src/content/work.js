@@ -13,9 +13,9 @@ export const workItems = [
     image: '/images/work/okebase.webp',
     alt: 'Okebase multi-entity ERP architecture showing holding group tenant hierarchy, metadata-driven custom schema engine, and consolidated double-entry ledger.',
     headline:
-      'One high-performance ERP for multi-company and multi-branch operations—adaptable to each entity without per-seat licensing bloat.',
+      'Multi-entity ERP built for holding groups and regional branches.',
     summary:
-      'A multi-organization ERP engineered for holding groups, multi-branch operators, and regional distributors. Enforces strict database-level tenant isolation, metadata-driven custom fields and approval chains, and sub-50ms query performance across millions of ledger rows.',
+      'Unifies inventory, purchasing, approvals, and consolidated accounting across subsidiaries with database-enforced tenant isolation and sub-50ms ledger queries.',
     problem: [
       'Operators running multiple legal entities, sister companies, or regional branches are forced into an expensive compromise. Off-the-shelf cloud ERPs charge punitive per-seat fees, hardcode rigid approval workflows that do not match actual floor operations, and require separate logins or brittle sync scripts between sister companies. Meanwhile, legacy on-premise ERPs degrade to multi-second page loads once inventory and journal tables cross a few million rows.',
       'Finance and operations leaders end up exporting CSVs from five disconnected systems every Friday just to reconcile inter-company stock transfers, branch-level margins, and consolidated cash positions. According to Panorama Consulting ERP benchmarks, 64% of mid-market ERP rollouts exceed budget or stall because rigid software forces businesses to rewrite their core operating procedures.'
@@ -101,9 +101,9 @@ export const workItems = [
     image: '/images/work/voxflow.webp',
     alt: 'VoxFlow autonomous voice and lead dispatch schematic showing SIP WebRTC voice streaming, sub-second barge-in detection, atomic calendar slot locking, and CRM writeback.',
     headline:
-      'Answers every inbound call on the first ring, dials new web leads within 45 seconds, qualifies intent, and books the calendar.',
+      '24/7 inbound voice reception and instant speed-to-lead calling.',
     summary:
-      'A dedicated, single-tenant voice operations system engineered for high-inbound service businesses, clinics, and commercial sales teams. Handles 24/7 inbound reception and automated outbound follow-up calls with sub-500ms conversational latency, live calendar locking, and structured CRM writeback.',
+      'Answers every inbound call on the first ring, dials new web leads within 45 seconds, locks live calendar slots, and syncs the CRM.',
     problem: [
       'High-intent buyers call when they have an immediate problem, or submit a web form expecting a call back within minutes. When calls hit voicemail during peak hours, evenings, or weekends—or when sales reps take four hours to dial a new inquiry—up to 60% of qualified revenue walks to the next provider who answers.',
       'Hiring 24/7 front-desk staff is expensive, turnover-prone, and still bottlenecks when three calls arrive at once. Meanwhile, generic IVR phone trees frustrate callers, and off-the-shelf voice bots suffer from awkward two-second pauses, talk over the customer, or hallucinate pricing and appointment availability.'
@@ -190,9 +190,9 @@ export const workItems = [
     image: '/images/work/advantage-ai.webp',
     alt: 'AdVantage omnichannel AI sales and campaign architecture showing unified WhatsApp, Instagram, and Messenger inbox, catalog-grounded AI sales closer, and Meta ad spend circuit breaker.',
     headline:
-      'Facebook, WhatsApp, and Instagram in one unified inbox—with a catalog-grounded AI sales closer and automated ad campaign planner.',
+      'Omnichannel social inbox, AI sales closer, and ad planner.',
     summary:
-      'An omnichannel revenue and marketing automation platform that unifies Meta social messaging (WhatsApp Business, Instagram DMs, Facebook Messenger, and ad comments) with a catalog-grounded AI sales representative and a closed-loop ad planner enforced by hard budget circuit breakers.',
+      'Unifies WhatsApp, Instagram, and Messenger with a catalog-grounded AI sales representative and closed-loop Meta campaign automation.',
     problem: [
       'Commercial brands running paid social campaigns lose a massive share of conversions inside the inbox. Paid ads drive thousands of comments and DMs across Facebook, Instagram, and WhatsApp asking about sizing, stock availability, bulk pricing, or shipping timelines. Because human reps cannot answer across three separate apps at 11 PM, leads go cold and paid ad spend is wasted.',
       'At the same time, media buyers plan ad budgets in spreadsheets disconnected from which conversations actually closed into paid orders. Without closed-loop attribution from ad click to DM conversation to checkout, teams overspend on high-click, low-margin campaigns.'
@@ -279,9 +279,9 @@ export const workItems = [
     image: '/images/work/opsera.webp',
     alt: 'Opsera Slack-native company operations OS schematic showing slash commands for standups and leave management, AI thread-to-task structuring, role-based access control, and unified web command center.',
     headline:
-      'Run the entire company inside Slack—daily standups, leave management, RBAC task tracking, AI message structuring, and a unified web command center.',
+      'Company-wide project, standup, and leave operations inside Slack.',
     summary:
-      'A Slack-native company operations and project management operating system paired with an executive web dashboard. Teams run daily standups, PTO and leave approvals, sprint task assignment, backlog updates, and automated follow-ups via slash commands and AI message structuring without leaving Slack.',
+      'Runs daily standups, leave approvals, RBAC task tracking, and AI thread-to-task structuring in Slack, synced with an executive web cockpit.',
     problem: [
       'Engineering and operations teams live in Slack, but company administration is scattered across four separate tools: Jira or Linear for tasks, an HR portal for leave requests, status meetings for daily standups, and spreadsheets for executive visibility. Because engineers hate context-switching into heavy web forms, task boards fall days behind reality.',
       'Project managers end up spending 6 to 8 hours every week chasing people in Slack threads asking for status updates, manually copying decisions from chat into tickets, and cross-checking who is on leave before assigning urgent deliverables.'
@@ -368,9 +368,9 @@ export const workItems = [
     image: '/images/work/syncdaily.webp',
     alt: 'SyncDaily personalized AI intelligence platform architecture showing multi-source arXiv and Big Tech ingestion, pgvector semantic deduplication, and role-tailored briefings for business leaders, engineers, and students.',
     headline:
-      'Cuts through global AI, ML, and Big Tech noise—delivering role-specific impact analysis and concrete opportunities for leaders, engineers, and students.',
+      'Role-specific AI and Big Tech intelligence for decision-makers.',
     summary:
-      'An AI-native market and technical intelligence platform that continuously ingests global AI research, model releases, Big Tech moves, and venture activity—deduplicating coverage into canonical events and synthesizing tailored "what this means for you and what to do next" briefings by role and interest graph.',
+      'Ingests and deduplicates global AI research, model releases, and market moves into tailored impact briefings for leaders, engineers, and students.',
     problem: [
       'Every week brings hundreds of new AI papers, open-weight model checkpoints, framework updates, regulatory shifts, and Big Tech product launches. Decision-makers, engineers, and ambitious students drown in generic newsletters and social hype that repeat the same surface-level headlines without explaining the underlying technical or commercial reality.',
       'Crucially, the same breakthrough means something completely different depending on who you are: a founder needs to know how a new model shifts unit economics or defensibility; a staff engineer needs benchmark trade-offs, VRAM requirements, and migration paths; a student needs to know which foundational concepts and portfolio opportunities just opened up.'
@@ -457,9 +457,9 @@ export const workItems = [
     image: '/images/work/ledgerflow.webp',
     alt: 'LedgerFlow autonomous accounts payable and 3-way match pipeline schematic showing multi-format PDF invoice extraction, deterministic math verification, PO/GRN matching, and ERP sync.',
     headline:
-      'Turns vendor PDFs, purchase orders, and delivery receipts into reconciled, 3-way matched accounting entries—without manual typing.',
+      'Autonomous invoice extraction and three-way purchase order matching.',
     summary:
-      'An end-to-end accounts payable and document operations pipeline that ingests unstructured vendor invoices across email and portals, extracts line-item tables with deterministic arithmetic verification, performs automated 3-way matching against Purchase Orders and Goods Received Notes, and syncs approved vouchers directly to the ERP.',
+      'Extracts multi-page vendor PDFs with deterministic math checks, reconciles lines against purchase orders and receipts, and posts clean vouchers to the ERP.',
     problem: [
       'Finance and operations teams processing hundreds or thousands of monthly vendor invoices spend 15+ hours a week keying PDF line items into QuickBooks, Xero, NetSuite, or their ERP, hunting down warehouse receiving slips in email threads, and fixing SKU unit-of-measure mismatches by hand.',
       'According to Ardent Partners Accounts Payable benchmarks, manual processing costs $12 to $30 per invoice, takes an average of 10.9 days to approve, and exposes the business to duplicate billings, unnoticed supplier price creep, and missed early-payment discounts.'
@@ -546,9 +546,9 @@ export const workItems = [
     image: '/images/work/runwayiq.webp',
     alt: 'RunwayIQ 13-week treasury, BI, and demand forecaster schematic showing cross-stack ETL, SKU stockout radar, interactive what-if scenario simulator, and backtested P10/P50/P90 cash runway bands.',
     headline:
-      'Unifies accounting, commerce, and inventory data to forecast 13-week cash runway and SKU stockouts before they happen.',
+      '13-week probabilistic cash-flow and SKU stockout forecasting.',
     summary:
-      'An executive intelligence and quantitative forecasting platform that consolidates fragmented data across ERP/accounting, Shopify/Stripe, CRM, and warehouse systems—delivering backtested 13-week probabilistic cash-flow projections, lead-time-aware inventory reorder alerts, interactive "What-If" scenario modeling, and automated Monday morning anomaly briefings.',
+      'Consolidates accounting, commerce, and warehouse data to project rolling 13-week cash runway, flag inventory stockouts early, and simulate financial scenarios.',
     problem: [
       'Founders, COOs, and CFOs of growing companies rarely suffer from a lack of raw data—they suffer from data scattered across six SaaS silos. Revenue lives in Shopify or Stripe, bills and payroll live in QuickBooks or Xero, pipeline lives in HubSpot, and stock counts live in a WMS. By the time finance stitches together a monthly spreadsheet, the numbers are two weeks stale.',
       'Worse, backward-looking dashboards only tell leadership what happened last month. They fail to warn when three large enterprise customers slow-pay their invoices at the exact same week a $120,000 inventory container deposit comes due—or when a top-selling SKU is 18 days from stocking out against a 21-day supplier lead time.'
@@ -635,9 +635,9 @@ export const workItems = [
     image: '/images/work/vaultrag.webp',
     alt: 'VaultRAG permission-scoped knowledge and data engine schematic showing Splink probabilistic deduplication, pre-retrieval ACL security gate, hybrid BM25 and vector search, and verified citations.',
     headline:
-      'Cleans messy company data and answers operational questions from internal SOPs, contracts, and databases—with strict role permissions and exact citations.',
+      'Permission-scoped enterprise search and automated data hygiene.',
     summary:
-      'An enterprise data hygiene and permission-scoped knowledge engine that resolves duplicate CRM/catalog records, indexes internal documents across Google Drive, SharePoint, Notion, and SQL databases, enforces source-level Access Control Lists (ACLs) prior to retrieval, and returns page-cited answers that abstain when evidence is missing.',
+      'Deduplicates messy CRM records and answers operational questions across internal SOPs, contracts, and databases with role-level access controls and exact page citations.',
     problem: [
       'Every scaling company accumulates two compounding data liabilities: dirty structured records (duplicate customer profiles, conflicting vendor spreadsheets, inconsistent SKU attributes) and fragmented unstructured knowledge (SOPs, client contracts, engineering specs, and HR policies buried across Google Drive, SharePoint, Notion, and Slack).',
       'Standard "chat with your docs" AI prototypes fail immediately in production for two reasons: they ingest duplicate or outdated v1 documents alongside current policies—causing the AI to cite deprecated rules—and they ignore file-level permissions, risking a junior employee or contractor retrieving confidential executive, legal, or payroll figures.'

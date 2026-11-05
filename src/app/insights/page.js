@@ -38,8 +38,8 @@ export default function InsightsPage() {
       <PageHero
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Insights' }]}
         eyebrow="Engineering Insights"
-        title="Practical guides on custom ERP, applied AI, and B2B systems."
-        lede="Written by the engineers who scope and ship our systems—covering build-vs-buy trade-offs, production AI guardrails, and operational ROI."
+        title="Practical architecture guides for B2B operators."
+        lede="Field notes from our engineers on custom ERP trade-offs, production AI guardrails, and operational automation."
       >
         <LinkButton href={auditHref} event="cta_click" eventParams={{ location: 'insights_hero_audit' }}>
           Request a free written Systems Review

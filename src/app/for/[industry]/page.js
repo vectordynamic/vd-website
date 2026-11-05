@@ -98,9 +98,9 @@ export default async function IndustryPage({ params }) {
               </h2>
               <p className={f.lede}>{ind.auditOffer}</p>
               <ul className={f.ul}>
-                <li>2–4 page written review delivered within 5–10 business days</li>
+                <li>2–4 page written engineering review scoped to your workflow</li>
                 <li>Honest build-vs-buy verdict before writing custom code</li>
-                <li>Three quick wins plus a fixed-price milestone estimate</li>
+                <li>Three quick wins plus a milestone and commercial estimate</li>
               </ul>
             </div>
 

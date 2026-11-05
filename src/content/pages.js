@@ -3,9 +3,9 @@
 
 export const services = {
   intro: {
-    eyebrow: 'Services',
-    title: 'Five practice areas. One production engineering standard.',
-    lede: 'Whether we build a customer platform, configure a multi-branch ERP, deploy an AI agent, automate cross-system workflows, or take over and maintain your existing codebase, our engineering discipline stays identical: clear milestone checkpoints, real data verification, automated tests, and monitoring from day one.',
+    eyebrow: 'Practice Areas',
+    title: 'Five engineering practices. One production standard.',
+    lede: 'From ground-up platforms, multi-entity ERPs, and production AI to workflow automation and existing codebase maintenance.',
   },
   standard: {
     title: 'The engineering standard behind every engagement',
@@ -18,8 +18,8 @@ export const services = {
   },
   details: {
     'custom-software': {
-      headline: 'Software shaped around how your business actually operates.',
-      intro: 'Generic SaaS tools force your staff to bend their process around rigid screens. We design and ship web platforms, B2B SaaS products, internal operations tools, mobile apps, and APIs built around the exact rules that make your business run.',
+      headline: 'Custom software built around how your business operates.',
+      intro: 'We design and ship web platforms, B2B SaaS products, internal tools, mobile apps, and APIs tailored to your exact operational rules.',
       signs: [
         'Your team maintains messy spreadsheet sidecars because the current tool cannot model your workflow',
         'Customers or field staff need a clean portal or mobile app connected to live back-office data',
@@ -46,8 +46,8 @@ export const services = {
       verticals: ['b2b-saas', 'logistics', 'real-estate-construction'],
     },
     erp: {
-      headline: 'One source of truth for orders, inventory, finance, and staff.',
-      intro: 'When orders sit in one app, stock lives in spreadsheets, and accounting reconciles everything by hand, every number is late and contested. We deliver modular ERP, CRM, and management systems—configuring our multi-entity ERP architecture, building custom modules, or implementing Odoo when off-the-shelf is the smarter financial move.',
+      headline: 'One system for orders, inventory, finance, and staff.',
+      intro: 'Replace disconnected spreadsheets with a unified operational platform, deploying our multi-entity ERP core, custom modules, or Odoo where off-the-shelf fits best.',
       signs: [
         'Leadership waits days for margin, cash, or inventory reports—and two sheets still disagree',
         'Warehouse, purchasing, sales, and finance teams re-type the same order numbers across tools',
@@ -75,8 +75,8 @@ export const services = {
       verticals: ['manufacturing', 'real-estate-construction', 'ecommerce-operations', 'logistics'],
     },
     ai: {
-      headline: 'AI that works inside your software—measured, grounded, and cost-capped.',
-      intro: 'Demos are easy; dependable daily accuracy on messy company documents is hard. We build LLM features, private knowledge search, voice/chat intake, and tool-using agents connected to your live systems—complete with accuracy test suites, source citations, and hard token budgets.',
+      headline: 'Production AI wired into your workflow, grounded and cost-capped.',
+      intro: 'We engineer embedded LLM features, permission-scoped knowledge search, voice intake, and tool-using agents with automated accuracy tests and hard spend limits.',
       signs: [
         'Critical answers sit buried across thousands of PDFs, SOPs, tickets, and contracts nobody can search reliably',
         'An internal AI prototype impressed executives in a slide deck but hallucinated on real edge cases',
@@ -103,8 +103,8 @@ export const services = {
       verticals: ['field-services', 'healthcare-operations', 'finance-accounting', 'b2b-saas'],
     },
     automation: {
-      headline: 'Remove repetitive manual work across your entire tool stack.',
-      intro: 'Your operations, finance, and support staff should handle exceptions and customers—not copy rows between emails, PDFs, spreadsheets, and CRMs. We engineer resilient end-to-end automations with validation, dead-letter retry queues, and full audit trails.',
+      headline: 'Eliminate repetitive manual work across your tool stack.',
+      intro: 'We replace manual copy-pasting, PDF re-keying, and fragile no-code scripts with resilient workflows, retry queues, and full audit logs.',
       signs: [
         'Staff copy-paste the same customer, order, or invoice fields across three or more systems every day',
         'Approvals, onboarding checklists, or client updates stall inside individual email inboxes',
@@ -130,8 +130,8 @@ export const services = {
       verticals: ['ecommerce-operations', 'finance-accounting', 'manufacturing', 'field-services'],
     },
     maintenance: {
-      headline: 'Keep your existing software fast, stable, and connected to every API in your stack.',
-      intro: 'You do not always need a ground-up rebuild. When an existing web platform, mobile app, or internal system suffers from technical debt, broken integrations, slow queries, or an absent previous development team, our senior engineers step in to audit, stabilize, integrate, and continuously improve your system.',
+      headline: 'Stabilize, maintain, and integrate your existing codebase.',
+      intro: 'Our senior engineers step into existing web and mobile repositories to fix bottlenecks, run SLA maintenance, and build resilient two-way API integrations.',
       signs: [
         'Your previous agency or developer left, and nobody wants to touch the existing codebase without breaking production',
         'Customers and operations staff are blocked waiting on third-party API integrations, payment gateways, or webhook syncs',
@@ -162,9 +162,9 @@ export const services = {
 
 export const howWeWork = {
   hero: {
-    eyebrow: 'How we work',
-    title: 'Clear scope. Milestone proof on real data. Flexible commercial terms.',
-    lede: 'Every project is sized and structured around your actual technical complexity and commercial goals—with predictable overlap hours, milestone-gated billing, and live staging verification.',
+    eyebrow: 'How We Work',
+    title: 'Scoped to your system. Verified at every milestone.',
+    lede: 'Every engagement runs on clear architecture specs, milestone-gated staging demos on real data, and flexible licensing or ownership terms.',
   },
   phases: [
     {
@@ -263,8 +263,8 @@ export const howWeWork = {
 export const about = {
   hero: {
     eyebrow: 'About Vector Dynamic',
-    title: 'Engineers who build it, ship it to production, and stay accountable.',
-    lede: 'Vector Dynamic is an independent software and AI engineering team building custom platforms, business systems, API integrations, and operational automation for growing B2B companies worldwide.',
+    title: 'Senior engineers who build, ship, and stay accountable.',
+    lede: 'Vector Dynamic is an independent software and AI engineering practice building durable operational systems for growing B2B companies worldwide.',
   },
   story: {
     title: 'Why we started Vector Dynamic',
@@ -297,8 +297,8 @@ export const about = {
 export const partners = {
   hero: {
     eyebrow: 'Strategic Partnerships',
-    title: 'Win bigger projects together—without adding engineering payroll.',
-    lede: 'We build long-term, mutually profitable partnerships with consultants, design and marketing agencies, and software houses across the US, UK, Europe, Gulf, and Australia. You bring trusted client relationships; we bring senior custom software, ERP, API integration, and AI delivery.',
+    title: 'Deliver larger technical engagements without adding payroll.',
+    lede: 'We partner with advisories, agencies, and software studios across the US, UK, Europe, Gulf, and APAC through referral, co-delivery, and white-label models.',
   },
   tracks: {
     title: 'Three win-win partnership models',
@@ -362,8 +362,8 @@ export const partners = {
 
 export const book = {
   eyebrow: '30-Minute Discovery Call',
-  title: 'Talk directly with a senior engineer.',
-  lede: 'No pitch deck and no junior account reps. Spend 30 minutes walking through the workflow, existing codebase, integration, or AI system you need—and leave with an honest technical recommendation and commercial structure.',
+  title: 'Speak directly with a senior engineer.',
+  lede: 'Walk through your workflow, codebase, integration, or AI requirement and leave with a clear technical recommendation and commercial structure.',
   agenda: [
     'Your current workflow, codebase, or API bottleneck and where time or margin is leaking (10 min)',
     'Whether licensing an existing core module, integrating APIs, or custom engineering is the smarter path (10 min)',

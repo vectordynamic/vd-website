@@ -37,23 +37,25 @@ export default function TermsPage() {
               <li>Modular custom ERP, CRM, inventory, and operations systems (including off-the-shelf/Odoo configuration where appropriate)</li>
               <li>Applied AI software, retrieval-augmented generation (RAG), voice/chat intake, and bounded agents</li>
               <li>End-to-end workflow automation, document extraction, and managed operations</li>
+              <li>Existing product maintenance, codebase stabilization, legacy modernization, and third-party API integrations</li>
             </ul>
           </section>
 
           <section>
-            <h2>3. Intellectual Property &amp; Source Code Ownership</h2>
+            <h2>3. Intellectual Property, Licensing &amp; Codebase Models</h2>
             <h3>Website Content</h3>
             <p>
               All original copy, branding, diagrams, and case studies on vectordynamic.com belong to Vector Dynamic and may not be republished as your own without written permission.
             </p>
-            <h3>Client Custom Engagements</h3>
+            <h3>Client Engagements</h3>
             <p>
-              Unless expressly agreed otherwise in a signed SOW, our standard client IP structure is straightforward:
+              Codebase custody, licensing, and exclusivity are structured in each signed Statement of Work (SOW) around your commercial goals and pricing tier:
             </p>
             <ul>
-              <li><strong>Client data:</strong> You retain 100% ownership of all company data, documents, credentials, and domain content at all times.</li>
-              <li><strong>Custom-developed code:</strong> Upon payment for each applicable milestone, 100% of the custom source code, schemas, workflows, and documentation written specifically for your engagement is assigned to you—and lives in your Git repository and cloud accounts from week one.</li>
-              <li><strong>Optional pre-existing modules:</strong> If both parties agree in writing to include pre-built Vector Dynamic internal libraries or boilerplate modules to accelerate delivery, Vector Dynamic retains ownership of those background tools and grants you a perpetual, worldwide, royalty-free commercial license (with full source code access) to use, modify, and operate them without vendor lock-in.</li>
+              <li><strong>Client data &amp; business rules:</strong> You retain 100% ownership of all company data, customer records, documents, credentials, and proprietary domain rules at all times.</li>
+              <li><strong>Cost-effective licensed deployment:</strong> When an engagement deploys or customizes Vector Dynamic&rsquo;s pre-existing core platforms or modules (across ERP, voice, AI, or automation), Vector Dynamic retains ownership of the underlying core software and grants you a commercial license as specified in your agreement.</li>
+              <li><strong>Custom build with shared core libraries:</strong> For custom software builds, you receive a perpetual commercial license to operate the delivered system while Vector Dynamic retains ownership of its reusable underlying frameworks, libraries, and architectural components.</li>
+              <li><strong>Full source-code buyout &amp; category exclusivity:</strong> Full source-code assignment, repository handover, or industry exclusivity is available when explicitly contracted and priced in your Statement of Work.</li>
             </ul>
           </section>
 

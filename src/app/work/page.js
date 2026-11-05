@@ -34,9 +34,9 @@ export default function WorkIndexPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }} />
       <PageHero
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Work' }]}
-        eyebrow="Work & Case Studies"
-        title="Systems engineered for production—not slide decks."
-        lede="Select any system below to inspect the business bottleneck it solves, what the operation required, its functional modules, four-stage technical pipeline, and the hard engineering problems solved."
+        eyebrow="Engineering Case Studies"
+        title="Systems engineered for production operations."
+        lede="Inspect eight production architectures across multi-entity ERP, autonomous voice, omnichannel commerce, and financial automation."
       >
         <LinkButton href={bookHref} event="cta_click" eventParams={{ location: 'work_hero_book' }}>
           Book a 30-minute discovery call

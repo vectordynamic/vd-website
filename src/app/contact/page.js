@@ -16,9 +16,9 @@ export default function ContactPage() {
       <div className={s.grid}>
         <div>
           <p className={s.eyebrow}>Contact</p>
-          <h1 className={s.h1}>Talk directly with an engineer.</h1>
+          <h1 className={s.h1}>Start a direct engineering conversation.</h1>
           <p className={s.lede}>
-            Tell us what you want built, modernized, or automated. {site.responseSla}—never an automated drip sequence.
+            Tell us what you need built, integrated, or maintained. {site.responseSla}.
           </p>
 
           <div className={s.side}>
@@ -51,7 +51,7 @@ export default function ContactPage() {
             <div>
               <span className={s.eyebrow}>Agencies & advisors</span>
               <p style={{ margin: '0.35rem 0 0', color: 'var(--vd-graphite)', fontSize: '0.95rem' }}>
-                Exploring referral revenue-share, white-label delivery, or a 1-week trial task?{' '}
+                Exploring referral revenue-share, white-label delivery, or a scoped pilot task?{' '}
                 <Link href="/partners">See our partner models →</Link>
               </p>
             </div>

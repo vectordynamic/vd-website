@@ -3,7 +3,7 @@ export const home = {
   hero: {
     eyebrow: 'Senior Engineering Consultancy',
     title: 'The software and AI your business runs on.',
-    lede: 'We engineer, integrate, and maintain custom platforms, business systems, and production AI for growing B2B companies—built around your workflow.',
+    lede: 'We build, integrate, and maintain custom platforms, ERP systems, and production AI around how your company operates.',
     primary: { label: 'Book a discovery call', href: '/book' },
     secondary: { label: 'Free systems review', href: '/audit' },
     diagram: [
@@ -234,8 +234,8 @@ export const home = {
 
 export const audit = {
   eyebrow: 'Free Systems Review',
-  title: 'Get a written engineering review of one workflow or system.',
-  lede: 'Tell us which manual process, spreadsheet bottleneck, existing codebase, or stalled AI pilot is costing your team hours. We study it and send a concise 2–4 page written review with 3 quick wins and a realistic build estimate—free for qualified B2B companies.',
+  title: 'Get a written engineering review of one workflow.',
+  lede: 'Share one manual bottleneck, legacy codebase, or stalled AI pilot. We return a 2–4 page technical review with three quick wins and a milestone estimate.',
   looksAt: [
     'Where staff hours, margin, and handoffs leak in the current workflow or codebase',
     'What to automate, what to buy off-the-shelf, and what is worth custom engineering',

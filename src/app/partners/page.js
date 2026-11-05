@@ -59,7 +59,7 @@ export default function PartnersPage() {
             <div>
               <p className={f.eyebrow}>Partner Inquiry</p>
               <h2 style={{ fontSize: 'clamp(1.9rem, 3.6vw, 3rem)', lineHeight: 1.1, maxWidth: '17ch', fontWeight: 500, margin: '0 0 1.25rem' }}>
-                <Words text="Explore a referral, co-delivery, or 1-week trial partnership." />
+                <Words text="Explore a referral, co-delivery, or scoped pilot partnership." />
               </h2>
               <p className={f.lede}>
                 Tell us what your agency, consultancy, or studio focuses on. A founder will reply within one business day—starting with a mutual NDA whenever a live client brief is on the table.

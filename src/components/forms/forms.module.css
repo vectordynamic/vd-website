@@ -1,8 +1,8 @@
-.page { padding-block: clamp(56px, 8vw, 112px); }
+.page { padding-block: clamp(44px, 6vw, 80px) clamp(56px, 7vw, 96px); }
 .grid { display: grid; grid-template-columns: 1fr 1.08fr; gap: clamp(2.5rem, 6vw, 5.5rem); align-items: start; }
-.eyebrow { font-family: var(--vd-font-mono), monospace; font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--vd-muted); margin: 0 0 1.25rem; }
-.h1 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.05; font-weight: 400; letter-spacing: -0.02em; margin: 0 0 1.5rem; max-width: 17ch; }
-.lede { color: var(--vd-graphite); font-size: 1.125rem; max-width: 54ch; margin: 0 0 2.25rem; }
+.eyebrow { font-family: var(--vd-font-mono), monospace; font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--vd-muted); margin: 0 0 1rem; }
+.h1 { font-size: clamp(2.05rem, 3.6vw, 3.15rem); line-height: 1.08; font-weight: 400; letter-spacing: -0.022em; margin: 0 0 1.15rem; max-width: 19ch; }
+.lede { color: var(--vd-graphite); font-size: clamp(1rem, 1.18vw, 1.1rem); line-height: 1.62; max-width: 52ch; margin: 0 0 2rem; }
 .h3 { font-family: var(--vd-font-mono), monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 2rem 0 0.75rem; font-weight: 500; color: var(--vd-ink); }
 .ul { list-style: none; padding: 0; margin: 0; }
 .ul li { padding: 0.65rem 0; border-top: 1px solid var(--vd-rule); color: var(--vd-graphite); display: grid; grid-template-columns: 1.4rem 1fr; }

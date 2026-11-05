@@ -1,8 +1,8 @@
 // Full FAQ data for the dedicated /faq page and JSON-LD schema
 export const faqData = {
   eyebrow: 'Frequently Asked Questions',
-  title: 'Clear answers to common questions about working with Vector Dynamic.',
-  lede: 'Everything B2B buyers ask us about time zones, commercial licensing and codebase options, milestone pricing, data security, and ongoing maintenance.',
+  title: 'Direct answers on delivery, licensing, and operations.',
+  lede: 'How we handle global time zones, codebase licensing and ownership, milestone pricing, security, and ongoing maintenance.',
   items: [
     {
       q: 'How do we collaborate across US, UK, European, Gulf, or APAC time zones?',

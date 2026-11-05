@@ -17,17 +17,21 @@ export function PageHero({ crumbs = [], eyebrow, title, lede, children }) {
   return (
     <section className={s.hero}>
       <div className={`vd-container ${s.heroIn}`}>
-        {crumbs.length > 0 && (
-          <nav className={s.crumbs} aria-label="Breadcrumb">
-            {crumbs.map((c, i) => (
-              <span key={c.label}>
-                {i > 0 && ' / '}
-                {c.href ? <Link href={c.href}>{c.label}</Link> : <span aria-current="page">{c.label}</span>}
-              </span>
-            ))}
-          </nav>
+        {(eyebrow || crumbs.length > 0) && (
+          <div className={s.heroMeta}>
+            {eyebrow && <p className={s.eyebrow}>{eyebrow}</p>}
+            {crumbs.length > 0 && (
+              <nav className={s.crumbs} aria-label="Breadcrumb">
+                {crumbs.map((c, i) => (
+                  <span key={c.label}>
+                    {i > 0 && <span className={s.crumbSep}>/</span>}
+                    {c.href ? <Link href={c.href}>{c.label}</Link> : <span aria-current="page">{c.label}</span>}
+                  </span>
+                ))}
+              </nav>
+            )}
+          </div>
         )}
-        {eyebrow && <p className={s.eyebrow}>{eyebrow}</p>}
         <h1 className={s.h1}><Words text={title} /></h1>
         {lede && <p className={s.lede}>{lede}</p>}
         {children && <div className={s.actions}>{children}</div>}
