@@ -74,7 +74,7 @@ export default function RootLayout({ children }) {
     <html lang="en" data-theme="light" className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
       <body>
         <Suspense fallback={null}>
-          <GoogleAnalytics GA_MEASUREMENT_ID="G-KHBTJM0J0W" />
+          <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-KHBTJM0J0W'} />
           <UtmCapture />
         </Suspense>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(organization) }} />
