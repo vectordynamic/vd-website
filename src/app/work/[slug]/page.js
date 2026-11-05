@@ -178,7 +178,7 @@ export default async function WorkDetailPage({ params }) {
 
       <CtaBand
         title="Dealing with a similar operational bottleneck?"
-        body="We architect and deploy custom systems like this tailored to your workflow—or send you a free 2–4 page written systems review within 48 hours."
+        body="We architect, customize, and deploy systems like this tailored to your workflow and contract structure—or start with a free 2–4 page written systems review."
         secondaryLabel="Or request a free written systems review"
         secondaryHref={auditHref}
       />

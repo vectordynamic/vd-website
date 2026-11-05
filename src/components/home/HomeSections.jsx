@@ -221,8 +221,8 @@ export function Practices() {
     <Section
       id="services"
       eyebrow="Practice Areas"
-      title="Four core engineering disciplines."
-      lede="Architected for enterprise durability, data integrity, and institutional IP ownership."
+      title="Five core engineering disciplines."
+      lede="From ground-up software, ERP, and AI systems to ongoing codebase maintenance and complex API integrations."
     >
       <Reveal className={s.practiceRows}>
         {home.practices.map((p, i) => (

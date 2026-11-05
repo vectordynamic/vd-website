@@ -13,6 +13,7 @@ const HTML_ROUTES = [
   '/services/erp',
   '/services/ai',
   '/services/automation',
+  '/services/maintenance',
   '/work',
   '/work/okebase',
   '/work/voxflow',

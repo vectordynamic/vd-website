@@ -4,16 +4,16 @@
 export const services = {
   intro: {
     eyebrow: 'Services',
-    title: 'Four practice areas. One production engineering standard.',
-    lede: 'Whether we build a customer platform, an internal ERP, an AI agent, or a cross-system integration, the engineering discipline stays identical: small weekly releases, real data, automated tests, monitoring from day one, and full documentation.',
+    title: 'Five practice areas. One production engineering standard.',
+    lede: 'Whether we build a customer platform, configure a multi-branch ERP, deploy an AI agent, automate cross-system workflows, or take over and maintain your existing codebase, our engineering discipline stays identical: clear milestone checkpoints, real data verification, automated tests, and monitoring from day one.',
   },
   standard: {
     title: 'The engineering standard behind every engagement',
     items: [
       { name: 'Sized to scale', text: 'Clean data models, sensible service boundaries, and load testing where throughput grows.' },
       { name: 'Tested & monitored', text: 'Automated test suites, CI/CD, structured logs, and failure alerts wired before launch day.' },
-      { name: '100% documented', text: 'Architecture diagrams, runbooks, and a recorded handover session so your team is never locked in.' },
-      { name: 'Kept running', text: 'Optional monthly managed operations or dedicated pods to maintain, tune, and expand the system.' },
+      { name: 'Documented architecture', text: 'Architecture diagrams, API specs, and operational runbooks so your system is clear and maintainable.' },
+      { name: 'Flexible commercial terms', text: 'Deploy on our licensed core modules for speed and lower cost, or contract for custom builds and full source handover.' },
     ],
   },
   details: {
@@ -35,11 +35,11 @@ export const services = {
       ],
       approach: [
         { name: 'Shadow the real workflow', text: 'We interview the operators who use the system daily and map edge cases before writing specs.' },
-        { name: 'Ship weekly on real data', text: 'Code lands in your Git repository every week with a live staging walkthrough so feedback happens early.' },
-        { name: 'Hand over with confidence', text: 'Automated tests, CI/CD, monitoring alerts, and an operational runbook come standard.' },
+        { name: 'Deliver by verified milestones', text: 'Progress is demonstrated on live staging environments against real data at every agreed milestone checkpoint.' },
+        { name: 'Deploy with confidence', text: 'Automated tests, CI/CD, monitoring alerts, and an operational runbook come standard.' },
       ],
       faq: [
-        { q: 'Do we own the source code and cloud infrastructure?', a: 'Yes. Code lives in your GitHub or GitLab organization from week one, deploys into cloud accounts you control, and 100% of custom IP transfers upon milestone payment.' },
+        { q: 'How do codebase ownership and licensing work?', a: 'We structure codebase custody around your budget and commercial goals: you can opt for a lower-cost licensed deployment powered by our reusable core modules, a custom build with a perpetual operational license, or a full source-code buyout and repository transfer.' },
         { q: 'Can you modernize an existing app without taking it offline?', a: 'Yes. We isolate the highest-pain workflow first, migrate data with dual-run verification, and retire legacy screens module by module.' },
       ],
       work: ['opsera', 'vaultrag'],
@@ -47,14 +47,14 @@ export const services = {
     },
     erp: {
       headline: 'One source of truth for orders, inventory, finance, and staff.',
-      intro: 'When orders sit in one app, stock lives in spreadsheets, and accounting reconciles everything on Friday night, every number is late and contested. We build modular custom ERP, CRM, and management systems—and tell you honestly when tailoring Odoo or an existing tool is the smarter financial move.',
+      intro: 'When orders sit in one app, stock lives in spreadsheets, and accounting reconciles everything by hand, every number is late and contested. We deliver modular ERP, CRM, and management systems—configuring our multi-entity ERP architecture, building custom modules, or implementing Odoo when off-the-shelf is the smarter financial move.',
       signs: [
-        'Leadership waits days for weekly margin, cash, or inventory reports—and two sheets still disagree',
+        'Leadership waits days for margin, cash, or inventory reports—and two sheets still disagree',
         'Warehouse, purchasing, sales, and finance teams re-type the same order numbers across tools',
-        'Enterprise ERP quotes came back at six figures plus a 12-month rollout full of modules you will never touch',
+        'Enterprise ERP quotes came back at six figures plus a massive rollout full of modules you will never touch',
       ],
       builds: [
-        { name: 'Modular custom ERP', text: 'Only the exact operational modules your company needs—orders, fulfillment, purchasing, billing—without bloated licensing.' },
+        { name: 'Modular multi-entity ERP', text: 'Only the exact operational modules your company needs—orders, fulfillment, purchasing, billing—tailored to your org hierarchy.' },
         { name: 'CRM, quoting & order pipelines', text: 'Complex pricing rules, multi-step quotes, approvals, and customer history in one fast interface.' },
         { name: 'Inventory, warehouse & purchasing', text: 'Multi-location stock levels, reorder triggers, supplier purchase orders, and landed-cost tracking.' },
         { name: 'Finance & live profit-and-loss views', text: 'Invoicing, receivables, cost allocation, and real-time margin dashboards synced with your accounting ledger.' },
@@ -64,11 +64,11 @@ export const services = {
       ],
       approach: [
         { name: 'Follow one order end-to-end', text: 'We trace a real quote, purchase order, shipment, and invoice across your business to find where numbers drift.' },
-        { name: 'Deliver the highest-pain module first', text: 'Launch one high-ROI module in 4–8 weeks so staff feel immediate relief before expanding.' },
+        { name: 'Prioritize the highest-pain module', text: 'Scope and launch the highest-ROI operational module first so staff feel immediate relief before expanding.' },
         { name: 'Parallel run & staff training', text: 'Run old and new side by side until reconciliations match 100%, then train every role.' },
       ],
       faq: [
-        { q: 'Should we build a custom ERP module or buy off-the-shelf?', a: 'Commodity functions like standard general-ledger accounting belong in established tools like QuickBooks, Xero, or Odoo. Custom ERP pays off when your quoting, fulfillment, routing, or operational workflow is unique and off-the-shelf workarounds cost you daily margin. We give you an honest verdict in the initial review.' },
+        { q: 'Should we license your ERP core, build custom, or configure off-the-shelf?', a: 'Commodity functions like standard general-ledger accounting belong in established tools or our pre-built ERP core. Custom engineering pays off when your quoting, multi-branch routing, or approval workflow is unique. We give you an honest cost comparison during scoping.' },
         { q: 'How do you prevent disruption during data migration?', a: 'We write repeatable migration scripts, validate row counts and financial totals in staging, and run parallel checks before retiring any legacy sheet.' },
       ],
       work: ['okebase', 'runwayiq'],
@@ -118,7 +118,7 @@ export const services = {
         { name: 'AI-assisted triage & routing', text: 'Inbound emails and support tickets classified, enriched with account context, and drafted for one-click human approval.' },
       ],
       approach: [
-        { name: 'Quantify hours saved first', text: 'We rank candidate workflows by weekly hours burned × error cost so the first sprint pays back fast.' },
+        { name: 'Quantify hours saved first', text: 'We rank candidate workflows by hours burned × error cost so the first automation delivers immediate operational relief.' },
         { name: 'Engineer for failure modes', text: 'Idempotency keys, retries, validation checks, and exception queues mean zero silent data drops.' },
         { name: 'Full run visibility', text: 'Every automated run is logged with inputs, outputs, and instant Slack/email alerts if an external API goes down.' },
       ],
@@ -129,62 +129,90 @@ export const services = {
       work: ['advantage-ai', 'ledgerflow', 'voxflow'],
       verticals: ['logistics', 'ecommerce-operations', 'healthcare-operations'],
     },
+    maintenance: {
+      headline: 'Keep your existing software fast, stable, and connected to every API in your stack.',
+      intro: 'You do not always need a ground-up rebuild. When an existing web platform, mobile app, or internal system suffers from technical debt, broken integrations, slow queries, or an absent previous development team, our senior engineers step in to audit, stabilize, integrate, and continuously improve your system.',
+      signs: [
+        'Your previous agency or developer left, and nobody wants to touch the existing codebase without breaking production',
+        'Customers and operations staff are blocked waiting on third-party API integrations, payment gateways, or webhook syncs',
+        'Slow database queries, recurring bugs, or outdated dependencies are hurting reliability and burning engineering hours',
+      ],
+      builds: [
+        { name: 'Existing codebase takeover & stabilization', text: 'Rapid architectural audit of undocumented repositories, dependency upgrades, security patching, automated test coverage, and CI/CD pipelines.' },
+        { name: 'Third-party API & webhook engineering', text: 'Resilient two-way integrations with payment systems (Stripe, Adyen), ERPs & accounting (QuickBooks, Xero, NetSuite, Odoo), CRMs (HubSpot, Salesforce), 3PLs, and telecom APIs.' },
+        { name: 'Ongoing maintenance & feature retainers', text: 'Predictable SLA-backed bug resolution, uptime monitoring, database health checks, and continuous feature delivery on your existing product.' },
+        { name: 'Performance & database optimization', text: 'Profiling and fixing N+1 queries, PostgreSQL indexing bottlenecks, memory leaks, slow API endpoints, and bloated cloud infrastructure bills.' },
+        { name: 'Zero-downtime legacy modernization', text: 'Incrementally refactoring aging monoliths, migrating databases, or upgrading frontend/backend frameworks without disrupting active users.' },
+        { name: 'Partner API & webhook gateway design', text: 'Building clean, versioned REST/GraphQL APIs, rate limiters, and webhook emitters so your software connects cleanly with enterprise customers.' },
+      ],
+      approach: [
+        { name: 'Codebase & integration health audit', text: 'We inspect your repository, database schemas, error logs, and API failure points to isolate immediate stability risks.' },
+        { name: 'Stabilize & lock CI/CD first', text: 'Before shipping major changes, we put staging environments, automated regression tests, and rollback safety nets in place.' },
+        { name: 'Predictable ongoing execution', text: 'Whether scoped as a dedicated API integration project or a monthly maintenance retainer, we ship clean pull requests with full visibility.' },
+      ],
+      faq: [
+        { q: 'Can you take over a messy codebase written by another agency or former developer?', a: 'Yes. We start with a structured codebase audit to map architecture, security risks, and deployment pipelines, stabilize critical bugs first, and then transition into steady feature delivery and refactoring.' },
+        { q: 'Do we need a long-term retainer for API integration work?', a: 'No. Standalone API integrations or performance overhauls can be contracted as a fixed-scope milestone project, while ongoing product maintenance, monitoring, and backlog execution are available on flexible monthly retainers.' },
+      ],
+      work: ['opsera', 'ledgerflow', 'okebase'],
+      verticals: ['b2b-saas', 'ecommerce-operations', 'logistics'],
+    },
   },
 };
 
 export const howWeWork = {
   hero: {
     eyebrow: 'How we work',
-    title: 'Clear scope. Weekly proof on real data. Zero vendor lock-in.',
-    lede: 'Hiring an engineering partner across borders requires predictable overlap hours, milestone billing, clean IP ownership, and weekly visibility you never have to chase.',
+    title: 'Clear scope. Milestone proof on real data. Flexible commercial terms.',
+    lede: 'Every project is sized and structured around your actual technical complexity and commercial goals—with predictable overlap hours, milestone-gated billing, and live staging verification.',
   },
   phases: [
     {
       num: '01',
       name: 'Discovery & Systems Review',
-      timing: 'Week 1',
-      summary: 'We map the real workflow with your team, inspect existing data, and identify where off-the-shelf beats custom engineering.',
-      deliverable: 'Written review, architecture diagram, milestone plan, and fixed quote.',
+      timing: 'Phase 01 · Scope Alignment',
+      summary: 'We map your workflow or existing codebase, inspect API dependencies, and identify where reusable modules beat custom code.',
+      deliverable: 'Written review, architecture diagram, milestone plan, and contract options.',
     },
     {
       num: '02',
-      name: 'Architecture & Interface Sign-Off',
-      timing: 'Week 1–2',
-      summary: 'Before writing feature code, we lock the schema, API contracts, security model, and core user screens with your team.',
-      deliverable: 'Screen flows, API spec, and initialized Git repository + CI.',
+      name: 'Architecture, Contract & Licensing Lock',
+      timing: 'Phase 02 · Pre-Build Lock',
+      summary: 'Before feature code begins, we lock the database schema, API contracts, security model, milestone schedule, and licensing structure.',
+      deliverable: 'Screen flows, API spec, commercial terms, and initialized CI/CD pipeline.',
     },
     {
       num: '03',
-      name: 'Weekly Milestone Sprints',
-      timing: 'Weeks 2–6+',
-      summary: 'Engineers push tested commits to your repository daily. Every Friday you review a live demo running on real data.',
-      deliverable: 'Staging deploy, test suite, live demo, and written Friday report.',
+      name: 'Milestone Execution Sprints',
+      timing: 'Phase 03 · Scoped to Project Size',
+      summary: 'Timeline and cadence follow your project scope and contract. At every milestone gate, you verify a staging deployment on real data.',
+      deliverable: 'Staging deploy, automated test suite, live demo, and written progress report.',
     },
     {
       num: '04',
-      name: 'Production Launch & Handover',
-      timing: 'Final week',
-      summary: 'We configure production monitoring, alerts, backups, and spend limits, run parallel checks, and train your team.',
-      deliverable: 'Production release, alerts, operational runbook, and recorded handover.',
+      name: 'Production Cutover & Verification',
+      timing: 'Phase 04 · Launch Gate',
+      summary: 'We configure production monitoring, alerts, backups, and spend limits, run parallel checks, and onboard your operators.',
+      deliverable: 'Production release, live alerts, operational runbook, and team training.',
     },
     {
       num: '05',
-      name: 'Managed Operations or Pod',
-      timing: 'Ongoing',
-      summary: 'Stay on a lightweight maintenance plan or scale shipping velocity with an embedded senior pod.',
-      deliverable: 'Health report, SLA bug fixes, model updates, and continuous delivery.',
+      name: 'Maintenance, SLA Ops or Dedicated Pod',
+      timing: 'Phase 05 · Ongoing Retainer',
+      summary: 'Stay on a maintenance plan for bug fixes, API updates, and hosting—or scale velocity with a dedicated engineering pod.',
+      deliverable: 'System health monitoring, SLA bug fixes, API maintenance, and continuous delivery.',
     },
   ],
   sampleReport: {
     eyebrow: 'Radical transparency',
-    title: 'What hits your inbox every Friday',
-    intro: 'Every Friday during an active build, your lead engineer delivers a concise written update and a live staging walkthrough.',
-    meta: 'SAMPLE — FRIDAY ENGINEERING UPDATE · SPRINT WEEK 03',
+    title: 'What hits your inbox at every milestone checkpoint',
+    intro: 'During an active build or maintenance retainer, your lead engineer delivers a concise written checkpoint brief and a live staging walkthrough.',
+    meta: 'SAMPLE — MILESTONE ENGINEERING CHECKPOINT REPORT',
     blocks: [
-      { label: 'Shipped to staging this week', text: 'PO ingestion parser (98.4% match across 120 PDFs), QuickBooks invoice sync, and warehouse lead roles.' },
-      { label: 'Live staging link & demo', text: 'Interactive staging environment + 3-minute recorded walkthrough testing edge cases on your anonymized data.' },
-      { label: 'Decisions needed from you', text: 'Confirm approval threshold ($2,500 vs. $5,000) for automated supplier PO dispatch before Tuesday lock.' },
-      { label: 'Milestone & budget status', text: 'Milestone 2 on schedule for Friday sign-off · Fixed budget 100% on track · 0 blockers.' },
+      { label: 'Shipped to staging in this milestone', text: 'PO ingestion parser (98.4% match across 120 PDFs), QuickBooks invoice sync, and warehouse lead roles.' },
+      { label: 'Live staging link & demo', text: 'Interactive staging environment + recorded walkthrough testing edge cases on your anonymized data.' },
+      { label: 'Decisions needed from you', text: 'Confirm approval threshold ($2,500 vs. $5,000) for automated supplier PO dispatch before production cutover.' },
+      { label: 'Milestone & budget status', text: 'Milestone deliverables verified · Contract budget 100% on track · 0 blockers.' },
     ],
   },
   timezone: {
@@ -205,29 +233,29 @@ export const howWeWork = {
       },
       {
         name: 'Written decisions, never verbal drift',
-        text: 'Every scope choice, trade-off, and architecture change is documented in your repository and Friday update.',
+        text: 'Every scope choice, trade-off, and architecture change is documented in writing across milestone updates.',
       },
     ],
   },
   security: {
-    eyebrow: 'IP, code & security',
-    title: 'Your repository. Your cloud. Your intellectual property.',
+    eyebrow: 'Commercial models, IP & security',
+    title: 'Your data is always yours. Codebase and licensing fit your contract.',
     items: [
-      { name: '100% custom IP assignment', text: 'You own 100% of custom-developed code, schemas, and workflows upon milestone payment.' },
-      { name: 'Client-owned repos from week one', text: 'We commit into your GitHub/GitLab and deploy into your cloud account from day one.' },
-      { name: 'Zero AI training on your data', text: 'AI integrations use commercial APIs that contractually prohibit training on your data.' },
-      { name: 'Least-privilege & clean offboarding', text: 'Secrets stay in your vault, access is role-scoped, mutual NDAs are standard, and credentials revoke at handover.' },
+      { name: '100% client data ownership & NDA', text: 'Your company data, customer records, and business rules remain 100% yours under strict mutual NDA.' },
+      { name: 'Cost-effective licensed deployment', text: 'Deploy faster and at a lower upfront price by licensing Vector Dynamic’s proven core engines and reusable modules.' },
+      { name: 'Custom build or full IP buyout options', text: 'Need full source-code custody in your own repository or category exclusivity? We structure and price the contract accordingly.' },
+      { name: 'Zero AI training on your data', text: 'AI integrations use commercial APIs or private endpoints that contractually prohibit training on your data.' },
     ],
   },
   pods: {
     eyebrow: 'Hiring vs. Dedicated Pods',
     title: 'Hiring developers vs. adding a Vector Dynamic engineering pod',
-    intro: 'If you have an active roadmap or open engineering roles, a dedicated pod delivers senior velocity in two weeks without recruiter fees or payroll risk.',
+    intro: 'If you have an active product roadmap, legacy backlog, or open engineering roles, a dedicated pod delivers senior velocity without recruiter fees or payroll overhead.',
     rows: [
-      { dimension: 'Time to first production commit', hiring: '8 to 14 weeks (sourcing, interviews, notice, onboarding)', pod: '1 to 2 weeks from scope alignment' },
+      { dimension: 'Onboarding & ramp-up', hiring: 'Months of sourcing, interviews, notice periods, and setup', pod: 'Rapid kickoff aligned to your repository and architecture scope' },
       { dimension: 'Skill breadth', hiring: 'Single hire covers one slice (backend OR frontend)', pod: 'Balanced unit: architecture, UI, APIs, AI, and DevOps' },
-      { dimension: 'Cost & commitment', hiring: 'Full salary, benefits, recruiter fees, and severance risk', pod: 'Predictable monthly rate · Scale up, pause, or hand over with 30 days notice' },
-      { dimension: 'Accountability', hiring: 'You manage sprint hygiene, QA, and architecture solo', pod: 'Includes weekly demos, CI/CD, test coverage, and Friday reporting' },
+      { dimension: 'Cost & commitment', hiring: 'Full salary, benefits, recruiter fees, and severance risk', pod: 'Predictable retainer · Scale up, adjust scope, or transition cleanly per contract' },
+      { dimension: 'Accountability', hiring: 'You manage sprint hygiene, QA, and architecture solo', pod: 'Includes milestone demos, CI/CD, test coverage, and written reporting' },
     ],
   },
 };
@@ -236,22 +264,22 @@ export const about = {
   hero: {
     eyebrow: 'About Vector Dynamic',
     title: 'Engineers who build it, ship it to production, and stay accountable.',
-    lede: 'Vector Dynamic is an independent software and AI engineering team building custom platforms, business systems, and operational automation for growing B2B companies worldwide.',
+    lede: 'Vector Dynamic is an independent software and AI engineering team building custom platforms, business systems, API integrations, and operational automation for growing B2B companies worldwide.',
   },
   story: {
     title: 'Why we started Vector Dynamic',
     body: [
-      'Most software and AI initiatives do not fail on demo day. They fail three weeks after launch—when clean sample prompts meet messy customer PDFs, real warehouse staff, rate-limited APIs, and Tuesday-afternoon edge cases.',
-      'We started Vector Dynamic to close that gap between impressive prototypes and durable operational systems. Because we engineer and run our own software products in production—including our live SyncDaily data and publishing pipeline—we design client systems with the monitoring, cost controls, and documentation we demand for ourselves.',
-      'We are a focused, young company, and we never hide behind inflated headcount claims or fake enterprise logos. Instead, we earn trust the hard way: direct access to senior engineers, fixed milestone pricing, code in your repository from week one, and weekly working software you can verify yourself.',
+      'Most software and AI initiatives do not fail on demo day. They fail after launch—when clean sample prompts meet messy customer PDFs, real warehouse staff, rate-limited APIs, and daily operational edge cases.',
+      'We started Vector Dynamic to close that gap between impressive prototypes and durable operational systems. Because we engineer and run our own core platforms—across multi-entity ERP, voice operations, and AI intelligence—we design client systems with the monitoring, cost controls, and architectural discipline we demand for ourselves.',
+      'We earn trust through technical clarity: direct access to senior engineers, milestone-gated contracts, flexible deployment and licensing options, and working software you can verify on real data.',
     ],
   },
   principles: {
     title: 'Four rules we do not bend',
     items: [
       { name: 'Production is the only finish line', text: 'A slide deck or sandbox prototype solves nothing. Every engagement is planned backward from daily use in your real workflow.' },
-      { name: 'Advise against custom when off-the-shelf wins', text: 'If Odoo, an existing SaaS tool, or a two-day integration solves your problem better than a custom build, we tell you in writing—even when it means a smaller contract.' },
-      { name: 'Boring, maintainable architecture first', text: 'Proven databases, clear API boundaries, automated tests, and plain runbooks beat clever complexity your future team cannot debug.' },
+      { name: 'Advise against ground-up builds when simpler wins', text: 'If an API integration, Odoo configuration, or licensing one of our existing core engines solves your problem better than a ground-up build, we tell you upfront.' },
+      { name: 'Boring, maintainable architecture first', text: 'Proven databases, clear API boundaries, automated tests, and plain runbooks beat clever complexity nobody can debug.' },
       { name: 'Engineers on the call do the work', text: 'No bait-and-switch from senior sales pitches to unvetted juniors. You collaborate directly with the builders writing your system.' },
     ],
   },
@@ -260,8 +288,8 @@ export const about = {
     title: 'Built for international B2B teams',
     items: [
       { name: 'Daily timezone overlap', text: 'Structured 4-hour live overlap windows covering US/Canada mornings, UK/European business hours, Gulf schedules, and APAC.' },
-      { name: 'Clear written English', text: 'Crisp specifications, self-explanatory pull requests, recorded Loom demos, and structured Friday engineering briefs.' },
-      { name: 'Transparent commercial terms', text: 'Mutual NDAs, milestone-gated invoicing, 100% custom IP assignment on payment, and international B2B invoicing.' },
+      { name: 'Clear written English', text: 'Crisp specifications, self-explanatory pull requests, recorded walkthroughs, and structured milestone engineering briefs.' },
+      { name: 'Tailored commercial agreements', text: 'Mutual NDAs, milestone-gated invoicing, and flexible licensing or source-ownership terms priced to match your business goals.' },
     ],
   },
 };
@@ -270,22 +298,22 @@ export const partners = {
   hero: {
     eyebrow: 'Strategic Partnerships',
     title: 'Win bigger projects together—without adding engineering payroll.',
-    lede: 'We build long-term, mutually profitable partnerships with consultants, design and marketing agencies, and software houses across the US, UK, Europe, Gulf, and Australia. You bring trusted client relationships; we bring senior custom software, ERP, and AI delivery.',
+    lede: 'We build long-term, mutually profitable partnerships with consultants, design and marketing agencies, and software houses across the US, UK, Europe, Gulf, and Australia. You bring trusted client relationships; we bring senior custom software, ERP, API integration, and AI delivery.',
   },
   tracks: {
     title: 'Three win-win partnership models',
     items: [
       {
         name: 'Referral & Advisory Partners (Consultants, Fractional COOs/CTOs, Accountants & Marketing Agencies)',
-        text: 'Your clients trust your operational or growth advice—and constantly run into broken spreadsheets, manual handoffs, or custom software needs outside your core service. Refer them to Vector Dynamic: you earn a recurring/milestone referral revenue share (or pass a partner discount to your client), receive reciprocal introductions when our software clients need marketing, finance, or advisory help, and look like a hero when the system ships cleanly.',
+        text: 'Your clients trust your operational or growth advice—and constantly run into broken spreadsheets, manual handoffs, legacy codebases, or custom software needs outside your core service. Refer them to Vector Dynamic: you earn a transparent referral revenue share (or pass a partner discount to your client) and receive reciprocal introductions when our software clients need advisory or growth help.',
       },
       {
         name: 'Agency Co-Delivery & White-Label Partners (Design, Webflow, Branding & Boutique AI Agencies)',
-        text: 'Stop turning down $15k–$60k+ custom portals, ERP integrations, and production AI builds. We quote fixed wholesale milestones so you add a healthy 30%–50% margin, keep 100% ownership of the client relationship under strict NDA and non-solicitation, and expand your agency’s capabilities overnight.',
+        text: 'Stop turning down $15k–$60k+ custom portals, ERP integrations, and production AI builds. We quote fixed wholesale milestones so you add a healthy 30%–50% margin, keep 100% ownership of the client relationship under strict NDA and non-solicitation, and expand your agency’s capabilities.',
       },
       {
         name: 'Software House Overflow & Specialist Pods (Product Studios & Dev Shops)',
-        text: 'When client demand spikes faster than local hiring, bring our engineers into defined modules—custom APIs, Odoo/ERP workflows, or LLM/RAG pipelines. Start with a single fixed-price 1-week trial task inside your Git workflow so you judge our code quality firsthand before scaling.',
+        text: 'When client demand spikes faster than local hiring, bring our engineers into defined modules—custom APIs, codebase maintenance, Odoo/ERP workflows, or LLM/RAG pipelines. Start with a single scoped pilot task inside your Git workflow so you judge our code quality firsthand before scaling.',
       },
     ],
   },
@@ -294,9 +322,9 @@ export const partners = {
     title: 'How both sides benefit',
     items: [
       { name: 'New revenue from existing relationships', text: 'Monetize technical requests you currently turn away—via wholesale agency margin or transparent referral revenue share.' },
-      { name: 'Two-way client referrals', text: 'We strictly build software, ERP, and AI. When our clients ask for paid growth, branding, accounting, or fractional ops consulting, we introduce trusted partners.' },
+      { name: 'Two-way client referrals', text: 'We strictly build software, ERP, integrations, and AI. When our clients ask for paid growth, branding, accounting, or fractional ops consulting, we introduce trusted partners.' },
       { name: '100% client protection', text: 'Written mutual NDA and non-solicitation upfront. Your clients stay your clients—we work behind your domain or alongside you as your technical arm.' },
-      { name: 'Start with a 1-week trial task', text: 'Zero long-term lock-in. Test our code standards, speed, and communication on one small scoped task first.' },
+      { name: 'Start with a scoped pilot task', text: 'Zero long-term lock-in. Test our code standards, speed, and communication on one small scoped task first.' },
     ],
   },
   how: {
@@ -304,8 +332,8 @@ export const partners = {
     items: [
       { name: '25-minute founder intro', text: 'Align on your clients, preferred model (referral share, co-delivery, or white-label), and communication style.' },
       { name: 'Mutual NDA & partner terms', text: 'Sign clean confidentiality, non-solicitation, and referral or wholesale milestone terms before sharing any client brief.' },
-      { name: 'First referral or 1-week trial task', text: 'Run one scoped pilot task or co-audit a live client opportunity together—we prepare the technical scope and estimate for free.' },
-      { name: 'Repeatable delivery rhythm', text: 'Weekly client-ready demos, clean documentation, and predictable payouts or wholesale milestones on every engagement.' },
+      { name: 'First referral or scoped pilot task', text: 'Run one scoped pilot task or co-audit a live client opportunity together—we prepare the technical scope and estimate for free.' },
+      { name: 'Repeatable delivery rhythm', text: 'Milestone-gated staging demos, clean documentation, and predictable payouts or wholesale milestones on every engagement.' },
     ],
   },
   commitments: {
@@ -314,8 +342,8 @@ export const partners = {
       'Mutual NDA and strict client non-solicitation before any brief is shared',
       'Transparent referral revenue share + reciprocal leads for advisory/marketing partners',
       'Fixed wholesale milestone quotes you can mark up predictably',
-      'Client-ready weekly updates and staging demos you can forward with pride',
-      '100% custom code ownership transferred cleanly to you or your end client',
+      'Client-ready milestone updates and staging demos you can forward with pride',
+      'Flexible white-label licensing or source-transfer terms tailored to each client contract',
       'Direct Slack/Teams access to senior engineers during your business hours',
     ],
   },
@@ -323,10 +351,10 @@ export const partners = {
     good: [
       'Fractional COOs/CTOs, operations consultants, ERP advisors, and B2B marketing/growth agencies',
       'Design, Webflow/Shopify, and branding studios whose clients ask for custom web apps, portals, or AI',
-      'Small and mid-size software houses needing reliable overflow or applied-AI capacity',
+      'Small and mid-size software houses needing reliable overflow, maintenance, or applied-AI capacity',
     ],
     bad: [
-      'Unscoped crisis rescues with no written requirements or realistic timeline',
+      'Unscoped crisis rescues with no written requirements or realistic contract structure',
       'Middlemen brokering projects across multiple layers without end-client clarity',
     ],
   },
@@ -335,11 +363,11 @@ export const partners = {
 export const book = {
   eyebrow: '30-Minute Discovery Call',
   title: 'Talk directly with a senior engineer.',
-  lede: 'No pitch deck and no junior account reps. Spend 30 minutes walking through the workflow, platform, or AI system you want built—and leave with an honest technical recommendation and rough scope.',
+  lede: 'No pitch deck and no junior account reps. Spend 30 minutes walking through the workflow, existing codebase, integration, or AI system you need—and leave with an honest technical recommendation and commercial structure.',
   agenda: [
-    'Your current workflow, tools, and where time or margin is leaking (10 min)',
-    'Whether off-the-shelf software or custom engineering is the smarter path (10 min)',
-    'Recommended architecture, milestone breakdown, budget band, and next steps (10 min)',
+    'Your current workflow, codebase, or API bottleneck and where time or margin is leaking (10 min)',
+    'Whether licensing an existing core module, integrating APIs, or custom engineering is the smarter path (10 min)',
+    'Recommended architecture, milestone breakdown, licensing/ownership options, and next steps (10 min)',
   ],
   asyncNote: 'Not ready for a call yet? Request our free 2–4 page written Systems Review instead—async, zero pressure.',
 };

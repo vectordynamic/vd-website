@@ -114,13 +114,13 @@ export const industries = [
       },
       {
         name: 'Dedicated Senior Engineering Pods',
-        text: '2 to 4 senior engineers working inside your repo, PR review standards, and daily overlap hours—ready in two weeks with fixed monthly predictability.',
+        text: '2 to 4 senior engineers working inside your repo, PR review standards, and daily overlap hours—with predictable monthly retainers scaled to your roadmap.',
       },
     ],
     auditOffer:
-      'Point us to a stalled AI feature, integration backlog, or architecture bottleneck. We will deliver a concise written engineering review or scope a 4–6 week fixed-price build sprint.',
+      'Point us to a stalled AI feature, integration backlog, or architecture bottleneck. We will deliver a concise written engineering review and milestone estimate.',
     relatedWork: ['opsera', 'syncdaily'],
-    relatedPractice: 'custom-software',
+    relatedPractice: 'maintenance',
   },
 ];
 

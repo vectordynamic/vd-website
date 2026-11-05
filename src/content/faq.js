@@ -2,36 +2,35 @@
 export const faqData = {
   eyebrow: 'Frequently Asked Questions',
   title: 'Clear answers to common questions about working with Vector Dynamic.',
-  lede: 'Everything foreign B2B buyers ask us about time zones, code ownership, fixed pricing, data security, and communication.',
+  lede: 'Everything B2B buyers ask us about time zones, commercial licensing and codebase options, milestone pricing, data security, and ongoing maintenance.',
   items: [
     {
       q: 'How do we collaborate across US, UK, European, or APAC time zones?',
-      a: 'We lock a fixed 4-hour daily live overlap window with your business hours for standups, architecture reviews, and pairing. Outside that window, asynchronous progress continues so you wake up to tested pull requests—plus a structured written engineering report and live demo every Friday.',
+      a: 'We lock a fixed 4-hour daily live overlap window with your business hours for standups, architecture reviews, and pairing. Outside that window, asynchronous progress continues so you wake up to tested pull requests—plus structured written engineering reports and live demos at every milestone checkpoint.',
     },
     {
-      q: 'Who owns the source code, intellectual property, and data?',
-      a: 'You do. Your company data is always 100% yours, and 100% of the custom software and business logic we write for your project transfers to you upon milestone payment—committed directly in your Git repository and cloud accounts. If we optionally include pre-built Vector Dynamic internal modules to cut your build time and cost, you receive a perpetual, royalty-free commercial license with full source code access, agreed in writing upfront.',
+      q: 'How do codebase ownership, licensing, and exclusivity work?',
+      a: 'Your company data, customer records, and proprietary business rules are always 100% yours under mutual NDA. For the software itself, we offer three commercial structures that adjust pricing to your needs: (1) Cost-Effective Licensed Deployment, where we deploy and customize our proven core engines (ERP, Voice, AI, or Automation) for your business at a lower upfront cost; (2) Custom Build with Shared Core Libraries, where you receive a perpetual commercial license to operate the delivered system while Vector Dynamic retains ownership of reusable underlying frameworks; or (3) Full Source-Code Handover & Category Exclusivity, priced specifically for organizations requiring full repository transfer or exclusive IP rights.',
+    },
+    {
+      q: 'How do you determine project timelines and milestone schedules?',
+      a: 'We never quote arbitrary calendar durations before inspecting your workflow or codebase. Project timelines, sprint cadence, and milestone gates are determined during scoping based on technical complexity, third-party API dependencies, and the contract model you choose.',
+    },
+    {
+      q: 'Can you take over, maintain, or integrate APIs into our existing codebase?',
+      a: 'Yes. Through our Product Maintenance, Modernization & API Integration practice, we step into existing web, mobile, and backend repositories—even those left behind by previous agencies—to audit stability, fix bugs, optimize database queries, ship new features, and engineer two-way API integrations with Stripe, QuickBooks, Xero, NetSuite, Odoo, HubSpot, Salesforce, 3PLs, and telecom providers.',
     },
     {
       q: 'How do you protect our company data and credentials?',
-      a: 'We sign a mutual NDA before reviewing internal systems. Access follows least-privilege roles, secrets stay inside your own cloud vault, AI integrations use commercial API tiers that exclude training on customer data, and temporary credentials are revoked at handover.',
+      a: 'We sign a mutual NDA before reviewing internal systems. Access follows least-privilege roles, secrets stay inside your cloud vault, AI integrations use commercial API tiers that contractually exclude training on customer data, and temporary credentials can be rotated at any time.',
     },
     {
       q: 'Will we deal with account managers or the actual engineers?',
-      a: 'You speak directly with the senior engineers designing and writing your system—from the first 30-minute discovery call through production launch. There is no sales handoff to junior subcontractors.',
+      a: 'You speak directly with the senior engineers designing, integrating, and maintaining your system—from the first 30-minute discovery call through production deployment. There is no sales handoff to junior subcontractors.',
     },
     {
-      q: 'Will we be one of your early clients?',
-      a: 'We are a focused, young engineering company, and we state that plainly. That is exactly why we structure engagements around a free upfront Systems Review, fixed milestone pricing, code in your repository from week one, and weekly demos on real data—so your risk stays small and verifiable at every step.',
-    },
-    {
-      q: 'Can you integrate with or extend our existing ERP, CRM, or legacy codebase?',
-      a: 'Yes. Most engagements connect to or modernize software you already rely on—such as Shopify, HubSpot, Salesforce, QuickBooks, Xero, Odoo, custom PostgreSQL databases, or aging internal web apps. When an off-the-shelf tool solves the problem cheaper than custom code, we tell you in the review.',
-    },
-    {
-      q: 'What does a typical project cost?',
-      a: 'Every build is quoted at a fixed price after discovery so there are no hourly surprises. Focused workflow automations and integrations typically range from $5,000 to $12,000; custom web platforms, ERP modules, and production AI systems typically start at $15,000 and scale with scope. Ongoing managed operations start at $1,500/month, and the initial Systems Review is free for qualified B2B teams.',
+      q: 'How are engagements structured and priced?',
+      a: 'Every project is quoted against explicit milestones and your selected commercial model (licensed deployment, custom build, full source buyout, or monthly maintenance retainer) before engineering starts—so there are zero open-ended hourly surprises. The initial Systems Review is complimentary for qualified B2B teams.',
     },
   ],
 };
-

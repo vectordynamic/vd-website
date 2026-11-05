@@ -16,10 +16,10 @@ Live Collaboration Window: ${site.overlapWindow}
 ---
 
 ## 1. Company Philosophy & Standards
-- **100% Client Code & IP Ownership:** All custom code, database schemas, prompt engineering, and test suites are committed directly into client-owned GitHub or GitLab repositories and deploy to client-owned cloud accounts from week one.
-- **Fixed-Price Milestone Delivery:** Projects are scoped and priced upfront on verifiable milestone deliverables—eliminating open-ended hourly billing creep.
-- **Radical Weekly Transparency:** Clients receive a working staging release, a live walkthrough demo, and a concise written Friday Engineering Report every single week.
-- **Direct Senior Builders:** Clients speak and collaborate directly with senior engineers designing and writing the system. No junior subcontractors or intermediate non-technical account managers.
+- **Flexible Commercial, Licensing & Codebase Models:** Client data and proprietary business rules are always 100% client-owned under mutual NDA. Software deployment and IP ownership are structured around the contract: (a) Cost-effective licensed deployment on Vector Dynamic's core engines, (b) Custom build with shared core libraries and a perpetual operational license, or (c) Full source-code handover and category exclusivity priced per enterprise agreement.
+- **Scope & Contract-Driven Milestone Delivery:** Timelines and milestone gates are determined by actual project complexity, integration dependencies, and contract structure—eliminating arbitrary calendar guesses and open-ended hourly billing creep.
+- **Radical Milestone Transparency:** Clients receive a working staging release, a live walkthrough demo, and a concise written engineering report at every milestone checkpoint.
+- **Direct Senior Builders:** Clients speak and collaborate directly with senior engineers designing, integrating, and maintaining the system. No junior subcontractors or intermediate non-technical account managers.
 
 ---
 
@@ -53,23 +53,21 @@ ${w.lessons.map((l) => `  * ${l}`).join('\n')}
 
 ---
 
-## 4. Engagement Ladder & Pricing Bands
+## 4. Engagement Ladder & Commercial Structure
 
-1. **Phase 1: Systems Review (Free for qualified B2B teams)**
-   - Turnaround: 1–2 weeks
-   - Deliverable: 2–4 page written technical brief, workflow bottleneck map, 3 quick wins, target architecture, and fixed quote.
+1. **Stage 1: Systems Review (Free for qualified B2B teams)**
+   - Deliverable: 2–4 page written technical brief, workflow or codebase bottleneck map, 3 quick wins, target architecture, and commercial options.
    - URL: ${site.url}/audit
 
-2. **Phase 2: Fixed-Price Build Sprints**
-   - Workflow automations & integrations: from $5,000 to $12,000
-   - Core business platforms, ERP modules & production AI: from $15,000
-   - Timeline: 4–8 weeks typical per milestone sprint.
+2. **Stage 2: Scoped Project & Milestone Delivery**
+   - Scope: Custom software platforms, ERP modules, production AI systems, or standalone API integrations.
+   - Commercial Options: Licensed deployment on Vector Dynamic core engines, custom build with perpetual usage license, or full source-code handover / exclusivity.
+   - Schedule: Defined during scoping based on project size and contract terms.
    - URL: ${site.url}/book
 
-3. **Phase 3: Managed Operations & Dedicated Pods**
-   - Managed operations & SLA monitoring: from $1,500/month
-   - Dedicated engineering pods (2–4 senior engineers): flexible monthly retainers scaled to roadmap velocity.
-   - URL: ${site.url}/how-we-work
+3. **Stage 3: Ongoing Maintenance, API Management & Dedicated Pods**
+   - Scope: Existing codebase takeover, SLA bug resolution, third-party API maintenance, performance optimization, or embedded senior engineering pods.
+   - URL: ${site.url}/services/maintenance
 
 ---
 

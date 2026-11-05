@@ -52,7 +52,7 @@ export default function WorkIndexPage() {
 
       <CtaBand
         title="Dealing with a similar operational bottleneck?"
-        body="We architect and deploy custom systems like these around your exact workflow, data stack, and team permissions—with 100% custom code ownership."
+        body="We architect, customize, and deploy systems like these around your exact workflow, data stack, and commercial requirements."
       />
     </>
   );

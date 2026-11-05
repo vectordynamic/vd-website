@@ -13,8 +13,9 @@ export const navigation = {
     services: [
       { name: 'Custom Software and Platforms', href: '/services/custom-software' },
       { name: 'Business Systems and ERP', href: '/services/erp' },
-      { name: 'AI-Powered Software and Agents', href: '/services/ai' },
+      { name: 'Applied AI and Agents', href: '/services/ai' },
       { name: 'Workflow Automation', href: '/services/automation' },
+      { name: 'Maintenance & API Integration', href: '/services/maintenance' },
       { name: 'Free Systems Review', href: '/audit' },
     ],
     industries: [

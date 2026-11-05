@@ -24,7 +24,7 @@ export const workItems = [
       'Run multiple legal entities, tax jurisdictions, and physical branches inside one unified platform with strict tenant isolation and real-time group consolidation.',
       'Adapt data schemas, custom fields, document templates, and multi-stage approval rules per subsidiary without waiting on engineering redeployments.',
       'Maintain sub-50ms search, filter, and ledger rollup performance across 10M+ inventory movements and accounting journal entries.',
-      'Eliminate per-seat SaaS tax with full source-code and database ownership.'
+      'Eliminate punitive per-seat SaaS licensing with predictable, organization-wide deployment.'
     ],
     features: [
       {
