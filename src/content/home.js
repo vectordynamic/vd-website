@@ -203,7 +203,7 @@ export const home = {
     items: [
       {
         q: 'How do you handle US, UK, European, or APAC time zone collaboration?',
-        a: 'We maintain a fixed 4-hour daily live overlap window with your business hours for standups, pairing, and architecture reviews. Outside that window, async progress continues with tested pull requests and structured milestone reports.',
+        a: 'Our dedicated client-handling and operations desk is available 24/7 for urgent requests and production support. Core engineering runs during standard working hours with a guaranteed daily live overlap window (4+ hours standard) for standups and pairing—and for dedicated pods or contracts requiring full time-zone alignment, we shift our engineering team’s working hours directly to match your schedule.',
       },
       {
         q: 'How do codebase ownership, licensing, and exclusivity work?',

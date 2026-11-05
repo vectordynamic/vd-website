@@ -9,15 +9,16 @@ export const site = {
   address: null,
   foundedYear: null,
   location: null,
-  overlapWindow: 'Fixed daily 4-hour live overlap with US, UK, European, Gulf, and APAC business hours',
-  responseSla: 'Direct reply from a senior engineer within one business day',
-  tagline: 'Custom software, ERP and AI, built to scale and kept running.',
+  overlapWindow:
+    '24/7 dedicated client support · Daily live engineering overlap + shift-aligned teams for US, UK, EU, Gulf & APAC',
+  responseSla: '24/7 client desk with direct senior engineer response',
+  tagline: 'Custom software, ERP, AI, and enterprise integrations—built to scale and kept running.',
   description:
-    'Vector Dynamic is a senior engineering team that builds custom software, ERP and business systems, AI-powered products and workflow automation for growing B2B companies—and keeps them running.',
+    'Vector Dynamic is a senior engineering team that builds, integrates, and maintains custom software, ERP and business systems, AI-powered products, and workflow automation for growing B2B companies.',
   social: {
-    linkedin: 'https://linkedin.com/company/vectordynamic',
-    twitter: 'https://twitter.com/vectordynamic',
+    linkedin: 'https://www.linkedin.com/company/vectordynamic',
     github: 'https://github.com/vectordynamic',
+    facebook: 'https://www.facebook.com/vectordynamicltd',
   },
   // Populate with { name, role, bio, linkedin } objects to display individual founder cards on /about and /
   founders: [],

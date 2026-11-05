@@ -216,20 +216,20 @@ export const howWeWork = {
     ],
   },
   timezone: {
-    eyebrow: 'Global collaboration',
-    title: 'How cross-timezone delivery stays effortless',
+    eyebrow: 'Global collaboration & 24/7 support',
+    title: 'How cross-timezone delivery and client coverage work',
     points: [
       {
-        name: 'Fixed 4-hour daily overlap',
-        text: 'A locked 4-hour live overlap window with US, UK, European, Gulf, or APAC hours for calls, demos, and pairing.',
+        name: '24/7 dedicated client & incident desk',
+        text: 'Dedicated client-handling and operational support coverage runs 24/7 so urgent requests and production alerts are answered immediately.',
+      },
+      {
+        name: 'Daily live overlap or full shift alignment',
+        text: 'Standard builds include a guaranteed daily live overlap window (4+ hours)—or we shift a dedicated team’s working hours to match your local US, UK, EU, Gulf, or APAC schedule.',
       },
       {
         name: 'Direct Slack / Teams channel',
         text: 'Direct communication with the engineers writing your code—zero middleman account managers.',
-      },
-      {
-        name: 'Async momentum while you sleep',
-        text: 'Decisions agreed during your morning overlap turn into tested pull requests ready by your next workday.',
       },
       {
         name: 'Written decisions, never verbal drift',
@@ -287,7 +287,7 @@ export const about = {
     eyebrow: 'How we operate',
     title: 'Built for international B2B teams',
     items: [
-      { name: 'Daily timezone overlap', text: 'Structured 4-hour live overlap windows covering US/Canada mornings, UK/European business hours, Gulf schedules, and APAC.' },
+      { name: '24/7 client coverage & flexible shifts', text: '24/7 dedicated client support desk, standard daily live overlap windows, and shift-aligned engineering pods tailored to your time zone.' },
       { name: 'Clear written English', text: 'Crisp specifications, self-explanatory pull requests, recorded walkthroughs, and structured milestone engineering briefs.' },
       { name: 'Tailored commercial agreements', text: 'Mutual NDAs, milestone-gated invoicing, and flexible licensing or source-ownership terms priced to match your business goals.' },
     ],

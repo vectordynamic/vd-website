@@ -25,9 +25,9 @@ function countWords(obj) {
 }
 
 describe('content budget & noise-reduction constraints', () => {
-  it('homepage strictly honors total word budget <= 1150 words', () => {
+  it('homepage strictly honors total word budget <= 1200 words (5 practice areas)', () => {
     const totalHomeWords = countWords(home);
-    expect(totalHomeWords).toBeLessThanOrEqual(1150);
+    expect(totalHomeWords).toBeLessThanOrEqual(1200);
   });
 
   it('homepage hero strictly honors word budget <= 45 words', () => {
@@ -48,9 +48,9 @@ describe('content budget & noise-reduction constraints', () => {
     }
   });
 
-  it('how-we-work honors word budget <= 650 words', () => {
+  it('how-we-work honors word budget <= 680 words', () => {
     const words = countWords(howWeWork);
-    expect(words).toBeLessThanOrEqual(650);
+    expect(words).toBeLessThanOrEqual(680);
   });
 
   it('partners page honors word budget <= 600 words', () => {

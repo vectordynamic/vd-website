@@ -5,8 +5,8 @@ export const faqData = {
   lede: 'Everything B2B buyers ask us about time zones, commercial licensing and codebase options, milestone pricing, data security, and ongoing maintenance.',
   items: [
     {
-      q: 'How do we collaborate across US, UK, European, or APAC time zones?',
-      a: 'We lock a fixed 4-hour daily live overlap window with your business hours for standups, architecture reviews, and pairing. Outside that window, asynchronous progress continues so you wake up to tested pull requests—plus structured written engineering reports and live demos at every milestone checkpoint.',
+      q: 'How do we collaborate across US, UK, European, Gulf, or APAC time zones?',
+      a: 'We operate a 24/7 dedicated client-handling and support desk so urgent communication and operational issues are handled around the clock. For core engineering, standard engagements include a guaranteed daily live overlap window (4+ hours standard) for standups, architecture reviews, and pairing—and if your project or dedicated pod requires full working-hour alignment, we shift our dedicated team’s hours directly to match your time zone.',
     },
     {
       q: 'How do codebase ownership, licensing, and exclusivity work?',
